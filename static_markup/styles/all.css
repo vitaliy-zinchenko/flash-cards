@@ -1,0 +1,144 @@
+.header {
+	background: #ccc;
+	overflow: hidden;
+}
+
+.logo {
+	float: left;
+}
+
+.login {
+	float: right;
+}
+
+.main {
+	width: 80%;
+	margin: 0 auto;
+	padding: 100px 0;
+}
+
+.ctrl-btn {
+	text-align: right;
+	margin-bottom: 10px;
+}
+
+.new-set {
+
+}
+
+.card {
+	padding: 20px;
+	margin-bottom: 20px;
+	border: 1px solid #333;
+	background: #eee;
+}
+
+.card > div,
+.card > h2 {
+	display: inline-block;
+	width: 30%;
+}
+
+.card > h2 {
+	font-weight: 700;
+	color: #00008b;
+}
+
+/*card item*/
+.row {
+	padding: 15px 0;
+	border: 1px solid #ddd;
+
+}
+
+.add-card {
+	margin-bottom: 20px;
+}
+
+.row.choose-lang {
+	padding: 10px 0 0 0;
+	font-size: 12px;
+}
+
+.words-container .row {
+	padding: 0;
+	margin-bottom: 10px;
+}
+
+.language {
+	cursor: pointer;
+}
+
+.term, .definition, .ctrls {
+	display: inline-block;
+	vertical-align: top;
+}
+
+.term {
+	width: 39%;
+}
+
+.definition {
+	width: 39%;
+}
+
+.ctrls {
+	width: 19%;
+	text-align: justify;
+	margin-left: 9px;
+}
+
+.ctrls span {
+	background: #ccc;
+	display: inline-block;
+	padding: 5px;
+	margin-top: 10px;
+	cursor: pointer;
+}
+
+.ctrls:after {
+	content: "";
+	display: inline-block;
+	width: 100%;
+	height: 0;
+}
+
+.header .ctrls {
+	text-align: left;
+}
+
+.row textarea {
+	width: 100%;
+}
+
+.language {
+	display: inline-block;
+	margin-right: 20px;
+	color: #00008b
+}
+
+.language:last-child {
+	margin-right: 0;
+}
+
+#add-card {
+	margin-bottom: 20px;
+	padding: 4px;
+}
+
+#add-card input {
+  display: inline-block;
+}
+
+#card-title {
+	width: 40%;
+}
+
+#card-desc {
+	width: 50%;
+}
+
+
+
+
+
