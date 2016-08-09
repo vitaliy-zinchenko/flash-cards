@@ -2,9 +2,15 @@ package flashcards;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Import;
 
 @SpringBootApplication
+@ComponentScan(basePackages = {
+		"flashcards.api",
+		"flashcards.repository",
+		"flashcards.controller"
+})
 @Import({WebMvcConfig.class})
 public class FlashcardsApplication {
 
