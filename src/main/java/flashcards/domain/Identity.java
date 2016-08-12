@@ -6,7 +6,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class User {
+public class Identity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -16,7 +16,7 @@ public class User {
         return id;
     }
 
-    public User setId(Long id) {
+    public Identity setId(Long id) {
         this.id = id;
         return this;
     }

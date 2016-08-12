@@ -18,8 +18,10 @@ public class CardAnswer {
 
     private LocalDateTime time;
 
-    private Boolean right;
+    private Boolean correct;
 
+    @ManyToOne
+    @JoinColumn(name = "answer_type_id")
     private AnswerType answerType;
 
     @ManyToOne
@@ -44,12 +46,12 @@ public class CardAnswer {
         return this;
     }
 
-    public Boolean getRight() {
-        return right;
+    public Boolean getCorrect() {
+        return correct;
     }
 
-    public CardAnswer setRight(Boolean right) {
-        this.right = right;
+    public CardAnswer setCorrect(Boolean correct) {
+        this.correct = correct;
         return this;
     }
 

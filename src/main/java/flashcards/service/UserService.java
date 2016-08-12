@@ -1,10 +1,10 @@
 package flashcards.service;
 
-import flashcards.domain.User;
+import flashcards.domain.Identity;
 
 public class UserService {
 
-    public User getCurrentUser() {
+    public Identity getCurrentUser() {
         return null; //TODO
     }
 
