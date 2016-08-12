@@ -9,7 +9,8 @@ import org.springframework.context.annotation.Import;
 @ComponentScan(basePackages = {
 		"flashcards.api",
 		"flashcards.repository",
-		"flashcards.controller"
+		"flashcards.controller",
+		"flashcards.service"
 })
 @Import({WebMvcConfig.class})
 public class FlashcardsApplication {

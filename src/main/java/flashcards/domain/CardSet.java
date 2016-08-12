@@ -24,6 +24,10 @@ public class CardSet {
     @JoinColumn(name = "translation_language_id")
     private Language translationLanguage;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
     public Long getId() {
         return id;
     }
@@ -57,6 +61,15 @@ public class CardSet {
 
     public CardSet setTranslationLanguage(Language translationLanguage) {
         this.translationLanguage = translationLanguage;
+        return this;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public CardSet setUser(User user) {
+        this.user = user;
         return this;
     }
 }
