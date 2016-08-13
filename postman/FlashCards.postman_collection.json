@@ -8,9 +8,9 @@
 	},
 	"item": [
 		{
-			"name": "http://localhost:9000/user",
+			"name": "/user",
 			"request": {
-				"url": "http://localhost:9000/user",
+				"url": "{{base_url}}/user",
 				"method": "GET",
 				"header": [],
 				"body": {
@@ -22,7 +22,7 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:9000/user/login/google",
+			"name": "/user/login/google",
 			"event": [
 				{
 					"listen": "test",
@@ -33,7 +33,7 @@
 				}
 			],
 			"request": {
-				"url": "http://localhost:9000/user/login/google",
+				"url": "{{base_url}}/user/login/google",
 				"method": "POST",
 				"header": [
 					{
@@ -51,9 +51,9 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:9000/user/register",
+			"name": "/user/register",
 			"request": {
-				"url": "http://localhost:9000/user/register",
+				"url": "{{base_url}}/user/register",
 				"method": "POST",
 				"header": [
 					{
@@ -71,9 +71,9 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:9000/user/login/base",
+			"name": "/user/login/base",
 			"request": {
-				"url": "http://localhost:9000/user/login/base",
+				"url": "{{base_url}}/user/login/base",
 				"method": "POST",
 				"header": [
 					{
@@ -85,6 +85,34 @@
 				"body": {
 					"mode": "raw",
 					"raw": "{\n    \"email\": \"test1@gmail.com\",\n    \"password\": \"password\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/card-set",
+			"request": {
+				"url": "{{base_url}}/card-set",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/card-set/{cardSetId}/cards",
+			"request": {
+				"url": "{{base_url}}/card-set/1/cards",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
 				},
 				"description": ""
 			},
