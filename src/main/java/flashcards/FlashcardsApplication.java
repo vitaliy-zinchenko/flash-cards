@@ -10,9 +10,10 @@ import org.springframework.context.annotation.Import;
 		"flashcards.api",
 		"flashcards.repository",
 		"flashcards.controller",
-		"flashcards.service"
+		"flashcards.service",
+		"flashcards.mapper"
 })
-@Import({WebMvcConfig.class})
+@Import({MvcConfig.class, SecurityConfig.class})
 public class FlashcardsApplication {
 
 	public static void main(String[] args) {

@@ -26,7 +26,7 @@ public class CardSet {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
-    private Identity identity;
+    private UserInfo userInfo;
 
     public Long getId() {
         return id;
@@ -64,12 +64,12 @@ public class CardSet {
         return this;
     }
 
-    public Identity getIdentity() {
-        return identity;
+    public UserInfo getUserInfo() {
+        return userInfo;
     }
 
-    public CardSet setIdentity(Identity identity) {
-        this.identity = identity;
+    public CardSet setUserInfo(UserInfo userInfo) {
+        this.userInfo = userInfo;
         return this;
     }
 }

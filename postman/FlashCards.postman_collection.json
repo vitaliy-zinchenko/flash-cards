@@ -1,0 +1,94 @@
+{
+	"variables": [],
+	"info": {
+		"name": "FlashCards",
+		"_postman_id": "00abc930-0ded-9baa-49c7-26448f643198",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:9000/user",
+			"request": {
+				"url": "http://localhost:9000/user",
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"description": "Get current user"
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9000/user/login/google",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": "tests[\"Status code is 200\"] = responseCode.code === 200;"
+					}
+				}
+			],
+			"request": {
+				"url": "http://localhost:9000/user/login/google",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"idToken\": \"eyJhbGciOiJSUzI1NiIsImtpZCI6Ijk2ZWFkNWNhN2M3Zjc5OWY3OGUwNTc5ZTQ4ZjU5NWRhNmU4ZDg2ZTUifQ.eyJpc3MiOiJhY2NvdW50cy5nb29nbGUuY29tIiwiYXRfaGFzaCI6IllOM3BDWUFVLV9HLWZGclpCSnZsdkEiLCJhdWQiOiI1NjM4NzUzNjQ2NTYtdjR0MXY1dDRhZ2o5cDU3bTM1cTl0NmY5cmdybjByMDIuYXBwcy5nb29nbGV1c2VyY29udGVudC5jb20iLCJzdWIiOiIxMTQxNDM2NDg1MTU3OTU1Mjg5NDYiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiYXpwIjoiNTYzODc1MzY0NjU2LXY0dDF2NXQ0YWdqOXA1N20zNXE5dDZmOXJncm4wcjAyLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwiZW1haWwiOiJ6aW5qdmlAZ21haWwuY29tIiwiaWF0IjoxNDcxMTAyODIyLCJleHAiOjE0NzExMDY0MjIsIm5hbWUiOiJaaW5jaGVua28gVml0YWxpeSIsInBpY3R1cmUiOiJodHRwczovL2xoNC5nb29nbGV1c2VyY29udGVudC5jb20vLW9aSlpjVzZsRWR3L0FBQUFBQUFBQUFJL0FBQUFBQUFBQWFRL0FBMEFwd2JQX3BZL3M5Ni1jL3Bob3RvLmpwZyIsImdpdmVuX25hbWUiOiJaaW5jaGVua28iLCJmYW1pbHlfbmFtZSI6IlZpdGFsaXkiLCJsb2NhbGUiOiJydSJ9.M5PT77VN_t8L27IHxAR7rhtxxSBJLtOEiGIKAsLVs9sL-0oTpzmr7qFnhY470rtCqctA7LdOyJKd3mJ0Dij6MigZ9xuA9aH6UQLcB6eo-NSBQsnEeZw97JsdFChn0Z2LorM4nW74YI7tIdrs5aqcoI1KjpjkMWiHFWzkyg_TxFLmnr2iL67ZrQp3X_erL4uzQVvIroWvY7_hhIyzoOhaUDgcSWEJqNO-i--eZPHrzv2NXnrpjPAKGjTa_-P_fyIErbk8cq24vH2HoUl-D8CSoiuL44Yc7VJHxz4m4Rk66t1rGN3k7ak8QFdxZ0xXMs4N4nUFOopzyqO0xDN8MF1bRg\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9000/user/register",
+			"request": {
+				"url": "http://localhost:9000/user/register",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"test2@gmail.com\",\n    \"password\": \"password\",\n    \"firstName\": \"fn\",\n    \"lastName\": \"ln\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:9000/user/login/base",
+			"request": {
+				"url": "http://localhost:9000/user/login/base",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"test1@gmail.com\",\n    \"password\": \"password\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

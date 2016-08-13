@@ -1,11 +1,12 @@
 package flashcards.repository;
 
-import flashcards.domain.Card;
+import java.util.List;
+
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 
-import java.util.List;
+import flashcards.domain.Card;
 
 public interface CardRepository extends CrudRepository<Card, Long> {
 
