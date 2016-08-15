@@ -11,6 +11,7 @@
 <body>
 <script src="https://apis.google.com/js/platform.js" async defer></script>
 <script src="/js/signin.js"></script>
+<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
 
 <div class="g-signin2" data-onsuccess="onSignIn"></div>
 
