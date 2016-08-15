@@ -8,15 +8,15 @@ function onSignIn(googleUser) {
   console.log('Email: ' + profile.getEmail());
   console.log('id_token: ' + googleUser.getAuthResponse().id_token);
   $.ajax({
-            type: "POST",
-            url: '/user/login/google',
-            dataType: 'json',
-            contentType:"application/json; charset=utf-8",
-            data: JSON.stringify({"idToken": googleUser.getAuthResponse().id_token}),
-            success: function () {
-                alert("Thanks!");
-            }
-        });
+      type: "POST",
+      url: '/user/login/google',
+      dataType: 'json',
+      contentType:"application/json; charset=utf-8",
+      data: JSON.stringify({"idToken": googleUser.getAuthResponse().id_token}),
+      success: function () {
+          alert("Thanks!");
+      }
+  });
 }
 
 
