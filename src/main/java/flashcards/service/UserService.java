@@ -39,7 +39,7 @@ public class UserService {
     public UserInfo getCurrentUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if(authentication.getPrincipal() instanceof String) {
-            return null;
+            return null; //TODO handle
         }
         return (UserInfo) authentication.getPrincipal();
     }

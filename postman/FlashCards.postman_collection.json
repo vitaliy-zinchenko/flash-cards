@@ -93,7 +93,7 @@
 		{
 			"name": "/card-set",
 			"request": {
-				"url": "{{base_url}}/card-set",
+				"url": "{{base_url}}/card-set?page=0&size=2",
 				"method": "GET",
 				"header": [],
 				"body": {
