@@ -58,4 +58,10 @@ public class CardSetController {
         return cardSetService.save(cardSetDto);
     }
 
+    @RequestMapping(value = "/doc", method = {RequestMethod.GET})
+    public CardSetDto update() {
+        return new CardSetDto()
+                .setTitle("qwe");
+    }
+
 }
