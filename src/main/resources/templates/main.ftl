@@ -9,7 +9,7 @@
 </head>
 <body>
 
-main page
+main page 2
 
 <script src="/js/app.js"></script>
 </body>

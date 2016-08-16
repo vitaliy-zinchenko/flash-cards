@@ -8,7 +8,6 @@ import javax.persistence.Index;
 import javax.persistence.Table;
 
 @Entity
-@Table(indexes = {@Index(unique = true, columnList = "email")})
 public class UserInfo {
 
     @Id
