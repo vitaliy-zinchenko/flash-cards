@@ -27,10 +27,14 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
+import flashcards.domain.Card;
 import flashcards.domain.CardSet;
 import flashcards.dto.CardSetDto;
+import flashcards.mapper.CardMapper;
+import flashcards.mapper.CardMapperImpl;
 import flashcards.mapper.CardSetMapper;
 import flashcards.mapper.CardSetMapperImpl;
+import flashcards.repository.CardRepository;
 import flashcards.repository.CardSetRepository;
 import flashcards.service.UserService;
 
@@ -42,8 +46,12 @@ public class CardSetControllerDocumentation {
 
     @Mock
     private CardSetRepository cardSetRepository;
+    @Mock
+    private CardRepository cardRepository;
     @Spy
     private CardSetMapper cardSetMapper = new CardSetMapperImpl();
+    @Spy
+    private CardMapper cardMapper = new CardMapperImpl();
     @Mock
     private UserService userService;
 
@@ -63,6 +71,7 @@ public class CardSetControllerDocumentation {
                 .build();
 
         Mockito.when(cardSetRepository.findByUserInfo(any(), any())).thenReturn(createCardSets());
+        Mockito.when(cardRepository.findByCardSetId(any(), any())).thenReturn(createCars());
     }
 
     @Test
@@ -76,11 +85,31 @@ public class CardSetControllerDocumentation {
                 .andDo(this.document);
     }
 
+    @Test
+    public void cardSetCards() throws Exception {
+        MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
+                .get("/card-set/{0}/cards", 1)
+                .param("page", "0")
+                .param("size", "10");
+        this.mockMvc.perform(requestBuilder)
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andDo(this.document);
+    }
+
     private List<CardSet> createCardSets() {
         return Arrays.asList(
                 new CardSet()
                         .setId(10L)
                         .setTitle("title")
+        );
+    }
+
+    private List<Card> createCars() {
+        return Arrays.asList(
+                new Card()
+                        .setId(10L)
+                        .setWord("word")
+                        .setTranslation("translation")
         );
     }
 
