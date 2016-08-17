@@ -7,9 +7,13 @@
     <title>Flashcards</title>
 
 </head>
-<body>
+<body ng-app="fcApp" ng-controller="mainController">
 
 main page 2
+
+<div class="main" ui-view>
+
+</div>
 
 <script src="/js/app.js"></script>
 </body>

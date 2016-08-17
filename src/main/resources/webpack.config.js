@@ -22,6 +22,16 @@ module.exports = {
         test: /\.js$/,
         loader: 'babel?presets[]=es2015',
         exclude: /node_modules/
+      },
+
+      {
+        test: /\.css$/,
+        loader: "css-loader"
+      },
+
+      {
+        test: /\.html$/,
+        loader: "html-loader"
       }
     ]
   }
