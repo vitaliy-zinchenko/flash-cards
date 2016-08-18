@@ -1,26 +1,25 @@
 'use strict';
-
-//fcApp
+import  './static/styles/all.css';
 
 import angular from 'angular';
-import uirouter from 'angular-ui-router';
+import uiRouter from 'angular-ui-router';
 
-import routes from './static/app/view-cards/cards.routes';
-import cards from './static/app/view-cards';
+import routes from './routes';
 
 
-angular
-  .module('fcApp', [uirouter])
-  .controller('mainController', mainController)
-  .config(routes);
+export default angular
+  .module( 'fcApp', [
+    uiRouter
+  ] )
+  .config( routes)
+  .controller('mainController', mainController);
 
-  function mainController() {
-    console.log('main app');
+function mainController() { //test code
+  console.log('main app');
 
-    let welcome = require('./module1');
-
-    welcome("flashcard");
-  }
+  let welcome = require('./module1');
+  welcome("flashcard");
+}
 
 
 

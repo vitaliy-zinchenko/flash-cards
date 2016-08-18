@@ -1,3 +1,4 @@
+/*
 export default class cardsController {
   constructor() {
     this.name = 'CARDS';
@@ -6,4 +7,4 @@ export default class cardsController {
   changeName() {
     this.name = 'angular-tips';
   }
-}
+}*/

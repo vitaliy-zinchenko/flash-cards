@@ -1,3 +1,4 @@
+/*
 routes.$inject = ['$stateProvider'];
 
 export default function routes($stateProvider) {
@@ -8,4 +9,4 @@ export default function routes($stateProvider) {
       controller: 'cardsController',
       controllerAs: 'cards'
     });
-}
+}*/
