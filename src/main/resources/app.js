@@ -5,13 +5,15 @@ import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 
 import routes from './routes';
-//import footer from './static/app/components/footer';
+import footer from './static/app/components/footer';
+import header from './static/app/components/header';
 
 
 export default angular
   .module( 'fcApp', [
     uiRouter,
-    footer
+    footer,
+    header
   ] )
   .config( routes)
   .controller('mainController', mainController);

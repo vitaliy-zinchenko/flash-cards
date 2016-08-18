@@ -9,7 +9,7 @@
 </head>
 <body ng-app="fcApp" ng-controller="mainController">
 
-main page 2
+<header></header>
 
 <div class="main" ui-view></div>
 

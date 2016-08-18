@@ -1,9 +1,9 @@
 import angular from 'angular';
+import template from './footer.tmpl.html';
 
 export default angular.module('footer', [])
   .component('footer', {
-    templateUrl: 'static/components/footer/footer.tmpl.html',
-    controller: 'mainController'
+    template: template
   })
   .name;
 

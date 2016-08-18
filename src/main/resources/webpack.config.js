@@ -20,7 +20,10 @@ module.exports = {
     loaders: [
       {
         test: /\.js$/,
-        loader: 'babel?presets[]=es2015',
+        loader: 'babel',
+        query: {
+          presets: ['es2015']
+        },
         exclude: /node_modules/
       },
 
@@ -50,3 +53,5 @@ if (NODE_ENV == 'production') {  //TODO: not work yet. Need fixed 'NODE_ENV'
     })
   );
 }
+
+// TODO: minification for production
