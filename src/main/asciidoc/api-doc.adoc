@@ -13,9 +13,6 @@ Andy Wilkinson;
 [[overview-http-verbs]]
 == HTTP verbs
 
-RESTful notes tries to adhere as closely as possible to standard HTTP and REST conventions in its
-use of HTTP verbs.
-
 |===
 | Verb | Usage
 
@@ -34,9 +31,6 @@ use of HTTP verbs.
 
 [[overview-http-status-codes]]
 == HTTP status codes
-
-RESTful notes tries to adhere as closely as possible to standard HTTP and REST conventions in its
-use of HTTP status codes.
 
 |===
 | Status code | Usage
@@ -60,19 +54,45 @@ use of HTTP status codes.
 
 
 
+
+
+
+
 [[resources-card-set]]
 == Card Set
 
-Card SetCard SetCard Set
-
-
+CardSet contains the list of cards
 
 [[resources-card-set-list]]
 === Listing Card Sets
 
-A `GET` request will list all of the service's notes.
+==== Request structure
+
+include::{snippets}/card-set/httpie-request.adoc[]
 
 ==== Response structure
 
-include::{snippets}/get-accounts-simple-doc/http-request.adoc[]
+include::{snippets}/card-set/http-response.adoc[]
+
+
+
+
+
+
+
+[[card-set-cards]]
+== Cards
+
+[[resources-card-set-list]]
+=== Listing Cards of Card Set
+
+Get Cards of specified CardSet
+
+==== Request structure
+
+include::{snippets}/card-set-cards/httpie-request.adoc[]
+
+==== Response structure
+
+include::{snippets}/card-set-cards/http-response.adoc[]
 

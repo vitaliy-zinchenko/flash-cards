@@ -1,5 +1,10 @@
 package flashcards.api;
 
+import static flashcards.mapper.MapperUtil.map;
+
+import java.util.Collection;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -12,7 +17,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import flashcards.domain.Card;
 import flashcards.domain.CardSet;
+import flashcards.domain.UserInfo;
+import flashcards.dto.CardDto;
 import flashcards.dto.CardSetDto;
+import flashcards.mapper.CardMapper;
+import flashcards.mapper.CardSetMapper;
+import flashcards.mapper.MapperUtil;
 import flashcards.repository.CardRepository;
 import flashcards.repository.CardSetRepository;
 import flashcards.service.CardSetService;
@@ -24,28 +34,38 @@ public class CardSetController {
 
     @Autowired
     private CardSetRepository cardSetRepository; //TODO remove
-
     @Autowired
     private CardRepository cardRepository; //TODO remove
-
     @Autowired
     private CardSetService cardSetService;
-
     @Autowired
     private UserService userService;
+    @Autowired
+    private CardSetMapper cardSetMapper;
+    @Autowired
+    private CardMapper cardMapper;
+
 
     //TODO protect with security
     @RequestMapping
-    public Iterable<CardSet> getCardSets(
+    public Iterable<CardSetDto> getCardSets(
             @RequestParam(value = "page") Integer page,
             @RequestParam(value = "size") Integer size) {
         Pageable pageable = new PageRequest(page, size);
-        return cardSetRepository.findByUserInfo(userService.getCurrentUser(), pageable);
+        UserInfo currentUser = userService.getCurrentUser();
+        List<CardSet> cardSets = cardSetRepository.findByUserInfo(currentUser, pageable);
+        return map(cardSets, cardSetMapper::toDto);
     }
 
+    //TODO protect with security. Protect fetching cards from other users.
     @RequestMapping("/{id}/cards")
-    public Iterable<Card> getCardSets(@PathVariable("id") Long cardSetId) {
-        return cardRepository.findByCardSetId(cardSetId);
+    public Collection<CardDto> getCardSetCards(
+            @PathVariable("id") Long cardSetId,
+            @RequestParam(value = "page") Integer page,
+            @RequestParam(value = "size") Integer size) {
+        Pageable pageable = new PageRequest(page, size);
+        List<Card> cards = cardRepository.findByCardSetId(cardSetId, pageable);
+        return map(cards, cardMapper::toDto);
     }
 
     @RequestMapping(method = {RequestMethod.POST})
