@@ -11,9 +11,9 @@
 
 main page 2
 
-<div class="main" ui-view>
+<div class="main" ui-view></div>
 
-</div>
+<footer></footer>
 
 <script src="/js/app.js"></script>
 </body>

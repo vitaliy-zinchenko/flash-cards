@@ -67,7 +67,10 @@ var home =
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	exports.default = _angular2.default.module('fcApp', [_angularUiRouter2.default]).config(_routes2.default).controller('mainController', mainController);
+	//import footer from './static/app/components/footer';
+	
+	
+	exports.default = _angular2.default.module('fcApp', [_angularUiRouter2.default, footer]).config(_routes2.default).controller('mainController', mainController);
 	
 	
 	function mainController() {
@@ -36451,7 +36454,7 @@ var home =
 	});
 	
 	exports.default = function ($stateProvider, $urlRouterProvider, $locationProvider) {
-	  'ngInject';
+	  //'ngInject'; // TODO: use ng-annotate
 	
 	  $locationProvider.html5Mode({
 	    enabled: true,
@@ -36463,24 +36466,19 @@ var home =
 	  $stateProvider.state('app', {
 	    url: '/main',
 	    //abstract: true, // TODO: read about this param
-	    template: _cardsView2.default
+	    template: _setsView2.default
 	    //controller: 'cardsController'
 	  });
 	};
 	
-	var _cardsView = __webpack_require__(5);
+	var _setsView = __webpack_require__(12);
 	
-	var _cardsView2 = _interopRequireDefault(_cardsView);
+	var _setsView2 = _interopRequireDefault(_setsView);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 /***/ },
-/* 5 */
-/***/ function(module, exports) {
-
-	module.exports = "<div class=\"main\">\r\n  <div class=\"ctrl-btn\">\r\n    <button value=\"new-set\">New card</button>\r\n  </div>\r\n\r\n  <div class=\"cards-container\">\r\n    <div class=\"card\">\r\n      <h2 class=\"title\">Films</h2>\r\n      <div class=\"desc\">Lorem ipsum dolor set amet</div>\r\n      <div class=\"amount\">50</div>\r\n    </div>\r\n\r\n    <div class=\"card\">\r\n      <h2 class=\"title\">Films</h2>\r\n      <div class=\"desc\">Lorem ipsum dolor set amet</div>\r\n      <div class=\"amount\">50</div>\r\n    </div>\r\n\r\n    <div class=\"card\">\r\n      <h2 class=\"title\">Films</h2>\r\n      <div class=\"desc\">Lorem ipsum dolor set amet</div>\r\n      <div class=\"amount\">50</div>\r\n    </div>\r\n  </div>\r\n</div>";
-
-/***/ },
+/* 5 */,
 /* 6 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -36515,7 +36513,7 @@ var home =
 	
 	
 	// module
-	exports.push([module.id, ".header {\r\n\tbackground: #ccc;\r\n\toverflow: hidden;\r\n}\r\n\r\n.logo {\r\n\tfloat: left;\r\n}\r\n\r\n.login {\r\n\tfloat: right;\r\n}\r\n\r\n.main {\r\n\twidth: 80%;\r\n\tmargin: 0 auto;\r\n\tpadding: 100px 0;\r\n}\r\n\r\n.ctrl-btn {\r\n\ttext-align: right;\r\n\tmargin-bottom: 10px;\r\n}\r\n\r\n.new-set {\r\n\r\n}\r\n\r\n.card {\r\n\tpadding: 20px;\r\n\tmargin-bottom: 20px;\r\n\tborder: 1px solid #333;\r\n\tbackground: #eee;\r\n}\r\n\r\n.card > div,\r\n.card > h2 {\r\n\tdisplay: inline-block;\r\n\twidth: 30%;\r\n}\r\n\r\n.card > h2 {\r\n\tfont-weight: 700;\r\n\tcolor: #00008b;\r\n}\r\n\r\n/*card item*/\r\n.row {\r\n\tpadding: 15px 0;\r\n\tborder: 1px solid #ddd;\r\n\r\n}\r\n\r\n.add-card {\r\n\tmargin-bottom: 20px;\r\n}\r\n\r\n.row.choose-lang {\r\n\tpadding: 10px 0 0 0;\r\n\tfont-size: 12px;\r\n}\r\n\r\n.words-container .row {\r\n\tpadding: 0;\r\n\tmargin-bottom: 10px;\r\n}\r\n\r\n.language {\r\n\tcursor: pointer;\r\n}\r\n\r\n.term, .definition, .ctrls {\r\n\tdisplay: inline-block;\r\n\tvertical-align: top;\r\n}\r\n\r\n.term {\r\n\twidth: 39%;\r\n}\r\n\r\n.definition {\r\n\twidth: 39%;\r\n}\r\n\r\n.ctrls {\r\n\twidth: 19%;\r\n\ttext-align: justify;\r\n\tmargin-left: 9px;\r\n}\r\n\r\n.ctrls span {\r\n\tbackground: #ccc;\r\n\tdisplay: inline-block;\r\n\tpadding: 5px;\r\n\tmargin-top: 10px;\r\n\tcursor: pointer;\r\n}\r\n\r\n.ctrls:after {\r\n\tcontent: \"\";\r\n\tdisplay: inline-block;\r\n\twidth: 100%;\r\n\theight: 0;\r\n}\r\n\r\n.header .ctrls {\r\n\ttext-align: left;\r\n}\r\n\r\n.row textarea {\r\n\twidth: 100%;\r\n}\r\n\r\n.language {\r\n\tdisplay: inline-block;\r\n\tmargin-right: 20px;\r\n\tcolor: #00008b\r\n}\r\n\r\n.language:last-child {\r\n\tmargin-right: 0;\r\n}\r\n\r\n#add-card {\r\n\tmargin-bottom: 20px;\r\n\tpadding: 4px;\r\n}\r\n\r\n#add-card input {\r\n\tdisplay: inline-block;\r\n}\r\n\r\n#card-title {\r\n\twidth: 40%;\r\n}\r\n\r\n#card-desc {\r\n\twidth: 50%;\r\n}\r\n", ""]);
+	exports.push([module.id, ".header {\r\n\tbackground: #ccc;\r\n\toverflow: hidden;\r\n}\r\n\r\n.logo {\r\n\tfloat: left;\r\n}\r\n\r\n.login {\r\n\tfloat: right;\r\n}\r\n\r\n.main {\r\n\twidth: 80%;\r\n\tmargin: 0 auto;\r\n\tpadding: 100px 0;\r\n}\r\n\r\n.ctrl-btn {\r\n\ttext-align: right;\r\n\tmargin-bottom: 10px;\r\n}\r\n\r\n.new-set {\r\n\r\n}\r\n\r\n.set {\r\n\tpadding: 20px;\r\n\tmargin-bottom: 20px;\r\n\tborder: 1px solid #333;\r\n\tbackground: #eee;\r\n}\r\n\r\n.set > div,\r\n.set > h2 {\r\n\tdisplay: inline-block;\r\n\twidth: 30%;\r\n}\r\n\r\n.set > h2 {\r\n\tfont-weight: 700;\r\n\tcolor: #00008b;\r\n}\r\n\r\n/*card item*/\r\n.row {\r\n\tpadding: 15px 0;\r\n\tborder: 1px solid #ddd;\r\n\r\n}\r\n\r\n.add-card {\r\n\tmargin-bottom: 20px;\r\n}\r\n\r\n.row.choose-lang {\r\n\tpadding: 10px 0 0 0;\r\n\tfont-size: 12px;\r\n}\r\n\r\n.words-container .row {\r\n\tpadding: 0;\r\n\tmargin-bottom: 10px;\r\n}\r\n\r\n.language {\r\n\tcursor: pointer;\r\n}\r\n\r\n.term, .definition, .ctrls {\r\n\tdisplay: inline-block;\r\n\tvertical-align: top;\r\n}\r\n\r\n.term {\r\n\twidth: 39%;\r\n}\r\n\r\n.definition {\r\n\twidth: 39%;\r\n}\r\n\r\n.ctrls {\r\n\twidth: 19%;\r\n\ttext-align: justify;\r\n\tmargin-left: 9px;\r\n}\r\n\r\n.ctrls span {\r\n\tbackground: #ccc;\r\n\tdisplay: inline-block;\r\n\tpadding: 5px;\r\n\tmargin-top: 10px;\r\n\tcursor: pointer;\r\n}\r\n\r\n.ctrls:after {\r\n\tcontent: \"\";\r\n\tdisplay: inline-block;\r\n\twidth: 100%;\r\n\theight: 0;\r\n}\r\n\r\n.header .ctrls {\r\n\ttext-align: left;\r\n}\r\n\r\n.row textarea {\r\n\twidth: 100%;\r\n}\r\n\r\n.language {\r\n\tdisplay: inline-block;\r\n\tmargin-right: 20px;\r\n\tcolor: #00008b\r\n}\r\n\r\n.language:last-child {\r\n\tmargin-right: 0;\r\n}\r\n\r\n#add-card {\r\n\tmargin-bottom: 20px;\r\n\tpadding: 4px;\r\n}\r\n\r\n#add-card input {\r\n\tdisplay: inline-block;\r\n}\r\n\r\n#card-title {\r\n\twidth: 40%;\r\n}\r\n\r\n#card-desc {\r\n\twidth: 50%;\r\n}\r\n", ""]);
 	
 	// exports
 
@@ -36837,6 +36835,13 @@ var home =
 	module.exports = function (message) {
 	  console.log('Welcome  ' + message);
 	};
+
+/***/ },
+/* 11 */,
+/* 12 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"main\">\r\n  <div class=\"ctrl-btn\">\r\n    <button value=\"new-set\">New set</button>\r\n  </div>\r\n\r\n  <div class=\"sets-container\">\r\n    <div class=\"set\">\r\n      <h2 class=\"title\">Films</h2>\r\n      <div class=\"desc\">Lorem ipsum dolor set amet</div>\r\n      <div class=\"amount\">50</div>\r\n    </div>\r\n\r\n    <div class=\"set\">\r\n      <h2 class=\"title\">Films</h2>\r\n      <div class=\"desc\">Lorem ipsum dolor set amet</div>\r\n      <div class=\"amount\">50</div>\r\n    </div>\r\n\r\n    <div class=\"set\">\r\n      <h2 class=\"title\">Films</h2>\r\n      <div class=\"desc\">Lorem ipsum dolor set amet</div>\r\n      <div class=\"amount\">50</div>\r\n    </div>\r\n  </div>\r\n</div>";
 
 /***/ }
 /******/ ]);

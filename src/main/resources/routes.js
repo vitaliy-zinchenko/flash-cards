@@ -1,7 +1,7 @@
-import cardsTemplate from './static/app/view-cards/cards.view.html';
+import cardsTemplate from './static/app/view-sets/sets.view.html';
 
 export default function ( $stateProvider, $urlRouterProvider, $locationProvider ) {
-  'ngInject';
+  //'ngInject'; // TODO: use ng-annotate
 
   $locationProvider.html5Mode( {
     enabled: true,

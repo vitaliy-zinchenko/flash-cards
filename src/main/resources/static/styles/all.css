@@ -26,20 +26,20 @@
 
 }
 
-.card {
+.set {
 	padding: 20px;
 	margin-bottom: 20px;
 	border: 1px solid #333;
 	background: #eee;
 }
 
-.card > div,
-.card > h2 {
+.set > div,
+.set > h2 {
 	display: inline-block;
 	width: 30%;
 }
 
-.card > h2 {
+.set > h2 {
 	font-weight: 700;
 	color: #00008b;
 }
