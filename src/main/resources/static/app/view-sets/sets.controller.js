@@ -1,10 +1,9 @@
-/*
-export default class cardsController {
+export default class setsController {
   constructor() {
-    this.name = 'CARDS';
+    this.name = 'SETS';
   }
 
   changeName() {
     this.name = 'angular-tips';
   }
-}*/
+}

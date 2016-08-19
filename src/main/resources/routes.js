@@ -1,4 +1,4 @@
-import cardsTemplate from './static/app/view-sets/sets.view.html';
+//import cardsComponent from './static/app/view-sets';
 
 export default function ( $stateProvider, $urlRouterProvider, $locationProvider ) {
   //'ngInject'; // TODO: use ng-annotate
@@ -11,10 +11,15 @@ export default function ( $stateProvider, $urlRouterProvider, $locationProvider 
   $urlRouterProvider.otherwise( '/main' );
 
   $stateProvider
-    .state( 'app', {
+/*    .state( 'sets', {
       url: '/main',
       //abstract: true, // TODO: read about this param
-      template: cardsTemplate
+      template: cardsComponent
+    } )*/
+    .state( 'card-set', {
+      url: '/card-set?page=0&size=10',
+      //abstract: true, // TODO: read about this param
+      template: '<h1>SET</h1>'
       //controller: 'cardsController'
     } )
 

@@ -61,28 +61,36 @@ var home =
 	
 	var _angularUiRouter2 = _interopRequireDefault(_angularUiRouter);
 	
-	var _routes = __webpack_require__(8);
+	var _viewSets = __webpack_require__(8);
+	
+	var _viewSets2 = _interopRequireDefault(_viewSets);
+	
+	var _viewCardset = __webpack_require__(13);
+	
+	var _viewCardset2 = _interopRequireDefault(_viewCardset);
+	
+	var _routes = __webpack_require__(18);
 	
 	var _routes2 = _interopRequireDefault(_routes);
 	
-	var _footer = __webpack_require__(10);
+	var _footer = __webpack_require__(19);
 	
 	var _footer2 = _interopRequireDefault(_footer);
 	
-	var _header = __webpack_require__(14);
+	var _header = __webpack_require__(22);
 	
 	var _header2 = _interopRequireDefault(_header);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	exports.default = _angular2.default.module('fcApp', [_angularUiRouter2.default, _footer2.default, _header2.default]).config(_routes2.default).controller('mainController', mainController);
+	exports.default = _angular2.default.module('fcApp', [_angularUiRouter2.default, _viewSets2.default, _viewCardset2.default, _footer2.default, _header2.default]).config(_routes2.default).controller('mainController', mainController);
 	
 	
 	function mainController() {
 	  //test code
 	  console.log('main app');
 	
-	  var welcome = __webpack_require__(13);
+	  var welcome = __webpack_require__(25);
 	  welcome("flashcard");
 	}
 
@@ -36806,35 +36814,37 @@ var home =
 	  value: true
 	});
 	
-	exports.default = function ($stateProvider, $urlRouterProvider, $locationProvider) {
-	  //'ngInject'; // TODO: use ng-annotate
+	var _sets = __webpack_require__(9);
 	
-	  $locationProvider.html5Mode({
-	    enabled: true,
-	    requireBase: false
-	  });
-	
-	  $urlRouterProvider.otherwise('/main');
-	
-	  $stateProvider.state('app', {
-	    url: '/main',
-	    //abstract: true, // TODO: read about this param
-	    template: _setsView2.default
-	    //controller: 'cardsController'
-	  });
-	};
-	
-	var _setsView = __webpack_require__(9);
-	
-	var _setsView2 = _interopRequireDefault(_setsView);
+	var _sets2 = _interopRequireDefault(_sets);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	exports.default = _sets2.default;
+
 /***/ },
 /* 9 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	module.exports = "<div class=\"main\">\r\n  <div class=\"ctrl-btn\">\r\n    <button value=\"new-set\">New set</button>\r\n  </div>\r\n\r\n  <div class=\"sets-container\">\r\n    <div class=\"set\">\r\n      <h2 class=\"title\">Films</h2>\r\n      <div class=\"desc\">Lorem ipsum dolor set amet</div>\r\n      <div class=\"amount\">50</div>\r\n    </div>\r\n\r\n    <div class=\"set\">\r\n      <h2 class=\"title\">Films</h2>\r\n      <div class=\"desc\">Lorem ipsum dolor set amet</div>\r\n      <div class=\"amount\">50</div>\r\n    </div>\r\n\r\n    <div class=\"set\">\r\n      <h2 class=\"title\">Films</h2>\r\n      <div class=\"desc\">Lorem ipsum dolor set amet</div>\r\n      <div class=\"amount\">50</div>\r\n    </div>\r\n  </div>\r\n</div>";
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _angular = __webpack_require__(5);
+	
+	var _angular2 = _interopRequireDefault(_angular);
+	
+	var _sets = __webpack_require__(10);
+	
+	var _sets2 = _interopRequireDefault(_sets);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	exports.default = _angular2.default.module('viewSets', []).config(function ($stateProvider) {
+	  $stateProvider.state('sets', _sets2.default);
+	}).name;
 
 /***/ },
 /* 10 */
@@ -36846,16 +36856,64 @@ var home =
 	  value: true
 	});
 	
-	var _footer = __webpack_require__(11);
+	var _setsView = __webpack_require__(11);
 	
-	var _footer2 = _interopRequireDefault(_footer);
-
+	var _setsView2 = _interopRequireDefault(_setsView);
+	
+	var _setsController = __webpack_require__(12);
+	
+	var _setsController2 = _interopRequireDefault(_setsController);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	exports.default = _footer2.default;
+	
+	exports.default = {
+	  url: '/main',
+	  controller: _setsController2.default,
+	  template: _setsView2.default,
+	  controllerAs: 'setsCtrl'
+	};
 
 /***/ },
 /* 11 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"main\">\r\n  <div class=\"ctrl-btn\">\r\n    <button value=\"new-set\" ui-sref=\"cardset\">New set</button>\r\n  </div>\r\n  <h1>{{setsCtrl.name}}</h1>\r\n\r\n  <div class=\"sets-container\">\r\n    <div class=\"set\">\r\n      <h2 class=\"title\">Films</h2>\r\n      <div class=\"desc\">Lorem ipsum dolor set amet</div>\r\n      <div class=\"amount\">50</div>\r\n    </div>\r\n\r\n    <div class=\"set\">\r\n      <h2 class=\"title\">Films</h2>\r\n      <div class=\"desc\">Lorem ipsum dolor set amet</div>\r\n      <div class=\"amount\">50</div>\r\n    </div>\r\n\r\n    <div class=\"set\">\r\n      <h2 class=\"title\">Films</h2>\r\n      <div class=\"desc\">Lorem ipsum dolor set amet</div>\r\n      <div class=\"amount\">50</div>\r\n    </div>\r\n  </div>\r\n</div>";
+
+/***/ },
+/* 12 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	var setsController = function () {
+	  function setsController() {
+	    _classCallCheck(this, setsController);
+	
+	    this.name = 'SETS';
+	  }
+	
+	  _createClass(setsController, [{
+	    key: 'changeName',
+	    value: function changeName() {
+	      this.name = 'angular-tips';
+	    }
+	  }]);
+	
+	  return setsController;
+	}();
+	
+	exports.default = setsController;
+
+/***/ },
+/* 13 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36864,35 +36922,13 @@ var home =
 	  value: true
 	});
 	
-	var _angular = __webpack_require__(5);
+	var _cardset = __webpack_require__(14);
 	
-	var _angular2 = _interopRequireDefault(_angular);
-	
-	var _footerTmpl = __webpack_require__(12);
-	
-	var _footerTmpl2 = _interopRequireDefault(_footerTmpl);
-	
+	var _cardset2 = _interopRequireDefault(_cardset);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	exports.default = _angular2.default.module('footer', []).component('footer', {
-	  template: _footerTmpl2.default
-	}).name;
 
-/***/ },
-/* 12 */
-/***/ function(module, exports) {
-
-	module.exports = "<div>footer</div>";
-
-/***/ },
-/* 13 */
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	module.exports = function (message) {
-	  console.log('Welcome  ' + message);
-	};
+	exports.default = _cardset2.default;
 
 /***/ },
 /* 14 */
@@ -36904,16 +36940,127 @@ var home =
 	  value: true
 	});
 	
-	var _header = __webpack_require__(15);
+	var _angular = __webpack_require__(5);
 	
-	var _header2 = _interopRequireDefault(_header);
-
+	var _angular2 = _interopRequireDefault(_angular);
+	
+	var _cardset = __webpack_require__(15);
+	
+	var _cardset2 = _interopRequireDefault(_cardset);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	exports.default = _header2.default;
+	
+	exports.default = _angular2.default.module('viewCardSet', []).config(function ($stateProvider) {
+	  $stateProvider.state('cardset', _cardset2.default);
+	}).name;
 
 /***/ },
 /* 15 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _cardsetView = __webpack_require__(16);
+	
+	var _cardsetView2 = _interopRequireDefault(_cardsetView);
+	
+	var _cardsetController = __webpack_require__(17);
+	
+	var _cardsetController2 = _interopRequireDefault(_cardsetController);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	exports.default = {
+	  url: '/card-set?page=0&size=10',
+	  controller: _cardsetController2.default,
+	  template: _cardsetView2.default,
+	  controllerAs: 'cardsetCtrl'
+	};
+
+/***/ },
+/* 16 */
+/***/ function(module, exports) {
+
+	module.exports = "<h1>{{cardsetCtrl.name}}</h1>\r\n\r\n<div class=\"cards-container\">\r\n  <form id=\"add-card\">\r\n    <input type=\"text\" placeholder=\"Enter Title\" id=\"card-title\">\r\n    <input type=\"text\" placeholder=\"Enter Description\" id=\"card-desc\">\r\n    <input type=\"submit\" value=\"Save\">\r\n  </form>\r\n\r\n  <div class=\"words\">\r\n    <div class=\"row header\">\r\n      <div class=\"term\">Terms</div>\r\n      <div class=\"definition\">Definition</div>\r\n      <div class=\"ctrls\">Some buttons</div>\r\n    </div>\r\n\r\n    <div class=\"row choose-lang\">\r\n      <div class=\"term\">\r\n        <span class=\"language\">English</span>\r\n        <span class=\"language\">Russian</span>\r\n        <span class=\"language\">Choose language</span>\r\n\r\n      </div>\r\n      <div class=\"definition\">\r\n        <span class=\"language\">English</span>\r\n        <span class=\"language\">Russian</span>\r\n        <span class=\"language\">Choose language</span>\r\n      </div>\r\n\r\n    </div>\r\n\r\n    <div class=\"words-container\">\r\n      <div class=\"row word\">\r\n        <div class=\"term\">\r\n          <textarea></textarea>\r\n        </div>\r\n        <div class=\"definition\">\r\n          <textarea></textarea>\r\n        </div>\r\n        <div class=\"ctrls\">\r\n          <span class=\"btn\">Btn1</span>\r\n          <span class=\"btn\">Btn2</span>\r\n          <span class=\"btn\">Btn3</span>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row word\">\r\n        <div class=\"term\">\r\n          <textarea></textarea>\r\n        </div>\r\n        <div class=\"definition\">\r\n          <textarea></textarea>\r\n        </div>\r\n        <div class=\"ctrls\">\r\n          <span class=\"btn\">Btn1</span>\r\n          <span class=\"btn\">Btn2</span>\r\n          <span class=\"btn\">Btn3</span>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row word\">\r\n        <div class=\"term\">\r\n          <textarea></textarea>\r\n        </div>\r\n        <div class=\"definition\">\r\n          <textarea></textarea>\r\n        </div>\r\n        <div class=\"ctrls\">\r\n          <span class=\"btn\">Btn1</span>\r\n          <span class=\"btn\">Btn2</span>\r\n          <span class=\"btn\">Btn3</span>\r\n        </div>\r\n      </div>\r\n\r\n    </div>\r\n  </div>\r\n</div>\r\n";
+
+/***/ },
+/* 17 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	var cardsetController = function cardsetController() {
+	  _classCallCheck(this, cardsetController);
+	
+	  this.name = 'cardsetController';
+	};
+	
+	exports.default = cardsetController;
+
+/***/ },
+/* 18 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	exports.default = function ($stateProvider, $urlRouterProvider, $locationProvider) {
+	  //'ngInject'; // TODO: use ng-annotate
+	
+	  $locationProvider.html5Mode({
+	    enabled: true,
+	    requireBase: false
+	  });
+	
+	  $urlRouterProvider.otherwise('/main');
+	
+	  $stateProvider
+	  /*    .state( 'sets', {
+	        url: '/main',
+	        //abstract: true, // TODO: read about this param
+	        template: cardsComponent
+	      } )*/
+	  .state('card-set', {
+	    url: '/card-set?page=0&size=10',
+	    //abstract: true, // TODO: read about this param
+	    template: '<h1>SET</h1>'
+	    //controller: 'cardsController'
+	  });
+	};
+
+/***/ },
+/* 19 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _footer = __webpack_require__(20);
+	
+	var _footer2 = _interopRequireDefault(_footer);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = _footer2.default;
+
+/***/ },
+/* 20 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -36926,7 +37073,55 @@ var home =
 	
 	var _angular2 = _interopRequireDefault(_angular);
 	
-	var _headerTmpl = __webpack_require__(16);
+	var _footerTmpl = __webpack_require__(21);
+	
+	var _footerTmpl2 = _interopRequireDefault(_footerTmpl);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	exports.default = _angular2.default.module('footer', []).component('footer', {
+	  template: _footerTmpl2.default
+	}).name;
+
+/***/ },
+/* 21 */
+/***/ function(module, exports) {
+
+	module.exports = "<div>footer</div>";
+
+/***/ },
+/* 22 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _header = __webpack_require__(23);
+	
+	var _header2 = _interopRequireDefault(_header);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = _header2.default;
+
+/***/ },
+/* 23 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _angular = __webpack_require__(5);
+	
+	var _angular2 = _interopRequireDefault(_angular);
+	
+	var _headerTmpl = __webpack_require__(24);
 	
 	var _headerTmpl2 = _interopRequireDefault(_headerTmpl);
 	
@@ -36937,10 +37132,20 @@ var home =
 	}).name;
 
 /***/ },
-/* 16 */
+/* 24 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"header\">\r\n  <div class=\"logo\">CARDS</div>\r\n  <div class=\"login\">\r\n    <div class=\"user\">User Name</div>\r\n    <button>Logoff</button>\r\n  </div>\r\n</div>";
+
+/***/ },
+/* 25 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	module.exports = function (message) {
+	  console.log('Welcome  ' + message);
+	};
 
 /***/ }
 /******/ ]);

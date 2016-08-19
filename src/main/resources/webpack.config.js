@@ -37,6 +37,18 @@ module.exports = {
         loader: "html-loader"
       }
     ]
+  },
+
+  plugins: [
+    new webpack.NoErrorsPlugin(),
+  ],
+
+  devServer: {
+    host: 'localhost',
+    port : 8080,
+    proxy: {
+      "*": 'http://localhost:9000/'
+    }
   }
 
 };

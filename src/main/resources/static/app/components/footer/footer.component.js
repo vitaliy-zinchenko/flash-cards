@@ -6,4 +6,3 @@ export default angular.module('footer', [])
     template: template
   })
   .name;
-
