@@ -16,6 +16,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.Spy;
 import org.mockito.runners.MockitoJUnitRunner;
+import org.springframework.http.MediaType;
 import org.springframework.restdocs.JUnitRestDocumentation;
 import org.springframework.restdocs.RestDocumentation;
 import org.springframework.restdocs.mockmvc.MockMvcRestDocumentation;
@@ -27,6 +28,8 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import flashcards.domain.Card;
 import flashcards.domain.CardSet;
 import flashcards.dto.CardSetDto;
@@ -36,6 +39,7 @@ import flashcards.mapper.CardSetMapper;
 import flashcards.mapper.CardSetMapperImpl;
 import flashcards.repository.CardRepository;
 import flashcards.repository.CardSetRepository;
+import flashcards.service.CardSetService;
 import flashcards.service.UserService;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -54,8 +58,12 @@ public class CardSetControllerDocumentation {
     private CardMapper cardMapper = new CardMapperImpl();
     @Mock
     private UserService userService;
+    @Mock
+    private CardSetService cardSetService;
 
     private MockMvc mockMvc;
+
+    private ObjectMapper objectMapper;
 
     @Rule
     public JUnitRestDocumentation restDocumentation = new JUnitRestDocumentation("target/generated-snippets");
@@ -63,6 +71,7 @@ public class CardSetControllerDocumentation {
 
     @Before
     public void setUp() {
+        objectMapper = new ObjectMapper();
         this.document = MockMvcRestDocumentation.document("{method-name}/",
                 Preprocessors.preprocessRequest(Preprocessors.prettyPrint()),
                 Preprocessors.preprocessResponse(Preprocessors.prettyPrint()));
@@ -72,6 +81,7 @@ public class CardSetControllerDocumentation {
 
         Mockito.when(cardSetRepository.findByUserInfo(any(), any())).thenReturn(createCardSets());
         Mockito.when(cardRepository.findByCardSetId(any(), any())).thenReturn(createCars());
+        Mockito.when(cardSetService.save(any())).thenReturn(createCardSetDto());
     }
 
     @Test
@@ -94,6 +104,26 @@ public class CardSetControllerDocumentation {
         this.mockMvc.perform(requestBuilder)
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andDo(this.document);
+    }
+
+    @Test
+    public void createCardSet() throws Exception {
+        CardSetDto cardSetDto = new CardSetDto()
+                .setTitle("title");
+
+        MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
+                .post("/card-set")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(cardSetDto));
+        this.mockMvc.perform(requestBuilder)
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andDo(this.document);
+    }
+
+    private CardSetDto createCardSetDto() {
+        return new CardSetDto()
+                .setId(100L)
+                .setTitle("title");
     }
 
     private List<CardSet> createCardSets() {

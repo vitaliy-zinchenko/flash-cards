@@ -13,4 +13,6 @@ public interface CardSetMapper {
 
     CardSetDto toDto(CardSet cardSet);
 
+    CardSet toEntity(CardSetDto cardSetDto);
+
 }

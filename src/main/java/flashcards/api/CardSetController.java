@@ -68,6 +68,7 @@ public class CardSetController {
         return map(cards, cardMapper::toDto);
     }
 
+    //TODO protect with security
     @RequestMapping(method = {RequestMethod.POST})
     public CardSetDto create(@RequestBody CardSetDto cardSetDto) {
         return cardSetService.save(cardSetDto);
