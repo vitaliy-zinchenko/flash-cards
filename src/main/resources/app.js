@@ -3,6 +3,7 @@ import  './static/styles/all.css';
 
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
+import ngResource from 'angular-resource';
 
 import viewSets from './static/app/view-sets';
 import viewCardSet from './static/app/view-cardset';
@@ -15,6 +16,7 @@ import header from './static/app/components/header';
 export default angular
   .module( 'fcApp', [
     uiRouter,
+    ngResource,
     viewSets,
     viewCardSet,
     footer,
