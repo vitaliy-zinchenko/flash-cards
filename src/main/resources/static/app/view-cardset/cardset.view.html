@@ -2,12 +2,12 @@
 
 <div class="cards-container">
   <form id="add-card">
-    <input type="text" placeholder="Enter Title" id="card-title">
+    <input type="text" placeholder="Enter Title" id="card-title" ng-model="cardsetCtrl.title">
     <input type="text" placeholder="Enter Description" id="card-desc">
     <input type="submit" value="Save">
   </form>
 
-  <div class="words">
+  <div class="">
     <div class="row header">
       <div class="term">Terms</div>
       <div class="definition">Definition</div>
@@ -30,12 +30,12 @@
     </div>
 
     <div class="words-container">
-      <div class="row word">
+      <div class="row word" ng-repeat="card in cardsetCtrl.cards">
         <div class="term">
-          <textarea></textarea>
+          <textarea>{{card.word}}</textarea>
         </div>
         <div class="definition">
-          <textarea></textarea>
+          <textarea>{{card.translation}}</textarea>
         </div>
         <div class="ctrls">
           <span class="btn">Btn1</span>
@@ -46,10 +46,10 @@
 
       <div class="row word">
         <div class="term">
-          <textarea></textarea>
+          <textarea ng-model="cardsetCtrl.card.word"></textarea>
         </div>
         <div class="definition">
-          <textarea></textarea>
+          <textarea ng-model="cardsetCtrl.card.translation"></textarea>
         </div>
         <div class="ctrls">
           <span class="btn">Btn1</span>
