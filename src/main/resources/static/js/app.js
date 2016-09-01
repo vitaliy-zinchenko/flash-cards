@@ -36844,11 +36844,15 @@ var home =
 	
 	var _sets2 = _interopRequireDefault(_sets);
 	
+	var _sets3 = __webpack_require__(28);
+	
+	var _sets4 = _interopRequireDefault(_sets3);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	exports.default = _angular2.default.module('viewSets', []).config(function ($stateProvider) {
 	  $stateProvider.state('sets', _sets2.default);
-	}).name;
+	}).service('setsService', _sets4.default).name;
 
 /***/ },
 /* 10 */
@@ -36881,43 +36885,29 @@ var home =
 /* 11 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"main\">\r\n  <div class=\"ctrl-btn\">\r\n    <button value=\"new-set\" ui-sref=\"cardset\">New set</button>\r\n  </div>\r\n  <h1>{{setsCtrl.name}}</h1>\r\n  <h1>{{setsCtrl.data}}</h1>\r\n\r\n  <div class=\"sets-container\">\r\n    <div class=\"set\">\r\n      <h2 class=\"title\">Films</h2>\r\n      <div class=\"desc\">Lorem ipsum dolor set amet</div>\r\n      <div class=\"amount\">50</div>\r\n    </div>\r\n\r\n    <div class=\"set\">\r\n      <h2 class=\"title\">Films</h2>\r\n      <div class=\"desc\">Lorem ipsum dolor set amet</div>\r\n      <div class=\"amount\">50</div>\r\n    </div>\r\n\r\n    <div class=\"set\">\r\n      <h2 class=\"title\">Films</h2>\r\n      <div class=\"desc\">Lorem ipsum dolor set amet</div>\r\n      <div class=\"amount\">50</div>\r\n    </div>\r\n  </div>\r\n</div>";
+	module.exports = "<div class=\"main\">\r\n  <div class=\"ctrl-btn\">\r\n    <button value=\"new-set\" ui-sref=\"cardset\">New set</button>\r\n  </div>\r\n\r\n  <div class=\"set\">\r\n    <div>Title</div>\r\n    <div>Description</div>\r\n    <div>Amount</div>\r\n  </div>\r\n\r\n  <div class=\"sets-container\">\r\n    <div class=\"set\" ng-repeat=\"set in setsCtrl.sets\">\r\n      <h2 class=\"title\">{{set.title}}</h2>\r\n      <div class=\"desc\">id: {{set.id}}</div>\r\n      <div class=\"amount\">set.amount</div>\r\n    </div>\r\n  </div>\r\n\r\n</div>";
 
 /***/ },
 /* 12 */
 /***/ function(module, exports) {
 
-	'use strict';
+	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
 	
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
-	//import setsService from './../services/sets.service';
+	var setsController = function setsController(setsService) {
+	  _classCallCheck(this, setsController);
 	
-	var setsController = function () {
-	  function setsController($resource) {
-	    _classCallCheck(this, setsController);
+	  // TODO: get "page" and "size" from ???
+	  var page = 0;
+	  var size = 10;
 	
-	    this.name = 'SETS';
-	
-	    var res = $resource('/card-set?page=0&size=10');
-	    this.data = res.query();
-	  }
-	
-	  _createClass(setsController, [{
-	    key: 'changeName',
-	    value: function changeName() {
-	      this.name = 'angular-tips';
-	    }
-	  }]);
-	
-	  return setsController;
-	}();
+	  this.sets = setsService.query({ size: size, page: page });
+	};
 	
 	exports.default = setsController;
 
@@ -37146,7 +37136,28 @@ var home =
 /***/ },
 /* 26 */,
 /* 27 */,
-/* 28 */,
+/* 28 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	var setsService = function setsService($resource) {
+	  _classCallCheck(this, setsService);
+	
+	  var service = $resource('/card-set?page=:page&size=:size', { size: '@size', page: 'page' });
+	  return service;
+	};
+	
+	exports.default = setsService;
+	;
+
+/***/ },
 /* 29 */
 /***/ function(module, exports, __webpack_require__) {
 
