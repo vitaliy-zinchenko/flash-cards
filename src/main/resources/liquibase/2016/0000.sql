@@ -9,7 +9,7 @@ CREATE TABLE answer_type (
 );
 
 
-ALTER TABLE answer_type OWNER TO postgres;
+--ALTER TABLE answer_type OWNER TO postgres;
 
 --
 -- Name: card; Type: TABLE; Schema: public; Owner: postgres
@@ -23,7 +23,7 @@ CREATE TABLE card (
 );
 
 
-ALTER TABLE card OWNER TO postgres;
+--ALTER TABLE card OWNER TO postgres;
 
 --
 -- Name: card_answer; Type: TABLE; Schema: public; Owner: postgres
@@ -38,7 +38,7 @@ CREATE TABLE card_answer (
 );
 
 
-ALTER TABLE card_answer OWNER TO postgres;
+--ALTER TABLE card_answer OWNER TO postgres;
 
 --
 -- Name: card_set; Type: TABLE; Schema: public; Owner: postgres
@@ -53,7 +53,7 @@ CREATE TABLE card_set (
 );
 
 
-ALTER TABLE card_set OWNER TO postgres;
+--ALTER TABLE card_set OWNER TO postgres;
 
 --
 -- Name: hibernate_sequence; Type: SEQUENCE; Schema: public; Owner: postgres
@@ -67,7 +67,7 @@ CREATE SEQUENCE hibernate_sequence
     CACHE 1;
 
 
-ALTER TABLE hibernate_sequence OWNER TO postgres;
+--ALTER TABLE hibernate_sequence OWNER TO postgres;
 
 --
 -- Name: language; Type: TABLE; Schema: public; Owner: postgres
@@ -79,7 +79,7 @@ CREATE TABLE language (
 );
 
 
-ALTER TABLE language OWNER TO postgres;
+--ALTER TABLE language OWNER TO postgres;
 
 --
 -- Name: user_info; Type: TABLE; Schema: public; Owner: postgres
@@ -94,7 +94,7 @@ CREATE TABLE user_info (
 );
 
 
-ALTER TABLE user_info OWNER TO postgres;
+--ALTER TABLE user_info OWNER TO postgres;
 
 
 --
@@ -205,7 +205,7 @@ ALTER TABLE ONLY card_set
 -- Name: public; Type: ACL; Schema: -; Owner: postgres
 --
 
-REVOKE ALL ON SCHEMA public FROM PUBLIC;
-REVOKE ALL ON SCHEMA public FROM postgres;
-GRANT ALL ON SCHEMA public TO postgres;
-GRANT ALL ON SCHEMA public TO PUBLIC;
+--REVOKE ALL ON SCHEMA public FROM PUBLIC;
+--REVOKE ALL ON SCHEMA public FROM postgres;
+--GRANT ALL ON SCHEMA public TO postgres;
+--GRANT ALL ON SCHEMA public TO PUBLIC;
