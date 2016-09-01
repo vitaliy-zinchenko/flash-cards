@@ -1,9 +1,6 @@
-/*
-import angular from 'angular';
-import ngResource from 'angular-resource';
-
-
-export default $resource => {
-  return $resource('/card-set?page=0&size=10');
+export default class setsService {
+  constructor ($resource) {
+    var service = $resource('/card-set?page=:page&size=:size', {size:'@size', page:'page'});
+    return service;
+  }
 };
-*/

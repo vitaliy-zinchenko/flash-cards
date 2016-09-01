@@ -1,15 +1,11 @@
-//import setsService from './../services/sets.service';
-
 export default class setsController  {
-  constructor($resource) {
-    this.name = 'SETS';
+  constructor(setsService) {
+// TODO: get "page" and "size" from ???
+    var page = 0;
+    var size = 10;
 
-    let res  = $resource('/card-set?page=0&size=10');
-    this.data = res.query();
+    this.sets = setsService.query({ size: size, page: page });
   }
 
-  changeName() {
-    this.name = 'angular-tips';
-  }
 }
 

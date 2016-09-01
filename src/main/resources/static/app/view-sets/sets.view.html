@@ -2,26 +2,19 @@
   <div class="ctrl-btn">
     <button value="new-set" ui-sref="cardset">New set</button>
   </div>
-  <h1>{{setsCtrl.name}}</h1>
-  <h1>{{setsCtrl.data}}</h1>
+
+  <div class="set">
+    <div>Title</div>
+    <div>Description</div>
+    <div>Amount</div>
+  </div>
 
   <div class="sets-container">
-    <div class="set">
-      <h2 class="title">Films</h2>
-      <div class="desc">Lorem ipsum dolor set amet</div>
-      <div class="amount">50</div>
-    </div>
-
-    <div class="set">
-      <h2 class="title">Films</h2>
-      <div class="desc">Lorem ipsum dolor set amet</div>
-      <div class="amount">50</div>
-    </div>
-
-    <div class="set">
-      <h2 class="title">Films</h2>
-      <div class="desc">Lorem ipsum dolor set amet</div>
-      <div class="amount">50</div>
+    <div class="set" ng-repeat="set in setsCtrl.sets">
+      <h2 class="title">{{set.title}}</h2>
+      <div class="desc">id: {{set.id}}</div>
+      <div class="amount">set.amount</div>
     </div>
   </div>
+
 </div>
