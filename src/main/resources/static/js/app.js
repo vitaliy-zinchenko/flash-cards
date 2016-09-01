@@ -133,7 +133,7 @@ var home =
 	
 	
 	// module
-	exports.push([module.id, ".header {\r\n\tbackground: #ccc;\r\n\toverflow: hidden;\r\n}\r\n\r\n.logo {\r\n\tfloat: left;\r\n}\r\n\r\n.login {\r\n\tfloat: right;\r\n}\r\n\r\n.main {\r\n\twidth: 80%;\r\n\tmargin: 0 auto;\r\n\tpadding: 100px 0;\r\n}\r\n\r\n.ctrl-btn {\r\n\ttext-align: right;\r\n\tmargin-bottom: 10px;\r\n}\r\n\r\n.new-set {\r\n\r\n}\r\n\r\n.set {\r\n\tpadding: 20px;\r\n\tmargin-bottom: 20px;\r\n\tborder: 1px solid #333;\r\n\tbackground: #eee;\r\n}\r\n\r\n.set > div,\r\n.set > h2 {\r\n\tdisplay: inline-block;\r\n\twidth: 30%;\r\n}\r\n\r\n.set > h2 {\r\n\tfont-weight: 700;\r\n\tcolor: #00008b;\r\n}\r\n\r\n/*card item*/\r\n.row {\r\n\tpadding: 15px 0;\r\n\tborder: 1px solid #ddd;\r\n\r\n}\r\n\r\n.add-card {\r\n\tmargin-bottom: 20px;\r\n}\r\n\r\n.row.choose-lang {\r\n\tpadding: 10px 0 0 0;\r\n\tfont-size: 12px;\r\n}\r\n\r\n.words-container .row {\r\n\tpadding: 0;\r\n\tmargin-bottom: 10px;\r\n}\r\n\r\n.language {\r\n\tcursor: pointer;\r\n}\r\n\r\n.term, .definition, .ctrls {\r\n\tdisplay: inline-block;\r\n\tvertical-align: top;\r\n}\r\n\r\n.term {\r\n\twidth: 39%;\r\n}\r\n\r\n.definition {\r\n\twidth: 39%;\r\n}\r\n\r\n.ctrls {\r\n\twidth: 19%;\r\n\ttext-align: justify;\r\n\tmargin-left: 9px;\r\n}\r\n\r\n.ctrls span {\r\n\tbackground: #ccc;\r\n\tdisplay: inline-block;\r\n\tpadding: 5px;\r\n\tmargin-top: 10px;\r\n\tcursor: pointer;\r\n}\r\n\r\n.ctrls:after {\r\n\tcontent: \"\";\r\n\tdisplay: inline-block;\r\n\twidth: 100%;\r\n\theight: 0;\r\n}\r\n\r\n.header .ctrls {\r\n\ttext-align: left;\r\n}\r\n\r\n.row textarea {\r\n\twidth: 100%;\r\n}\r\n\r\n.language {\r\n\tdisplay: inline-block;\r\n\tmargin-right: 20px;\r\n\tcolor: #00008b\r\n}\r\n\r\n.language:last-child {\r\n\tmargin-right: 0;\r\n}\r\n\r\n#add-card {\r\n\tmargin-bottom: 20px;\r\n\tpadding: 4px;\r\n}\r\n\r\n#add-card input {\r\n\tdisplay: inline-block;\r\n}\r\n\r\n#card-title {\r\n\twidth: 40%;\r\n}\r\n\r\n#card-desc {\r\n\twidth: 50%;\r\n}\r\n", ""]);
+	exports.push([module.id, ".header {\r\n\tbackground: #ccc;\r\n\toverflow: hidden;\r\n}\r\n\r\n.logo {\r\n\tfloat: left;\r\n}\r\n\r\n.login {\r\n\tfloat: right;\r\n}\r\n\r\n.main {\r\n\twidth: 80%;\r\n\tmargin: 0 auto;\r\n\tpadding: 100px 0;\r\n}\r\n\r\n.ctrl-btn {\r\n\ttext-align: right;\r\n\tmargin-bottom: 10px;\r\n}\r\n\r\n.new-set {\r\n\r\n}\r\n\r\n.set {\r\n\tpadding: 20px;\r\n\tmargin-bottom: 20px;\r\n\tborder: 1px solid #333;\r\n\tbackground: #eee;\r\n}\r\n\r\n.set:hover {\r\n\tbackground: #ccc;\r\n\tcursor: pointer;\r\n}\r\n\r\n.set > div,\r\n.set > h2 {\r\n\tdisplay: inline-block;\r\n\twidth: 30%;\r\n}\r\n\r\n.set > h2 {\r\n\tfont-weight: 700;\r\n\tcolor: #00008b;\r\n}\r\n\r\n/*card item*/\r\n.row {\r\n\tpadding: 15px 0;\r\n\tborder: 1px solid #ddd;\r\n\tposition: relative;\r\n}\r\n\r\n.row.word .del {\r\n\tdisplay: none;\r\n\tposition: absolute;\r\n\ttop: 0;\r\n\tright: -35px;\r\n\ttransform: rotate(45deg);\r\n\tfont-size: 30px;\r\n\tfont-weight: 700;\r\n\tbackground: none;\r\n\tmargin: 0;\r\n}\r\n\r\n.row.word:hover .del {\r\n\tdisplay: block;\r\n\tcursor: pointer;\r\n}\r\n\r\n.add-card {\r\n\tmargin-bottom: 20px;\r\n}\r\n\r\n.row.choose-lang {\r\n\tpadding: 10px 0 0 0;\r\n\tfont-size: 12px;\r\n}\r\n\r\n.words-container .row {\r\n\tpadding: 0;\r\n\tmargin-bottom: 10px;\r\n}\r\n\r\n.language {\r\n\tcursor: pointer;\r\n}\r\n\r\n.term, .definition, .ctrls {\r\n\tdisplay: inline-block;\r\n\tvertical-align: top;\r\n}\r\n\r\n.term {\r\n\twidth: 39%;\r\n}\r\n\r\n.definition {\r\n\twidth: 39%;\r\n}\r\n\r\n.ctrls {\r\n\twidth: 19%;\r\n\ttext-align: justify;\r\n\tmargin-left: 9px;\r\n}\r\n\r\n.ctrls span {\r\n\tbackground: #ccc;\r\n\tdisplay: inline-block;\r\n\tpadding: 5px;\r\n\tmargin-top: 10px;\r\n\tcursor: pointer;\r\n}\r\n\r\n.ctrls:after {\r\n\tcontent: \"\";\r\n\tdisplay: inline-block;\r\n\twidth: 100%;\r\n\theight: 0;\r\n}\r\n\r\n.header .ctrls {\r\n\ttext-align: left;\r\n}\r\n\r\n.row textarea {\r\n\twidth: 100%;\r\n}\r\n\r\n.language {\r\n\tdisplay: inline-block;\r\n\tmargin-right: 20px;\r\n\tcolor: #00008b\r\n}\r\n\r\n.language:last-child {\r\n\tmargin-right: 0;\r\n}\r\n\r\n#add-card {\r\n\tmargin-bottom: 20px;\r\n\tpadding: 4px;\r\n}\r\n\r\n#add-card input {\r\n\tdisplay: inline-block;\r\n}\r\n\r\n#card-title {\r\n\twidth: 40%;\r\n}\r\n\r\n#card-desc {\r\n\twidth: 50%;\r\n}\r\n", ""]);
 	
 	// exports
 
@@ -36885,13 +36885,13 @@ var home =
 /* 11 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"main\">\r\n  <div class=\"ctrl-btn\">\r\n    <button value=\"new-set\" ui-sref=\"cardset\">New set</button>\r\n  </div>\r\n\r\n  <div class=\"set\">\r\n    <div>Title</div>\r\n    <div>Description</div>\r\n    <div>Amount</div>\r\n  </div>\r\n\r\n  <div class=\"sets-container\">\r\n    <div class=\"set\" ng-repeat=\"set in setsCtrl.sets\">\r\n      <h2 class=\"title\">{{set.title}}</h2>\r\n      <div class=\"desc\">id: {{set.id}}</div>\r\n      <div class=\"amount\">set.amount</div>\r\n    </div>\r\n  </div>\r\n\r\n</div>";
+	module.exports = "<div class=\"main\">\r\n  <div class=\"ctrl-btn\">\r\n    <button value=\"new-set\" ui-sref=\"cardset\">New set</button>\r\n  </div>\r\n\r\n  <div class=\"set\">\r\n    <div>Title</div>\r\n    <div>Description</div>\r\n    <div>Amount</div>\r\n  </div>\r\n\r\n  <div class=\"sets-container\">\r\n    <div class=\"set\" ng-repeat=\"set in setsCtrl.sets\" ng-click=\"setsCtrl.goToSet(set)\">\r\n      <h2 class=\"title\">{{set.title}}</h2>\r\n      <div class=\"desc\">id: {{set.id}}</div>\r\n      <div class=\"amount\">set.amount</div>\r\n    </div>\r\n  </div>\r\n\r\n</div>";
 
 /***/ },
 /* 12 */
 /***/ function(module, exports) {
 
-	"use strict";
+	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -36899,14 +36899,18 @@ var home =
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
-	var setsController = function setsController(setsService) {
+	var setsController = function setsController(setsService, $state) {
 	  _classCallCheck(this, setsController);
 	
-	  // TODO: get "page" and "size" from ???
+	  // TODO: get "page" and "size" from URL (or where from?)
 	  var page = 0;
 	  var size = 10;
 	
 	  this.sets = setsService.query({ size: size, page: page });
+	
+	  this.goToSet = function (set) {
+	    $state.go('cardset', { id: set.id });
+	  };
 	};
 	
 	exports.default = setsController;
@@ -36978,9 +36982,14 @@ var home =
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	exports.default = {
-	  url: '/card-set?page=0&size=10',
+	  url: '/card-set/:id',
 	  controller: _cardsetController2.default,
 	  template: _cardsetView2.default,
+	  params: {
+	    id: {
+	      value: '@id'
+	    }
+	  },
 	  controllerAs: 'cardsetCtrl'
 	};
 
@@ -36988,7 +36997,7 @@ var home =
 /* 16 */
 /***/ function(module, exports) {
 
-	module.exports = "<h1>{{cardsetCtrl.name}}</h1>\r\n\r\n<div class=\"cards-container\">\r\n  <form id=\"add-card\">\r\n    <input type=\"text\" placeholder=\"Enter Title\" id=\"card-title\" ng-model=\"cardsetCtrl.title\">\r\n    <input type=\"text\" placeholder=\"Enter Description\" id=\"card-desc\">\r\n    <input type=\"submit\" value=\"Save\">\r\n  </form>\r\n\r\n  <div class=\"\">\r\n    <div class=\"row header\">\r\n      <div class=\"term\">Terms</div>\r\n      <div class=\"definition\">Definition</div>\r\n      <div class=\"ctrls\">Some buttons</div>\r\n    </div>\r\n\r\n    <div class=\"row choose-lang\">\r\n      <div class=\"term\">\r\n        <span class=\"language\">English</span>\r\n        <span class=\"language\">Russian</span>\r\n        <span class=\"language\">Choose language</span>\r\n\r\n      </div>\r\n      <div class=\"definition\">\r\n        <span class=\"language\">English</span>\r\n        <span class=\"language\">Russian</span>\r\n        <span class=\"language\">Choose language</span>\r\n      </div>\r\n\r\n    </div>\r\n\r\n    <div class=\"words-container\">\r\n      <div class=\"row word\" ng-repeat=\"card in cardsetCtrl.cards\">\r\n        <div class=\"term\">\r\n          <textarea>{{card.word}}</textarea>\r\n        </div>\r\n        <div class=\"definition\">\r\n          <textarea>{{card.translation}}</textarea>\r\n        </div>\r\n        <div class=\"ctrls\">\r\n          <span class=\"btn\">Btn1</span>\r\n          <span class=\"btn\">Btn2</span>\r\n          <span class=\"btn\">Btn3</span>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row word\">\r\n        <div class=\"term\">\r\n          <textarea ng-model=\"cardsetCtrl.card.word\"></textarea>\r\n        </div>\r\n        <div class=\"definition\">\r\n          <textarea ng-model=\"cardsetCtrl.card.translation\"></textarea>\r\n        </div>\r\n        <div class=\"ctrls\">\r\n          <span class=\"btn\">Btn1</span>\r\n          <span class=\"btn\">Btn2</span>\r\n          <span class=\"btn\">Btn3</span>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row word\">\r\n        <div class=\"term\">\r\n          <textarea></textarea>\r\n        </div>\r\n        <div class=\"definition\">\r\n          <textarea></textarea>\r\n        </div>\r\n        <div class=\"ctrls\">\r\n          <span class=\"btn\">Btn1</span>\r\n          <span class=\"btn\">Btn2</span>\r\n          <span class=\"btn\">Btn3</span>\r\n        </div>\r\n      </div>\r\n\r\n    </div>\r\n  </div>\r\n</div>\r\n";
+	module.exports = "<h1>{{cardsetCtrl.name}}</h1>\r\n\r\n<div class=\"cards-container\">\r\n  <form id=\"add-card\">\r\n    <input type=\"text\" placeholder=\"Enter Title\" id=\"card-title\" ng-model=\"cardsetCtrl.title\">\r\n    <input type=\"text\" placeholder=\"Enter Description\" id=\"card-desc\">\r\n    <input type=\"submit\" value=\"Save\">\r\n  </form>\r\n\r\n  <div class=\"\">\r\n    <div class=\"row header\">\r\n      <div class=\"term\">Terms</div>\r\n      <div class=\"definition\">Definition</div>\r\n      <div class=\"ctrls\">Some buttons</div>\r\n    </div>\r\n\r\n    <div class=\"row choose-lang\">\r\n      <div class=\"term\">\r\n        <span class=\"language\">English</span>\r\n        <span class=\"language\">Russian</span>\r\n        <span class=\"language\">Choose language</span>\r\n\r\n      </div>\r\n      <div class=\"definition\">\r\n        <span class=\"language\">English</span>\r\n        <span class=\"language\">Russian</span>\r\n        <span class=\"language\">Choose language</span>\r\n      </div>\r\n\r\n    </div>\r\n\r\n    <div class=\"words-container\">\r\n      <div class=\"row word\" ng-repeat=\"card in cardsetCtrl.cards\">\r\n        <div class=\"term\">\r\n          <textarea>{{card.word}}</textarea>\r\n        </div>\r\n        <div class=\"definition\">\r\n          <textarea>{{card.translation}}</textarea>\r\n        </div>\r\n        <div class=\"ctrls\">\r\n          <span class=\"btn\">Btn1</span>\r\n          <span class=\"btn\">Btn2</span>\r\n          <span class=\"btn\">Btn3</span>\r\n          <span class=\"del\" ng-click=\"cardsetCtrl.deleteCard()\">+</span>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row word\">\r\n        <div class=\"term\">\r\n          <textarea ng-model=\"cardsetCtrl.card.word\"></textarea>\r\n        </div>\r\n        <div class=\"definition\">\r\n          <textarea ng-model=\"cardsetCtrl.card.translation\"></textarea>\r\n        </div>\r\n        <div class=\"ctrls\">\r\n          <span class=\"btn\">Btn1</span>\r\n          <span class=\"btn\">Btn2</span>\r\n          <span class=\"btn\">Btn3</span>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row word\">\r\n        <div class=\"term\">\r\n          <textarea></textarea>\r\n        </div>\r\n        <div class=\"definition\">\r\n          <textarea></textarea>\r\n        </div>\r\n        <div class=\"ctrls\">\r\n          <span class=\"btn\">Btn1</span>\r\n          <span class=\"btn\">Btn2</span>\r\n          <span class=\"btn\">Btn3</span>\r\n        </div>\r\n      </div>\r\n\r\n    </div>\r\n  </div>\r\n</div>\r\n";
 
 /***/ },
 /* 17 */
@@ -36997,21 +37006,28 @@ var home =
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	    value: true
+	  value: true
 	});
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
-	var cardsetController = function cardsetController(cardsService) {
-	    _classCallCheck(this, cardsetController);
+	var cardsetController = function cardsetController(cardsService, $state) {
+	  _classCallCheck(this, cardsetController);
 	
-	    this.name = 'cardsetController';
+	  this.name = 'cardsetController';
 	
-	    var id = 3;
-	    var page = 0;
-	    var size = 10;
+	  var page = 0;
+	  var size = 10;
 	
-	    this.cards = cardsService.query({ id: id, size: size, page: page });
+	  this.cards = cardsService.query({
+	    id: $state.params.id,
+	    size: size,
+	    page: page
+	  });
+	
+	  this.deleteCard = function () {
+	    console.log('delete card');
+	  };
 	};
 	
 	exports.default = cardsetController;
