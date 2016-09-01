@@ -36947,11 +36947,15 @@ var home =
 	
 	var _cardset2 = _interopRequireDefault(_cardset);
 	
+	var _cards = __webpack_require__(31);
+	
+	var _cards2 = _interopRequireDefault(_cards);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	exports.default = _angular2.default.module('viewCardSet', []).config(function ($stateProvider) {
 	  $stateProvider.state('cardset', _cardset2.default);
-	}).name;
+	}).service('cardsService', _cards2.default).name;
 
 /***/ },
 /* 15 */
@@ -36984,7 +36988,7 @@ var home =
 /* 16 */
 /***/ function(module, exports) {
 
-	module.exports = "<h1>{{cardsetCtrl.name}}</h1>\r\n\r\n<div class=\"cards-container\">\r\n  <form id=\"add-card\">\r\n    <input type=\"text\" placeholder=\"Enter Title\" id=\"card-title\">\r\n    <input type=\"text\" placeholder=\"Enter Description\" id=\"card-desc\">\r\n    <input type=\"submit\" value=\"Save\">\r\n  </form>\r\n\r\n  <div class=\"words\">\r\n    <div class=\"row header\">\r\n      <div class=\"term\">Terms</div>\r\n      <div class=\"definition\">Definition</div>\r\n      <div class=\"ctrls\">Some buttons</div>\r\n    </div>\r\n\r\n    <div class=\"row choose-lang\">\r\n      <div class=\"term\">\r\n        <span class=\"language\">English</span>\r\n        <span class=\"language\">Russian</span>\r\n        <span class=\"language\">Choose language</span>\r\n\r\n      </div>\r\n      <div class=\"definition\">\r\n        <span class=\"language\">English</span>\r\n        <span class=\"language\">Russian</span>\r\n        <span class=\"language\">Choose language</span>\r\n      </div>\r\n\r\n    </div>\r\n\r\n    <div class=\"words-container\">\r\n      <div class=\"row word\">\r\n        <div class=\"term\">\r\n          <textarea></textarea>\r\n        </div>\r\n        <div class=\"definition\">\r\n          <textarea></textarea>\r\n        </div>\r\n        <div class=\"ctrls\">\r\n          <span class=\"btn\">Btn1</span>\r\n          <span class=\"btn\">Btn2</span>\r\n          <span class=\"btn\">Btn3</span>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row word\">\r\n        <div class=\"term\">\r\n          <textarea></textarea>\r\n        </div>\r\n        <div class=\"definition\">\r\n          <textarea></textarea>\r\n        </div>\r\n        <div class=\"ctrls\">\r\n          <span class=\"btn\">Btn1</span>\r\n          <span class=\"btn\">Btn2</span>\r\n          <span class=\"btn\">Btn3</span>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row word\">\r\n        <div class=\"term\">\r\n          <textarea></textarea>\r\n        </div>\r\n        <div class=\"definition\">\r\n          <textarea></textarea>\r\n        </div>\r\n        <div class=\"ctrls\">\r\n          <span class=\"btn\">Btn1</span>\r\n          <span class=\"btn\">Btn2</span>\r\n          <span class=\"btn\">Btn3</span>\r\n        </div>\r\n      </div>\r\n\r\n    </div>\r\n  </div>\r\n</div>\r\n";
+	module.exports = "<h1>{{cardsetCtrl.name}}</h1>\r\n\r\n<div class=\"cards-container\">\r\n  <form id=\"add-card\">\r\n    <input type=\"text\" placeholder=\"Enter Title\" id=\"card-title\" ng-model=\"cardsetCtrl.title\">\r\n    <input type=\"text\" placeholder=\"Enter Description\" id=\"card-desc\">\r\n    <input type=\"submit\" value=\"Save\">\r\n  </form>\r\n\r\n  <div class=\"\">\r\n    <div class=\"row header\">\r\n      <div class=\"term\">Terms</div>\r\n      <div class=\"definition\">Definition</div>\r\n      <div class=\"ctrls\">Some buttons</div>\r\n    </div>\r\n\r\n    <div class=\"row choose-lang\">\r\n      <div class=\"term\">\r\n        <span class=\"language\">English</span>\r\n        <span class=\"language\">Russian</span>\r\n        <span class=\"language\">Choose language</span>\r\n\r\n      </div>\r\n      <div class=\"definition\">\r\n        <span class=\"language\">English</span>\r\n        <span class=\"language\">Russian</span>\r\n        <span class=\"language\">Choose language</span>\r\n      </div>\r\n\r\n    </div>\r\n\r\n    <div class=\"words-container\">\r\n      <div class=\"row word\" ng-repeat=\"card in cardsetCtrl.cards\">\r\n        <div class=\"term\">\r\n          <textarea>{{card.word}}</textarea>\r\n        </div>\r\n        <div class=\"definition\">\r\n          <textarea>{{card.translation}}</textarea>\r\n        </div>\r\n        <div class=\"ctrls\">\r\n          <span class=\"btn\">Btn1</span>\r\n          <span class=\"btn\">Btn2</span>\r\n          <span class=\"btn\">Btn3</span>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row word\">\r\n        <div class=\"term\">\r\n          <textarea ng-model=\"cardsetCtrl.card.word\"></textarea>\r\n        </div>\r\n        <div class=\"definition\">\r\n          <textarea ng-model=\"cardsetCtrl.card.translation\"></textarea>\r\n        </div>\r\n        <div class=\"ctrls\">\r\n          <span class=\"btn\">Btn1</span>\r\n          <span class=\"btn\">Btn2</span>\r\n          <span class=\"btn\">Btn3</span>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row word\">\r\n        <div class=\"term\">\r\n          <textarea></textarea>\r\n        </div>\r\n        <div class=\"definition\">\r\n          <textarea></textarea>\r\n        </div>\r\n        <div class=\"ctrls\">\r\n          <span class=\"btn\">Btn1</span>\r\n          <span class=\"btn\">Btn2</span>\r\n          <span class=\"btn\">Btn3</span>\r\n        </div>\r\n      </div>\r\n\r\n    </div>\r\n  </div>\r\n</div>\r\n";
 
 /***/ },
 /* 17 */
@@ -36993,15 +36997,21 @@ var home =
 	'use strict';
 	
 	Object.defineProperty(exports, "__esModule", {
-	  value: true
+	    value: true
 	});
 	
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
-	var cardsetController = function cardsetController() {
-	  _classCallCheck(this, cardsetController);
+	var cardsetController = function cardsetController(cardsService) {
+	    _classCallCheck(this, cardsetController);
 	
-	  this.name = 'cardsetController';
+	    this.name = 'cardsetController';
+	
+	    var id = 3;
+	    var page = 0;
+	    var size = 10;
+	
+	    this.cards = cardsService.query({ id: id, size: size, page: page });
 	};
 	
 	exports.default = cardsetController;
@@ -38033,6 +38043,28 @@ var home =
 	
 	})(window, window.angular);
 
+
+/***/ },
+/* 31 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	var cardsService = function cardsService($resource) {
+	  _classCallCheck(this, cardsService);
+	
+	  var service = $resource('/card-set/:id/cards?page=:page&size=:size', { id: '@id', size: '@size', page: 'page' });
+	  return service;
+	};
+	
+	exports.default = cardsService;
+	;
 
 /***/ }
 /******/ ]);
