@@ -1,13 +1,12 @@
 import angular from 'angular';
 
 import viewComponent    from './sets.component';
-import setsService from './../services/sets.service';
-
+import setsService from './sets.service.js';
 
 export default angular.module('viewSets', [])
   .config($stateProvider => {
     $stateProvider
       .state('sets', viewComponent);
   })
-  .service('setsService', setsService)
+  .factory('setsService', setsService)
   .name;

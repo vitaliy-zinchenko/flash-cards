@@ -38,7 +38,7 @@
           <textarea>{{card.translation}}</textarea>
         </div>
         <div class="ctrls">
-          <span class="btn">Btn1</span>
+          <span class="btn" ng-click="cardsetCtrl.saveCard()">Save</span>
           <span class="btn">Btn2</span>
           <span class="btn">Btn3</span>
           <span class="del" ng-click="cardsetCtrl.deleteCard()">+</span>
@@ -53,25 +53,14 @@
           <textarea ng-model="cardsetCtrl.card.translation"></textarea>
         </div>
         <div class="ctrls">
-          <span class="btn">Btn1</span>
+          <span class="btn" ng-click="cardsetCtrl.saveCard()">Save</span>
           <span class="btn">Btn2</span>
           <span class="btn">Btn3</span>
         </div>
       </div>
 
-      <div class="row word">
-        <div class="term">
-          <textarea></textarea>
-        </div>
-        <div class="definition">
-          <textarea></textarea>
-        </div>
-        <div class="ctrls">
-          <span class="btn">Btn1</span>
-          <span class="btn">Btn2</span>
-          <span class="btn">Btn3</span>
-        </div>
-      </div>
+      <button ng-click="cardsetCtrl.addCard()">New card</button>
+
 
     </div>
   </div>

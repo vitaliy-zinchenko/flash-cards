@@ -4,7 +4,7 @@ export default class setsController  {
     var page = 0;
     var size = 10;
 
-    this.sets = setsService.query({ size: size, page: page });
+    this.sets = setsService.getAll(page, size);
 
     this.goToSet = (set) => {
       $state.go('cardset', {id: set.id});
