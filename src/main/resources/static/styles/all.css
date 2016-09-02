@@ -42,12 +42,21 @@
 .set > h2 {
 	display: inline-block;
 	width: 30%;
+	margin: 0;
 }
 
 .set > h2 {
 	font-weight: 700;
 	color: #00008b;
 }
+
+.set.headers, .set.headers:hover {
+	background-color: #7aba7b;
+	font-size: 20px;
+	font-weight: 700;
+	cursor: auto;
+}
+
 
 /*card item*/
 .row {

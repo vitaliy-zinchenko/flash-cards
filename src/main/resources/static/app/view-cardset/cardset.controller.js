@@ -4,15 +4,20 @@ export default class cardsetController {
 
     var page = 0;
     var size = 10;
+    var id = $state.params.id;
 
-    this.cards = cardsService.query({
-      id:  $state.params.id,
-      size: size,
-      page: page
-    });
+    this.cards = cardsService.getAll(id , page, size);
 
     this.deleteCard = () => {
       console.log('delete card');
+    };
+
+    this.addCard = () => {
+      console.log('new card');
+    };
+
+    this.saveCard = () => {
+      console.log('save card');
     }
   }
 
