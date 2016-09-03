@@ -118,3 +118,21 @@ include::{snippets}/card-set-cards/httpie-request.adoc[]
 
 include::{snippets}/card-set-cards/http-response.adoc[]
 
+
+
+
+
+
+[[resources-card-set-list]]
+=== Add Cards to Card Set
+
+Add Cards to Card Set by cardSetId
+
+==== Request structure
+
+include::{snippets}/add-cards-to-card-set-batch/http-request.adoc[]
+
+==== Response structure
+
+include::{snippets}/add-cards-to-card-set-batch/http-response.adoc[]
+

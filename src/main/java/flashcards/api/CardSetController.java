@@ -22,7 +22,6 @@ import flashcards.dto.CardDto;
 import flashcards.dto.CardSetDto;
 import flashcards.mapper.CardMapper;
 import flashcards.mapper.CardSetMapper;
-import flashcards.mapper.MapperUtil;
 import flashcards.repository.CardRepository;
 import flashcards.repository.CardSetRepository;
 import flashcards.service.CardSetService;
@@ -79,10 +78,13 @@ public class CardSetController {
         return cardSetService.save(cardSetDto);
     }
 
-    @RequestMapping(value = "/doc", method = {RequestMethod.GET})
-    public CardSetDto update() {
-        return new CardSetDto()
-                .setTitle("qwe");
+    //TODO secure and chack that this is his cardSetId
+    //TODO validation on cardSetId
+    @RequestMapping(value = "/{id}/cards/batch", method = {RequestMethod.POST})
+    public List<CardDto> addCardsToCardSetBatch(
+            @PathVariable("id") Long cardSetId,
+            @RequestBody List<CardDto> cardDtos) {
+        return cardSetService.add(cardSetId, cardDtos);
     }
 
 }

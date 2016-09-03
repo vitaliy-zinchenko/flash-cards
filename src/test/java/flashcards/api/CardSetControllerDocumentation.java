@@ -2,6 +2,7 @@ package flashcards.api;
 
 import static org.mockito.Matchers.any;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -32,6 +33,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import flashcards.domain.Card;
 import flashcards.domain.CardSet;
+import flashcards.dto.CardDto;
 import flashcards.dto.CardSetDto;
 import flashcards.mapper.CardMapper;
 import flashcards.mapper.CardMapperImpl;
@@ -120,6 +122,22 @@ public class CardSetControllerDocumentation {
                 .andDo(this.document);
     }
 
+    @Test
+    public void addCardsToCardSetBatch() throws Exception {
+        List<CardDto> requestBody = createCardDtos();
+        List<CardDto> responseBody = createCardDtos();
+        responseBody.get(0).setId(10L);
+        Mockito.when(cardSetService.add(any(), any())).thenReturn(responseBody);
+
+        MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
+                .post("/card-set/{id}/cards/batch", 1)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(objectMapper.writeValueAsString(requestBody));
+        this.mockMvc.perform(requestBuilder)
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andDo(this.document);
+    }
+
     private CardSetDto createCardSetDto() {
         return new CardSetDto()
                 .setId(100L)
@@ -140,6 +158,14 @@ public class CardSetControllerDocumentation {
                         .setId(10L)
                         .setWord("word")
                         .setTranslation("translation")
+        );
+    }
+
+    private List<CardDto> createCardDtos() {
+        return Arrays.asList(
+                new CardDto()
+                    .setWord("word1")
+                    .setTranslation("translation1")
         );
     }
 

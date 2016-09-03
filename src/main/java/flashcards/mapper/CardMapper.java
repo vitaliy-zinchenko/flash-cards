@@ -11,5 +11,6 @@ import flashcards.dto.CardSetDto;
 public interface CardMapper {
 
     CardDto toDto(Card card);
+    Card toEntity(CardDto cardDto);
 
 }
