@@ -60,7 +60,7 @@ Andy Wilkinson;
 
 
 
-[[resources-card-set]]
+[[card-set]]
 == Card Set
 
 CardSet contains the list of cards
@@ -123,7 +123,7 @@ include::{snippets}/card-set-cards/http-response.adoc[]
 
 
 
-[[resources-card-set-list]]
+[[add-cards-to-card-set-batch]]
 === Add Cards to Card Set
 
 Add Cards to Card Set by cardSetId
