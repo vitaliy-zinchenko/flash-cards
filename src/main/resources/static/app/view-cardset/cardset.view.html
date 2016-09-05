@@ -2,9 +2,9 @@
 
 <div class="cards-container">
   <form id="add-card">
-    <input type="text" placeholder="Enter Title" id="card-title" ng-model="cardsetCtrl.title">
+    <input type="text" placeholder="Enter Title" id="card-title" ng-model="cardsetCtrl.set.title">
     <input type="text" placeholder="Enter Description" id="card-desc">
-    <input type="submit" value="Save">
+    <input type="button" value="Save" ng-click="cardsetCtrl.saveSet(cardsetCtrl.set)">
   </form>
 
   <div class="">
