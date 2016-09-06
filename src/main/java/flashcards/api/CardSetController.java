@@ -28,7 +28,7 @@ import flashcards.service.CardSetService;
 import flashcards.service.UserService;
 
 @RestController
-@RequestMapping("/card-set")
+@RequestMapping("/api/card-set")
 public class CardSetController {
 
     @Autowired

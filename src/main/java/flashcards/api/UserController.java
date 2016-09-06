@@ -16,7 +16,7 @@ import flashcards.mapper.UserMapper;
 import flashcards.service.UserService;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/api/user")
 public class UserController {
 
     @Autowired
