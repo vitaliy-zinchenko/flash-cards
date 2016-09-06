@@ -89,7 +89,7 @@ public class CardSetControllerDocumentation {
     @Test
     public void cardSet() throws Exception {
         MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
-                .get("/card-set")
+                .get("/api/card-set")
                 .param("page", "0")
                 .param("size", "10");
         this.mockMvc.perform(requestBuilder)
@@ -100,7 +100,7 @@ public class CardSetControllerDocumentation {
     @Test
     public void cardSetCards() throws Exception {
         MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
-                .get("/card-set/{0}/cards", 1)
+                .get("/api/card-set/{0}/cards", 1)
                 .param("page", "0")
                 .param("size", "10");
         this.mockMvc.perform(requestBuilder)
@@ -114,7 +114,7 @@ public class CardSetControllerDocumentation {
                 .setTitle("title");
 
         MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
-                .post("/card-set")
+                .post("/api/card-set")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(cardSetDto));
         this.mockMvc.perform(requestBuilder)
@@ -130,7 +130,7 @@ public class CardSetControllerDocumentation {
         Mockito.when(cardSetService.add(any(), any())).thenReturn(responseBody);
 
         MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders
-                .post("/card-set/{id}/cards/batch", 1)
+                .post("/api/card-set/{id}/cards/batch", 1)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(requestBody));
         this.mockMvc.perform(requestBuilder)
