@@ -40,15 +40,26 @@ module.exports = {
   },
 
   plugins: [
-    new webpack.NoErrorsPlugin(),
+    new webpack.NoErrorsPlugin()
   ],
 
   devServer: {
     host: 'localhost',
-    port : 8080,
-    proxy: {
-      "*": 'http://localhost:9000/'
-    }
+    port : 9000,
+    proxy: [{
+        path: /card-set/,
+        target: 'http://104.236.116.198:9000',
+        secure: false,
+        changeOrigin: true
+      },
+      {
+        path: /user/,
+        target: 'http://104.236.116.198:9000',
+        secure: false,
+        changeOrigin: true
+      }
+    ]
+
   }
 
 };
