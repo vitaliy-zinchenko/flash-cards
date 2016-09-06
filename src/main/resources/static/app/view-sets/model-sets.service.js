@@ -6,7 +6,7 @@ export default ($resource) => {
   };
 
   service.createSet = (set) => {
-    return service.save({ content: set });
+    return service.save(set);
   };
 
   return service;

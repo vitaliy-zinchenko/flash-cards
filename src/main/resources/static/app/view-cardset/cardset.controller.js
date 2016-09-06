@@ -18,8 +18,8 @@ export default class cardsetController {
     this.saveSet = (set) => {
       setService.createSet(set).$promise.then(data => {
         console.log('Create new set:');
-        console.log(data.content);
-        this.currentSet = data.content;
+        console.log(data);
+        this.currentSet = data;
       });
     };
 
@@ -35,7 +35,7 @@ export default class cardsetController {
     this.saveCard = (cards) => {
       cardsService.createSet( cards ).$promise.then(data => {
         //console.log('Create new set:');
-        console.log(data.content);
+        console.log(data);
       });
     }
   }
