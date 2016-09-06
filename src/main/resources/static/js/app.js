@@ -37781,7 +37781,7 @@ var home =
 	
 	  // TODO: get "page" and "size" from URL (or where from?)
 	  var page = 0;
-	  var size = 10;
+	  var size = 99999;
 	
 	  this.sets = setsService.getAll(page, size);
 	
@@ -37906,7 +37906,7 @@ var home =
 /* 19 */
 /***/ function(module, exports) {
 
-	module.exports = "<h1>{{cardsetCtrl.name}}</h1>\r\n\r\n<div class=\"cards-container\">\r\n  <form id=\"add-card\">\r\n    <input type=\"text\" placeholder=\"Enter Title\" id=\"card-title\" ng-model=\"cardsetCtrl.set.title\">\r\n    <input type=\"text\" placeholder=\"Enter Description\" id=\"card-desc\">\r\n    <input type=\"button\" value=\"Save\" ng-click=\"cardsetCtrl.saveSet(cardsetCtrl.set)\">\r\n  </form>\r\n\r\n  <div class=\"\">\r\n    <div class=\"row header\">\r\n      <div class=\"term\">Terms</div>\r\n      <div class=\"definition\">Definition</div>\r\n      <div class=\"ctrls\">Some buttons</div>\r\n    </div>\r\n\r\n    <div class=\"row choose-lang\">\r\n      <div class=\"term\">\r\n        <span class=\"language\">English</span>\r\n        <span class=\"language\">Russian</span>\r\n        <span class=\"language\">Choose language</span>\r\n\r\n      </div>\r\n      <div class=\"definition\">\r\n        <span class=\"language\">English</span>\r\n        <span class=\"language\">Russian</span>\r\n        <span class=\"language\">Choose language</span>\r\n      </div>\r\n\r\n    </div>\r\n\r\n    <div class=\"words-container\">\r\n      <div class=\"row word\" ng-repeat=\"card in cardsetCtrl.cards\">\r\n        <div class=\"term\">\r\n          <textarea>{{card.word}}</textarea>\r\n        </div>\r\n        <div class=\"definition\">\r\n          <textarea>{{card.translation}}</textarea>\r\n        </div>\r\n        <div class=\"ctrls\">\r\n          <span class=\"btn\" ng-click=\"cardsetCtrl.saveCard()\">Save</span>\r\n          <span class=\"btn\">Btn2</span>\r\n          <span class=\"btn\">Btn3</span>\r\n          <span class=\"del\" ng-click=\"cardsetCtrl.deleteCard()\">+</span>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row word\">\r\n        <div class=\"term\">\r\n          <textarea ng-model=\"cardsetCtrl.card.word\"></textarea>\r\n        </div>\r\n        <div class=\"definition\">\r\n          <textarea ng-model=\"cardsetCtrl.card.translation\"></textarea>\r\n        </div>\r\n        <div class=\"ctrls\">\r\n          <span class=\"btn\" ng-click=\"cardsetCtrl.saveCard()\">Save</span>\r\n          <span class=\"btn\">Btn2</span>\r\n          <span class=\"btn\">Btn3</span>\r\n        </div>\r\n      </div>\r\n\r\n      <button ng-click=\"cardsetCtrl.addCard()\">New card</button>\r\n\r\n\r\n    </div>\r\n  </div>\r\n</div>\r\n";
+	module.exports = "<h1>{{cardsetCtrl.name}}</h1>\r\n\r\n<div class=\"cards-container\">\r\n  <form id=\"add-card\">\r\n    <input type=\"text\" placeholder=\"Enter Title\" id=\"card-title\" ng-model=\"cardsetCtrl.set.title\">\r\n    <input type=\"text\" placeholder=\"Enter Description\" id=\"card-desc\">\r\n    <input type=\"button\" value=\"Save\" ng-click=\"cardsetCtrl.saveSet(cardsetCtrl.set)\">\r\n  </form>\r\n\r\n  <div class=\"cards-container\" ng-show=\"cardsetCtrl.currentSet\">\r\n    <div class=\"row header\">\r\n      <div class=\"term\">Terms</div>\r\n      <div class=\"definition\">Definition</div>\r\n      <div class=\"ctrls\">Some buttons</div>\r\n    </div>\r\n\r\n    <div class=\"row choose-lang\">\r\n      <div class=\"term\">\r\n        <span class=\"language\">English</span>\r\n        <span class=\"language\">Russian</span>\r\n        <span class=\"language\">Choose language</span>\r\n\r\n      </div>\r\n      <div class=\"definition\">\r\n        <span class=\"language\">English</span>\r\n        <span class=\"language\">Russian</span>\r\n        <span class=\"language\">Choose language</span>\r\n      </div>\r\n\r\n    </div>\r\n\r\n    <div class=\"words-container\">\r\n      <div class=\"row word\" ng-repeat=\"card in cardsetCtrl.cards\">\r\n        <div class=\"term\">\r\n          <textarea>{{card.word}}</textarea>\r\n        </div>\r\n        <div class=\"definition\">\r\n          <textarea>{{card.translation}}</textarea>\r\n        </div>\r\n        <div class=\"ctrls\">\r\n          <span class=\"btn\" ng-click=\"cardsetCtrl.saveCard()\">Save</span>\r\n          <span class=\"btn\">Btn2</span>\r\n          <span class=\"btn\">Btn3</span>\r\n          <span class=\"del\" ng-click=\"cardsetCtrl.deleteCard()\">+</span>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row word\">\r\n        <div class=\"term\">\r\n          <textarea ng-model=\"cardsetCtrl.card.word\"></textarea>\r\n        </div>\r\n        <div class=\"definition\">\r\n          <textarea ng-model=\"cardsetCtrl.card.translation\"></textarea>\r\n        </div>\r\n        <div class=\"ctrls\">\r\n          <span class=\"btn\" ng-click=\"cardsetCtrl.saveCard()\">Save</span>\r\n          <span class=\"btn\">Btn2</span>\r\n          <span class=\"btn\">Btn3</span>\r\n        </div>\r\n      </div>\r\n\r\n      <button ng-click=\"cardsetCtrl.addCard()\">New card</button>\r\n\r\n\r\n    </div>\r\n  </div>\r\n</div>\r\n";
 
 /***/ },
 /* 20 */
@@ -37921,15 +37921,21 @@ var home =
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 	
 	var cardsetController = function cardsetController(cardsService, setService, $state) {
+	  var _this = this;
+	
 	  _classCallCheck(this, cardsetController);
 	
 	  this.name = 'cardsetController';
+	
+	  this.currentSet = null;
 	
 	  var page = 0;
 	  var size = 9999999;
 	  var id = $state.params.id;
 	
+	  //get existing cards
 	  if (id && id != 'new') {
+	    this.currentSet = 'set'; //TODO: get particular set by id
 	    this.cards = cardsService.getAll(id, page, size);
 	  }
 	
@@ -37938,6 +37944,7 @@ var home =
 	    setService.createSet(set).$promise.then(function (data) {
 	      console.log('Create new set:');
 	      console.log(data.content);
+	      _this.currentSet = data.content;
 	    });
 	  };
 	
@@ -37950,8 +37957,11 @@ var home =
 	    console.log('new card');
 	  };
 	
-	  this.saveCard = function () {
-	    console.log('save card');
+	  this.saveCard = function (cards) {
+	    cardsService.createSet(cards).$promise.then(function (data) {
+	      //console.log('Create new set:');
+	      console.log(data.content);
+	    });
 	  };
 	};
 	
@@ -37995,10 +38005,14 @@ var home =
 	});
 	
 	exports.default = function ($resource) {
-	  var service = $resource('/card-set/:id/cards?page=:page&size=:size', { id: '@id', page: '@page', size: '@size' });
+	  var service = $resource('/card-set/:id/cards', { id: '@id', page: '@page', size: '@size' });
 	
 	  service.getAll = function (id, page, size) {
 	    return service.query({ id: id, page: page, size: size });
+	  };
+	
+	  service.createCard = function (card) {
+	    return service.save({ content: card });
 	  };
 	
 	  return service;
