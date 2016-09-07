@@ -1,5 +1,5 @@
 export default  ($resource) => {
-  const service = $resource('/card-set/:id/cards', {id: '@id', page:'@page', size:'@size'});
+  const service = $resource('api/card-set/:id/cards', {id: '@id', page:'@page', size:'@size'});
 
   service.getAll = (id, page, size) => {
     return service.query({ id: id, page: page , size: size });
