@@ -9,6 +9,7 @@ import ngResource from 'angular-resource';
 
 import viewSets from './view-sets';
 import viewCardSet from './view-cardset';
+import viewSignin from './view-signin';
 
 import routes from './routes';
 import footer from './components/footer';
@@ -21,6 +22,7 @@ export default angular
     ngResource,
     viewSets,
     viewCardSet,
+    viewSignin,
     footer,
     header
   ] )

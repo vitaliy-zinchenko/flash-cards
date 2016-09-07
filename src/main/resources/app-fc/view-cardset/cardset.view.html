@@ -4,7 +4,7 @@
   <form id="add-card">
     <input type="text" placeholder="Enter Title" id="card-title" ng-model="cardsetCtrl.set.title">
     <input type="text" placeholder="Enter Description" id="card-desc">
-    <input type="button" value="Save" ng-click="cardsetCtrl.saveSet(cardsetCtrl.set)">
+    <input type="button" value="Create set" ng-click="cardsetCtrl.saveSet(cardsetCtrl.set)">
   </form>
 
   <div class="cards-container" ng-show="cardsetCtrl.currentSet">
@@ -61,6 +61,7 @@
 
       <button ng-click="cardsetCtrl.addCard()">New card</button>
 
+      <button ng-click="cardsetCtrl.saveCard()">Save all cards</button>
 
     </div>
   </div>
