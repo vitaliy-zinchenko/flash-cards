@@ -47,19 +47,11 @@ module.exports = {
     host: 'localhost',
     port : 9000,
     proxy: [{
-        path: /card-set/,
+        path: /api/,
         target: 'http://104.236.116.198:9000',
         secure: false,
         changeOrigin: true
-      },
-      {
-        path: /user/,
-        target: 'http://104.236.116.198:9000',
-        secure: false,
-        changeOrigin: true
-      }
-    ]
-
+      }]
   }
 
 };

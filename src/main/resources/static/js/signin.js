@@ -9,7 +9,7 @@ function onSignIn(googleUser) {
   console.log('id_token: ' + googleUser.getAuthResponse().id_token);
   $.ajax({
       type: "POST",
-      url: '/user/login/google',
+      url: '/api/user/login/google',
       dataType: 'json',
       contentType:"application/json; charset=utf-8",
       data: JSON.stringify({"idToken": googleUser.getAuthResponse().id_token}),
