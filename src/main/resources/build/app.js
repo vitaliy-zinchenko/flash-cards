@@ -51,7 +51,9 @@ var home =
 	  value: true
 	});
 	
-	__webpack_require__(1);
+	var _all = __webpack_require__(1);
+	
+	var _all2 = _interopRequireDefault(_all);
 	
 	var _angular = __webpack_require__(5);
 	
@@ -87,15 +89,15 @@ var home =
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
+	console.log('app');
+	
+	'use strict';
 	exports.default = _angular2.default.module('fcApp', [_angularUiRouter2.default, _angularResource2.default, _viewSets2.default, _viewCardset2.default, _footer2.default, _header2.default]).config(_routes2.default).controller('mainController', mainController);
 	
 	
 	function mainController() {
 	  //test code
 	  console.log('main app');
-	
-	  var welcome = __webpack_require__(30);
-	  welcome("flashcard");
 	}
 
 /***/ },
@@ -37695,13 +37697,13 @@ var home =
 	  value: true
 	});
 	
-	var _sets = __webpack_require__(11);
+	var _setsModule = __webpack_require__(11);
 	
-	var _sets2 = _interopRequireDefault(_sets);
+	var _setsModule2 = _interopRequireDefault(_setsModule);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	exports.default = _sets2.default;
+	exports.default = _setsModule2.default;
 
 /***/ },
 /* 11 */
@@ -37717,9 +37719,9 @@ var home =
 	
 	var _angular2 = _interopRequireDefault(_angular);
 	
-	var _sets = __webpack_require__(12);
+	var _setsComponent = __webpack_require__(12);
 	
-	var _sets2 = _interopRequireDefault(_sets);
+	var _setsComponent2 = _interopRequireDefault(_setsComponent);
 	
 	var _modelSetsService = __webpack_require__(15);
 	
@@ -37728,7 +37730,7 @@ var home =
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	exports.default = _angular2.default.module('viewSets', []).config(function ($stateProvider) {
-	  $stateProvider.state('sets', _sets2.default);
+	  $stateProvider.state('sets', _setsComponent2.default);
 	}).factory('setsService', _modelSetsService2.default).name;
 
 /***/ },
@@ -37803,14 +37805,14 @@ var home =
 	});
 	
 	exports.default = function ($resource) {
-	  var service = $resource('/card-set', { page: '@page', size: '@size' });
+	  var service = $resource('/api/card-set', { page: '@page', size: '@size' });
 	
 	  service.getAll = function (page, size) {
 	    return service.query({ page: page, size: size });
 	  };
 	
 	  service.createSet = function (set) {
-	    return service.save({ content: set });
+	    return service.save(set);
 	  };
 	
 	  return service;
@@ -37826,13 +37828,13 @@ var home =
 	  value: true
 	});
 	
-	var _cardset = __webpack_require__(17);
+	var _cardsetModule = __webpack_require__(17);
 	
-	var _cardset2 = _interopRequireDefault(_cardset);
+	var _cardsetModule2 = _interopRequireDefault(_cardsetModule);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	exports.default = _cardset2.default;
+	exports.default = _cardsetModule2.default;
 
 /***/ },
 /* 17 */
@@ -37848,13 +37850,13 @@ var home =
 	
 	var _angular2 = _interopRequireDefault(_angular);
 	
-	var _cardset = __webpack_require__(18);
+	var _cardsetComponent = __webpack_require__(18);
 	
-	var _cardset2 = _interopRequireDefault(_cardset);
+	var _cardsetComponent2 = _interopRequireDefault(_cardsetComponent);
 	
-	var _cardsetNew = __webpack_require__(21);
+	var _cardsetNewComponent = __webpack_require__(21);
 	
-	var _cardsetNew2 = _interopRequireDefault(_cardsetNew);
+	var _cardsetNewComponent2 = _interopRequireDefault(_cardsetNewComponent);
 	
 	var _modelCardsService = __webpack_require__(22);
 	
@@ -37867,7 +37869,7 @@ var home =
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	exports.default = _angular2.default.module('viewCardSet', []).config(function ($stateProvider) {
-	  $stateProvider.state('cardset', _cardset2.default).state('cardset-new', _cardsetNew2.default);
+	  $stateProvider.state('cardset', _cardsetComponent2.default).state('cardset-new', _cardsetNewComponent2.default);
 	}).factory('cardsService', _modelCardsService2.default).factory('setService', _modelSetsService2.default).name;
 
 /***/ },
@@ -37943,8 +37945,8 @@ var home =
 	  this.saveSet = function (set) {
 	    setService.createSet(set).$promise.then(function (data) {
 	      console.log('Create new set:');
-	      console.log(data.content);
-	      _this.currentSet = data.content;
+	      console.log(data);
+	      _this.currentSet = data;
 	    });
 	  };
 	
@@ -37960,7 +37962,7 @@ var home =
 	  this.saveCard = function (cards) {
 	    cardsService.createSet(cards).$promise.then(function (data) {
 	      //console.log('Create new set:');
-	      console.log(data.content);
+	      console.log(data);
 	    });
 	  };
 	};
@@ -38005,7 +38007,7 @@ var home =
 	});
 	
 	exports.default = function ($resource) {
-	  var service = $resource('/card-set/:id/cards', { id: '@id', page: '@page', size: '@size' });
+	  var service = $resource('api/card-set/:id/cards', { id: '@id', page: '@page', size: '@size' });
 	
 	  service.getAll = function (id, page, size) {
 	    return service.query({ id: id, page: page, size: size });
@@ -38049,13 +38051,13 @@ var home =
 	  value: true
 	});
 	
-	var _footer = __webpack_require__(25);
+	var _footerComponent = __webpack_require__(25);
 	
-	var _footer2 = _interopRequireDefault(_footer);
+	var _footerComponent2 = _interopRequireDefault(_footerComponent);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	exports.default = _footer2.default;
+	exports.default = _footerComponent2.default;
 
 /***/ },
 /* 25 */
@@ -38085,7 +38087,7 @@ var home =
 /* 26 */
 /***/ function(module, exports) {
 
-	module.exports = "<div>footer</div>";
+	module.exports = "<div>footer!</div>";
 
 /***/ },
 /* 27 */
@@ -38097,13 +38099,13 @@ var home =
 	  value: true
 	});
 	
-	var _header = __webpack_require__(28);
+	var _headerComponent = __webpack_require__(28);
 	
-	var _header2 = _interopRequireDefault(_header);
+	var _headerComponent2 = _interopRequireDefault(_headerComponent);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	exports.default = _header2.default;
+	exports.default = _headerComponent2.default;
 
 /***/ },
 /* 28 */
@@ -38133,17 +38135,7 @@ var home =
 /* 29 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"header\">\r\n  <div class=\"logo\">CARDS</div>\r\n  <div class=\"login\">\r\n    <div class=\"user\">User Name</div>\r\n    <button>Logoff</button>\r\n  </div>\r\n</div>";
-
-/***/ },
-/* 30 */
-/***/ function(module, exports) {
-
-	'use strict';
-	
-	module.exports = function (message) {
-	  console.log('Welcome  ' + message);
-	};
+	module.exports = "<div class=\"header\">\r\n  <div class=\"logo\">FLASH-CARDS</div>\r\n  <div class=\"login\">\r\n    <div class=\"user\">User Name</div>\r\n    <button>Logoff</button>\r\n  </div>\r\n</div>";
 
 /***/ }
 /******/ ]);

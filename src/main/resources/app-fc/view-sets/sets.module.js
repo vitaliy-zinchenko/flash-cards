@@ -1,6 +1,6 @@
 import angular from 'angular';
 
-import viewComponent    from './sets.component';
+import viewComponent    from './sets.component.js';
 import setsService from './model-sets.service.js';
 
 export default angular.module('viewSets', [])
