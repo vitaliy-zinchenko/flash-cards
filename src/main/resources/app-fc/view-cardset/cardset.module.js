@@ -1,7 +1,7 @@
 import angular from 'angular';
 
-import viewComponent    from './cardset.component';
-import cardsetNewComponent    from './cardset-new.component';
+import viewComponent    from './cardset.component.js';
+import cardsetNewComponent    from './cardset-new.component.js';
 import cardsService from './model-cards.service.js';
 import setService from '../view-sets/model-sets.service.js';
 

@@ -2,12 +2,17 @@
 
 const NODE_ENV = process.env.NODE_ENV || 'development'; //TODO: 'NODE_ENV' is not recognized as an internal or external command...
 const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path  = require('path');
+
+const srcPath    = path.join(__dirname, 'app-fc');
+//const dstPath    = path.join(__dirname, '/build');
 
 
 module.exports = {
-  entry: "./app",
+  entry: path.join(srcPath, 'app.js'),
   output: {
-    path: __dirname + "/static/js",
+    path:  __dirname + '/build',
     filename: "app.js",
     library: "home"
   },
@@ -40,12 +45,24 @@ module.exports = {
   },
 
   plugins: [
-    new webpack.NoErrorsPlugin()
+    new webpack.NoErrorsPlugin(),
+    new HtmlWebpackPlugin({
+      inject  : true,
+      hash    : true,
+      template: 'app-fc/index.html'
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'signin.html',
+      inject  : true,
+      hash    : true,
+      template: 'app-fc/signin.html'
+    })
   ],
 
   devServer: {
     host: 'localhost',
     port : 9000,
+    contentBase: __dirname + "/app-fc",
     proxy: [{
         path: /api/,
         target: 'http://104.236.116.198:9000',
