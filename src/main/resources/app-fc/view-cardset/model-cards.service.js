@@ -1,14 +1,14 @@
 export default  ($resource) => {
 //settings
   const mainUrl = 'api/card-set/:id/cards';
-  const saveButchUrl = 'api/card-set/:id/cards/batch';
+  const saveButchUrl = '/api/card-set/:id/cards/batch';
   const params = {id: '@id', page:'@page', size:'@size'};
 
   const actions = {
-    'save': {
+    'saveButch': {
       url: saveButchUrl,
       method: 'POST',
-      cash: true
+      isArray: true
     }
   };
 
@@ -20,7 +20,7 @@ export default  ($resource) => {
   };
 
   service.addCards = (id, cards) => {
-    return service.save({id: id}, cards);
+    return service.saveButch({id: id}, cards);
   };
 
   return service;

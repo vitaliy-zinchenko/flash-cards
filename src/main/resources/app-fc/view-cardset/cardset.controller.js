@@ -43,25 +43,14 @@ export default class cardsetController {
     };
 
     this.saveCards = (cards) => {
-      console.log(cards);
 // send temp array to server
       cardsService.addCards( id, cards ).$promise.then(data => {
-        console.log(data);
+        data.forEach((item, i) => {
+          this.cards.push(item);
+        })
       });
-
-      // and clean temp array
+// and clean temp array
       this.newCards = [];
-
-      // than add responce objects to existing cards
-      var respData = [ {
-        "id" : 10,
-        "word" : "word1",
-        "translation" : "translation1"
-      } ];
-
-      respData.forEach((item, i) => {
-        this.cards.push(item);
-      })
     };
 
 // TODO: helper function. Need refactor
