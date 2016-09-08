@@ -30,7 +30,7 @@
     </div>
 
     <div class="words-container">
-      <div class="row word" ng-repeat="card in cardsetCtrl.cards">
+      <div class="row word exist-cards" ng-repeat="card in cardsetCtrl.cards">
         <div class="term">
           <textarea>{{card.word}}</textarea>
         </div>
@@ -38,30 +38,37 @@
           <textarea>{{card.translation}}</textarea>
         </div>
         <div class="ctrls">
-          <span class="btn" ng-click="cardsetCtrl.saveCard()">Save</span>
+          <span class="btn">Btn1</span>
           <span class="btn">Btn2</span>
           <span class="btn">Btn3</span>
           <span class="del" ng-click="cardsetCtrl.deleteCard()">+</span>
         </div>
       </div>
 
-      <div class="row word">
+      <div class="row word new-cards" ng-repeat="newcard in cardsetCtrl.newCards">
         <div class="term">
-          <textarea ng-model="cardsetCtrl.card.word"></textarea>
+          <textarea ng-model="newcard.word"></textarea>
         </div>
         <div class="definition">
-          <textarea ng-model="cardsetCtrl.card.translation"></textarea>
-        </div>
-        <div class="ctrls">
-          <span class="btn" ng-click="cardsetCtrl.saveCard()">Save</span>
-          <span class="btn">Btn2</span>
-          <span class="btn">Btn3</span>
+          <textarea ng-model="newcard.translation"></textarea>
         </div>
       </div>
 
-      <button ng-click="cardsetCtrl.addCard()">New card</button>
+      <div class="row word">
+        <div class="term">
+          <textarea ng-model="cardsetCtrl.newterm.word"></textarea>
+        </div>
+        <div class="definition">
+          <textarea ng-model="cardsetCtrl.newterm.translation"></textarea>
+        </div>
+        <div class="ctrls">
+          <span class="btn action-btn" ng-click="cardsetCtrl.writeTerm(cardsetCtrl.newterm)">Save for sending</span>
+        </div>
+      </div>
 
-      <button ng-click="cardsetCtrl.saveCard()">Save all cards</button>
+      <button ng-click="cardsetCtrl.newCard()">New card</button>
+
+      <button class="btn action-btn" ng-click="cardsetCtrl.saveCards(cardsetCtrl.newCards)">Save all cards</button>
 
     </div>
   </div>

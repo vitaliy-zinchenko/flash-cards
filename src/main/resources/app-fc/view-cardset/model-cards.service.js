@@ -1,12 +1,26 @@
 export default  ($resource) => {
-  const service = $resource('api/card-set/:id/cards', {id: '@id', page:'@page', size:'@size'});
+//settings
+  const mainUrl = 'api/card-set/:id/cards';
+  const saveButchUrl = 'api/card-set/:id/cards/batch';
+  const params = {id: '@id', page:'@page', size:'@size'};
 
+  const actions = {
+    'save': {
+      url: saveButchUrl,
+      method: 'POST',
+      cash: true
+    }
+  };
+
+  const service = $resource(mainUrl, params, actions);
+
+//methods
   service.getAll = (id, page, size) => {
     return service.query({ id: id, page: page , size: size });
   };
 
-  service.createCard = (card) => {
-    return service.save({ content: card });
+  service.addCards = (id, cards) => {
+    return service.save({id: id}, cards);
   };
 
   return service;

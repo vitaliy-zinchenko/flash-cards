@@ -75,15 +75,19 @@ var home =
 	
 	var _viewCardset2 = _interopRequireDefault(_viewCardset);
 	
-	var _routes = __webpack_require__(23);
+	var _viewSignin = __webpack_require__(23);
+	
+	var _viewSignin2 = _interopRequireDefault(_viewSignin);
+	
+	var _routes = __webpack_require__(28);
 	
 	var _routes2 = _interopRequireDefault(_routes);
 	
-	var _footer = __webpack_require__(24);
+	var _footer = __webpack_require__(29);
 	
 	var _footer2 = _interopRequireDefault(_footer);
 	
-	var _header = __webpack_require__(27);
+	var _header = __webpack_require__(32);
 	
 	var _header2 = _interopRequireDefault(_header);
 	
@@ -92,7 +96,7 @@ var home =
 	console.log('app');
 	
 	'use strict';
-	exports.default = _angular2.default.module('fcApp', [_angularUiRouter2.default, _angularResource2.default, _viewSets2.default, _viewCardset2.default, _footer2.default, _header2.default]).config(_routes2.default).controller('mainController', mainController);
+	exports.default = _angular2.default.module('fcApp', [_angularUiRouter2.default, _angularResource2.default, _viewSets2.default, _viewCardset2.default, _viewSignin2.default, _footer2.default, _header2.default]).config(_routes2.default).controller('mainController', mainController);
 	
 	
 	function mainController() {
@@ -135,7 +139,7 @@ var home =
 	
 	
 	// module
-	exports.push([module.id, ".header {\r\n\tbackground: #ccc;\r\n\toverflow: hidden;\r\n}\r\n\r\n.logo {\r\n\tfloat: left;\r\n}\r\n\r\n.login {\r\n\tfloat: right;\r\n}\r\n\r\n.main {\r\n\twidth: 80%;\r\n\tmargin: 0 auto;\r\n\tpadding: 100px 0;\r\n}\r\n\r\n.ctrl-btn {\r\n\ttext-align: right;\r\n\tmargin-bottom: 10px;\r\n}\r\n\r\n.new-set {\r\n\r\n}\r\n\r\n.set {\r\n\tpadding: 20px;\r\n\tmargin-bottom: 20px;\r\n\tborder: 1px solid #333;\r\n\tbackground: #eee;\r\n}\r\n\r\n.set:hover {\r\n\tbackground: #ccc;\r\n\tcursor: pointer;\r\n}\r\n\r\n.set > div,\r\n.set > h2 {\r\n\tdisplay: inline-block;\r\n\twidth: 30%;\r\n\tmargin: 0;\r\n}\r\n\r\n.set > h2 {\r\n\tfont-weight: 700;\r\n\tcolor: #00008b;\r\n}\r\n\r\n.set.headers, .set.headers:hover {\r\n\tbackground-color: #7aba7b;\r\n\tfont-size: 20px;\r\n\tfont-weight: 700;\r\n\tcursor: auto;\r\n}\r\n\r\n\r\n/*card item*/\r\n.row {\r\n\tpadding: 15px 0;\r\n\tborder: 1px solid #ddd;\r\n\tposition: relative;\r\n}\r\n\r\n.row.word .del {\r\n\tdisplay: none;\r\n\tposition: absolute;\r\n\ttop: 0;\r\n\tright: -35px;\r\n\ttransform: rotate(45deg);\r\n\tfont-size: 30px;\r\n\tfont-weight: 700;\r\n\tbackground: none;\r\n\tmargin: 0;\r\n}\r\n\r\n.row.word:hover .del {\r\n\tdisplay: block;\r\n\tcursor: pointer;\r\n}\r\n\r\n.add-card {\r\n\tmargin-bottom: 20px;\r\n}\r\n\r\n.row.choose-lang {\r\n\tpadding: 10px 0 0 0;\r\n\tfont-size: 12px;\r\n}\r\n\r\n.words-container .row {\r\n\tpadding: 0;\r\n\tmargin-bottom: 10px;\r\n}\r\n\r\n.language {\r\n\tcursor: pointer;\r\n}\r\n\r\n.term, .definition, .ctrls {\r\n\tdisplay: inline-block;\r\n\tvertical-align: top;\r\n}\r\n\r\n.term {\r\n\twidth: 39%;\r\n}\r\n\r\n.definition {\r\n\twidth: 39%;\r\n}\r\n\r\n.ctrls {\r\n\twidth: 19%;\r\n\ttext-align: justify;\r\n\tmargin-left: 9px;\r\n}\r\n\r\n.ctrls span {\r\n\tbackground: #ccc;\r\n\tdisplay: inline-block;\r\n\tpadding: 5px;\r\n\tmargin-top: 10px;\r\n\tcursor: pointer;\r\n}\r\n\r\n.ctrls:after {\r\n\tcontent: \"\";\r\n\tdisplay: inline-block;\r\n\twidth: 100%;\r\n\theight: 0;\r\n}\r\n\r\n.header .ctrls {\r\n\ttext-align: left;\r\n}\r\n\r\n.row textarea {\r\n\twidth: 100%;\r\n}\r\n\r\n.language {\r\n\tdisplay: inline-block;\r\n\tmargin-right: 20px;\r\n\tcolor: #00008b\r\n}\r\n\r\n.language:last-child {\r\n\tmargin-right: 0;\r\n}\r\n\r\n#add-card {\r\n\tmargin-bottom: 20px;\r\n\tpadding: 4px;\r\n}\r\n\r\n#add-card input {\r\n\tdisplay: inline-block;\r\n}\r\n\r\n#card-title {\r\n\twidth: 40%;\r\n}\r\n\r\n#card-desc {\r\n\twidth: 50%;\r\n}\r\n", ""]);
+	exports.push([module.id, ".header {\r\n\tbackground: #ccc;\r\n\toverflow: hidden;\r\n}\r\n\r\n.logo {\r\n\tfloat: left;\r\n}\r\n\r\n.login {\r\n\tfloat: right;\r\n}\r\n\r\n.main {\r\n\twidth: 80%;\r\n\tmargin: 0 auto;\r\n\tpadding: 100px 0;\r\n}\r\n\r\n.ctrl-btn {\r\n\ttext-align: right;\r\n\tmargin-bottom: 10px;\r\n}\r\n\r\n.action-btn {\r\n\tbackground-color: #7d7d00;\r\n}\r\n\r\n.new-set {\r\n\r\n}\r\n\r\n.set {\r\n\tpadding: 20px;\r\n\tmargin-bottom: 20px;\r\n\tborder: 1px solid #333;\r\n\tbackground: #eee;\r\n}\r\n\r\n.set:hover {\r\n\tbackground: #ccc;\r\n\tcursor: pointer;\r\n}\r\n\r\n.set > div,\r\n.set > h2 {\r\n\tdisplay: inline-block;\r\n\twidth: 30%;\r\n\tmargin: 0;\r\n}\r\n\r\n.set > h2 {\r\n\tfont-weight: 700;\r\n\tcolor: #00008b;\r\n}\r\n\r\n.set.headers, .set.headers:hover {\r\n\tbackground-color: #7aba7b;\r\n\tfont-size: 20px;\r\n\tfont-weight: 700;\r\n\tcursor: auto;\r\n}\r\n\r\n\r\n/*card item*/\r\n.row {\r\n\tpadding: 15px 0;\r\n\tborder: 1px solid #ddd;\r\n\tposition: relative;\r\n}\r\n\r\n.row.word .del {\r\n\tdisplay: none;\r\n\tposition: absolute;\r\n\ttop: 0;\r\n\tright: -35px;\r\n\ttransform: rotate(45deg);\r\n\tfont-size: 30px;\r\n\tfont-weight: 700;\r\n\tbackground: none;\r\n\tmargin: 0;\r\n}\r\n\r\n.row.word:hover .del {\r\n\tdisplay: block;\r\n\tcursor: pointer;\r\n}\r\n\r\n.add-card {\r\n\tmargin-bottom: 20px;\r\n}\r\n\r\n.row.choose-lang {\r\n\tpadding: 10px 0 0 0;\r\n\tfont-size: 12px;\r\n}\r\n\r\n.words-container .row {\r\n\tpadding: 0;\r\n\tmargin-bottom: 10px;\r\n}\r\n\r\n.language {\r\n\tcursor: pointer;\r\n}\r\n\r\n.term, .definition, .ctrls {\r\n\tdisplay: inline-block;\r\n\tvertical-align: top;\r\n}\r\n\r\n.term {\r\n\twidth: 39%;\r\n}\r\n\r\n.definition {\r\n\twidth: 39%;\r\n}\r\n\r\n.ctrls {\r\n\twidth: 19%;\r\n\ttext-align: justify;\r\n\tmargin-left: 9px;\r\n}\r\n\r\n.ctrls span {\r\n\tbackground: #ccc;\r\n\tdisplay: inline-block;\r\n\tpadding: 5px;\r\n\tmargin-top: 10px;\r\n\tcursor: pointer;\r\n}\r\n\r\n.ctrls:after {\r\n\tcontent: \"\";\r\n\tdisplay: inline-block;\r\n\twidth: 100%;\r\n\theight: 0;\r\n}\r\n\r\n.header .ctrls {\r\n\ttext-align: left;\r\n}\r\n\r\n.row textarea {\r\n\twidth: 100%;\r\n}\r\n\r\n.language {\r\n\tdisplay: inline-block;\r\n\tmargin-right: 20px;\r\n\tcolor: #00008b\r\n}\r\n\r\n.language:last-child {\r\n\tmargin-right: 0;\r\n}\r\n\r\n#add-card {\r\n\tmargin-bottom: 20px;\r\n\tpadding: 4px;\r\n}\r\n\r\n#add-card input {\r\n\tdisplay: inline-block;\r\n}\r\n\r\n#card-title {\r\n\twidth: 40%;\r\n}\r\n\r\n#card-desc {\r\n\twidth: 50%;\r\n}\r\n", ""]);
 	
 	// exports
 
@@ -37908,7 +37912,7 @@ var home =
 /* 19 */
 /***/ function(module, exports) {
 
-	module.exports = "<h1>{{cardsetCtrl.name}}</h1>\r\n\r\n<div class=\"cards-container\">\r\n  <form id=\"add-card\">\r\n    <input type=\"text\" placeholder=\"Enter Title\" id=\"card-title\" ng-model=\"cardsetCtrl.set.title\">\r\n    <input type=\"text\" placeholder=\"Enter Description\" id=\"card-desc\">\r\n    <input type=\"button\" value=\"Save\" ng-click=\"cardsetCtrl.saveSet(cardsetCtrl.set)\">\r\n  </form>\r\n\r\n  <div class=\"cards-container\" ng-show=\"cardsetCtrl.currentSet\">\r\n    <div class=\"row header\">\r\n      <div class=\"term\">Terms</div>\r\n      <div class=\"definition\">Definition</div>\r\n      <div class=\"ctrls\">Some buttons</div>\r\n    </div>\r\n\r\n    <div class=\"row choose-lang\">\r\n      <div class=\"term\">\r\n        <span class=\"language\">English</span>\r\n        <span class=\"language\">Russian</span>\r\n        <span class=\"language\">Choose language</span>\r\n\r\n      </div>\r\n      <div class=\"definition\">\r\n        <span class=\"language\">English</span>\r\n        <span class=\"language\">Russian</span>\r\n        <span class=\"language\">Choose language</span>\r\n      </div>\r\n\r\n    </div>\r\n\r\n    <div class=\"words-container\">\r\n      <div class=\"row word\" ng-repeat=\"card in cardsetCtrl.cards\">\r\n        <div class=\"term\">\r\n          <textarea>{{card.word}}</textarea>\r\n        </div>\r\n        <div class=\"definition\">\r\n          <textarea>{{card.translation}}</textarea>\r\n        </div>\r\n        <div class=\"ctrls\">\r\n          <span class=\"btn\" ng-click=\"cardsetCtrl.saveCard()\">Save</span>\r\n          <span class=\"btn\">Btn2</span>\r\n          <span class=\"btn\">Btn3</span>\r\n          <span class=\"del\" ng-click=\"cardsetCtrl.deleteCard()\">+</span>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row word\">\r\n        <div class=\"term\">\r\n          <textarea ng-model=\"cardsetCtrl.card.word\"></textarea>\r\n        </div>\r\n        <div class=\"definition\">\r\n          <textarea ng-model=\"cardsetCtrl.card.translation\"></textarea>\r\n        </div>\r\n        <div class=\"ctrls\">\r\n          <span class=\"btn\" ng-click=\"cardsetCtrl.saveCard()\">Save</span>\r\n          <span class=\"btn\">Btn2</span>\r\n          <span class=\"btn\">Btn3</span>\r\n        </div>\r\n      </div>\r\n\r\n      <button ng-click=\"cardsetCtrl.addCard()\">New card</button>\r\n\r\n\r\n    </div>\r\n  </div>\r\n</div>\r\n";
+	module.exports = "<h1>{{cardsetCtrl.name}}</h1>\r\n\r\n<div class=\"cards-container\">\r\n  <form id=\"add-card\">\r\n    <input type=\"text\" placeholder=\"Enter Title\" id=\"card-title\" ng-model=\"cardsetCtrl.set.title\">\r\n    <input type=\"text\" placeholder=\"Enter Description\" id=\"card-desc\">\r\n    <input type=\"button\" value=\"Create set\" ng-click=\"cardsetCtrl.saveSet(cardsetCtrl.set)\">\r\n  </form>\r\n\r\n  <div class=\"cards-container\" ng-show=\"cardsetCtrl.currentSet\">\r\n    <div class=\"row header\">\r\n      <div class=\"term\">Terms</div>\r\n      <div class=\"definition\">Definition</div>\r\n      <div class=\"ctrls\">Some buttons</div>\r\n    </div>\r\n\r\n    <div class=\"row choose-lang\">\r\n      <div class=\"term\">\r\n        <span class=\"language\">English</span>\r\n        <span class=\"language\">Russian</span>\r\n        <span class=\"language\">Choose language</span>\r\n\r\n      </div>\r\n      <div class=\"definition\">\r\n        <span class=\"language\">English</span>\r\n        <span class=\"language\">Russian</span>\r\n        <span class=\"language\">Choose language</span>\r\n      </div>\r\n\r\n    </div>\r\n\r\n    <div class=\"words-container\">\r\n      <div class=\"row word exist-cards\" ng-repeat=\"card in cardsetCtrl.cards\">\r\n        <div class=\"term\">\r\n          <textarea>{{card.word}}</textarea>\r\n        </div>\r\n        <div class=\"definition\">\r\n          <textarea>{{card.translation}}</textarea>\r\n        </div>\r\n        <div class=\"ctrls\">\r\n          <span class=\"btn\">Btn1</span>\r\n          <span class=\"btn\">Btn2</span>\r\n          <span class=\"btn\">Btn3</span>\r\n          <span class=\"del\" ng-click=\"cardsetCtrl.deleteCard()\">+</span>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row word new-cards\" ng-repeat=\"newcard in cardsetCtrl.newCards\">\r\n        <div class=\"term\">\r\n          <textarea ng-model=\"newcard.word\"></textarea>\r\n        </div>\r\n        <div class=\"definition\">\r\n          <textarea ng-model=\"newcard.translation\"></textarea>\r\n        </div>\r\n      </div>\r\n\r\n      <div class=\"row word\">\r\n        <div class=\"term\">\r\n          <textarea ng-model=\"cardsetCtrl.newterm.word\"></textarea>\r\n        </div>\r\n        <div class=\"definition\">\r\n          <textarea ng-model=\"cardsetCtrl.newterm.translation\"></textarea>\r\n        </div>\r\n        <div class=\"ctrls\">\r\n          <span class=\"btn action-btn\" ng-click=\"cardsetCtrl.writeTerm(cardsetCtrl.newterm)\">Save for sending</span>\r\n        </div>\r\n      </div>\r\n\r\n      <button ng-click=\"cardsetCtrl.newCard()\">New card</button>\r\n\r\n      <button ng-click=\"cardsetCtrl.saveCards(cardsetCtrl.newCards)\">Save all cards</button>\r\n\r\n    </div>\r\n  </div>\r\n</div>\r\n";
 
 /***/ },
 /* 20 */
@@ -37930,6 +37934,7 @@ var home =
 	  this.name = 'cardsetController';
 	
 	  this.currentSet = null;
+	  this.newCards = [];
 	
 	  var page = 0;
 	  var size = 9999999;
@@ -37955,15 +37960,48 @@ var home =
 	    console.log('delete card');
 	  };
 	
-	  this.addCard = function () {
+	  // save terms to temporary array (this.newCards)
+	  this.writeTerm = function (newTerm) {
+	    console.log(newTerm);
+	    var obj = _this.copyObj(newTerm);
+	    _this.newCards.push(obj);
+	    console.log(_this.newCards);
+	    _this.newterm = null;
+	  };
+	
+	  this.newCard = function () {
 	    console.log('new card');
 	  };
 	
-	  this.saveCard = function (cards) {
-	    cardsService.createSet(cards).$promise.then(function (data) {
-	      //console.log('Create new set:');
+	  this.saveCards = function (cards) {
+	    console.log(cards);
+	    // send temp array to server
+	    cardsService.addCards(id, cards).$promise.then(function (data) {
 	      console.log(data);
 	    });
+	
+	    // and clean temp array
+	    _this.newCards = [];
+	
+	    // than add responce objects to existing cards
+	    var respData = [{
+	      "id": 10,
+	      "word": "word1",
+	      "translation": "translation1"
+	    }];
+	
+	    respData.forEach(function (item, i) {
+	      _this.cards.push(item);
+	    });
+	  };
+	
+	  // TODO: helper function. Need refactor
+	  this.copyObj = function (obj) {
+	    var copy = {};
+	    for (var key in obj) {
+	      copy[key] = obj[key];
+	    }
+	    return copy;
 	  };
 	};
 	
@@ -38007,14 +38045,28 @@ var home =
 	});
 	
 	exports.default = function ($resource) {
-	  var service = $resource('api/card-set/:id/cards', { id: '@id', page: '@page', size: '@size' });
+	  //settings
+	  var mainUrl = 'api/card-set/:id/cards';
+	  var saveButchUrl = 'api/card-set/:id/cards/batch';
+	  var params = { id: '@id', page: '@page', size: '@size' };
 	
+	  var actions = {
+	    'save': {
+	      url: saveButchUrl,
+	      method: 'POST',
+	      cash: true
+	    }
+	  };
+	
+	  var service = $resource(mainUrl, params, actions);
+	
+	  //methods
 	  service.getAll = function (id, page, size) {
 	    return service.query({ id: id, page: page, size: size });
 	  };
 	
-	  service.createCard = function (card) {
-	    return service.save({ content: card });
+	  service.addCards = function (id, cards) {
+	    return service.save({ id: id }, cards);
 	  };
 	
 	  return service;
@@ -38022,6 +38074,127 @@ var home =
 
 /***/ },
 /* 23 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _signinModule = __webpack_require__(24);
+	
+	var _signinModule2 = _interopRequireDefault(_signinModule);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = _signinModule2.default;
+
+/***/ },
+/* 24 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _angular = __webpack_require__(5);
+	
+	var _angular2 = _interopRequireDefault(_angular);
+	
+	var _signinComponent = __webpack_require__(25);
+	
+	var _signinComponent2 = _interopRequireDefault(_signinComponent);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	exports.default = _angular2.default.module('viewSighin', []).config(function ($stateProvider) {
+	  $stateProvider.state('signin', _signinComponent2.default);
+	}).name;
+
+/***/ },
+/* 25 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _signinView = __webpack_require__(26);
+	
+	var _signinView2 = _interopRequireDefault(_signinView);
+	
+	var _signinController = __webpack_require__(27);
+	
+	var _signinController2 = _interopRequireDefault(_signinController);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	exports.default = {
+	  url: '/signin',
+	  controller: _signinController2.default,
+	  template: _signinView2.default,
+	  controllerAs: 'signinCtrl'
+	};
+
+/***/ },
+/* 26 */
+/***/ function(module, exports) {
+
+	module.exports = "<script src=\"https://apis.google.com/js/platform.js\" async defer></script>\r\n<script src=\"https://code.jquery.com/jquery-3.1.0.min.js\"></script>\r\n\r\n<br/><br/><br/>\r\n<i>Not worked yet. </i> Go to: <a href=\"http://localhost:9000/signin.html\">http://localhost:9000/signin.html</a>\r\n<br/><br/><br/>\r\n<div class=\"g-signin2\" data-onsuccess=\"onSignIn\">SIGNIN</div>\r\n\r\n<a href=\"#\" onclick=\"signOut();\">Sign out</a>\r\n";
+
+/***/ },
+/* 27 */
+/***/ function(module, exports) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	var signinController = function signinController(cardsService, setService, $state) {
+	  _classCallCheck(this, signinController);
+	
+	  console.log('signin.js');
+	
+	  function onSignIn(googleUser) {
+	    var profile = googleUser.getBasicProfile();
+	    console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+	    console.log('Name: ' + profile.getName());
+	    console.log('Image URL: ' + profile.getImageUrl());
+	    console.log('Email: ' + profile.getEmail());
+	    console.log('id_token: ' + googleUser.getAuthResponse().id_token);
+	    $.ajax({
+	      type: "POST",
+	      url: '/api/user/login/google',
+	      dataType: 'json',
+	      contentType: "application/json; charset=utf-8",
+	      data: JSON.stringify({ "idToken": googleUser.getAuthResponse().id_token }),
+	      success: function success() {
+	        alert("Thanks!");
+	      }
+	    });
+	  }
+	
+	  function signOut() {
+	    var auth2 = gapi.auth2.getAuthInstance();
+	    auth2.signOut().then(function () {
+	      console.log('User signed out.');
+	    });
+	  }
+	};
+	
+	exports.default = signinController;
+
+/***/ },
+/* 28 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -38042,7 +38215,7 @@ var home =
 	};
 
 /***/ },
-/* 24 */
+/* 29 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38051,7 +38224,7 @@ var home =
 	  value: true
 	});
 	
-	var _footerComponent = __webpack_require__(25);
+	var _footerComponent = __webpack_require__(30);
 	
 	var _footerComponent2 = _interopRequireDefault(_footerComponent);
 
@@ -38060,7 +38233,7 @@ var home =
 	exports.default = _footerComponent2.default;
 
 /***/ },
-/* 25 */
+/* 30 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38073,7 +38246,7 @@ var home =
 	
 	var _angular2 = _interopRequireDefault(_angular);
 	
-	var _footerTmpl = __webpack_require__(26);
+	var _footerTmpl = __webpack_require__(31);
 	
 	var _footerTmpl2 = _interopRequireDefault(_footerTmpl);
 	
@@ -38084,13 +38257,13 @@ var home =
 	}).name;
 
 /***/ },
-/* 26 */
+/* 31 */
 /***/ function(module, exports) {
 
 	module.exports = "<div>footer!</div>";
 
 /***/ },
-/* 27 */
+/* 32 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38099,7 +38272,7 @@ var home =
 	  value: true
 	});
 	
-	var _headerComponent = __webpack_require__(28);
+	var _headerComponent = __webpack_require__(33);
 	
 	var _headerComponent2 = _interopRequireDefault(_headerComponent);
 
@@ -38108,7 +38281,7 @@ var home =
 	exports.default = _headerComponent2.default;
 
 /***/ },
-/* 28 */
+/* 33 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38121,7 +38294,7 @@ var home =
 	
 	var _angular2 = _interopRequireDefault(_angular);
 	
-	var _headerTmpl = __webpack_require__(29);
+	var _headerTmpl = __webpack_require__(34);
 	
 	var _headerTmpl2 = _interopRequireDefault(_headerTmpl);
 	
@@ -38132,10 +38305,10 @@ var home =
 	}).name;
 
 /***/ },
-/* 29 */
+/* 34 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"header\">\r\n  <div class=\"logo\">FLASH-CARDS</div>\r\n  <div class=\"login\">\r\n    <div class=\"user\">User Name</div>\r\n    <button>Logoff</button>\r\n  </div>\r\n</div>";
+	module.exports = "<div class=\"header\">\r\n  <div class=\"logo\">FLASH-CARDS</div>\r\n  <div class=\"login\">\r\n    <div class=\"user\">User Name</div>\r\n    <button ui-sref=\"signin\">Login</button>\r\n  </div>\r\n</div>";
 
 /***/ }
 /******/ ]);
