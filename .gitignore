@@ -58,5 +58,8 @@ buildNumber.properties
 .idea/
 flashcards.iml
 
+
 # Dependency directories
 node_modules
+
+build
