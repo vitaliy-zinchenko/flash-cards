@@ -48,12 +48,10 @@ export default class cardsetController {
     this.saveCards = (cards) => {
 // send temp array to server
       cardsService.addCards( id, cards ).$promise.then(data => {
-        data.forEach((item, i) => {
-          this.cards.push(item);
-        })
+        this.newCards = [];
+        Array.push.apply(this.cards, data);
       });
 // and clean temp array
-      this.newCards = [];
     };
 
 // TODO: helper function. Need refactor
