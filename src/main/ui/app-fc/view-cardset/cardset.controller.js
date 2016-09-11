@@ -4,13 +4,14 @@ export default class cardsetController {
 
     this.currentSet = null;
     this.newCards = [];
+    this.cards = []; //TODO hotfix without this angular.js:13920 TypeError: Cannot read property 'push' of undefined. During saving new card in new card set
 
     var page = 0;
     var size = 9999999;
     var id = $state.params.id;
 
 //get existing cards
-    if( id && id != 'new') {
+    if( id && id != 'new') { //TODO is it possible to avoid chis check?
       this.currentSet = 'set'; //TODO: get particular set by id
       this.cards = cardsService.getAll(id, page, size);
     }
@@ -21,6 +22,7 @@ export default class cardsetController {
         console.log('Create new set:');
         console.log(data);
         this.currentSet = data;
+        id = data.id; //TODO this is hotfix. without this one new cards for new cards set are sent to /api/card-set/new/cards/batch
       });
     };
 

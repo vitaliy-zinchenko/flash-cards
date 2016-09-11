@@ -3,16 +3,20 @@
 const NODE_ENV = process.env.NODE_ENV || 'development'; //TODO: 'NODE_ENV' is not recognized as an internal or external command...
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
 const path  = require('path');
 
 const srcPath    = path.join(__dirname, 'app-fc');
-//const dstPath    = path.join(__dirname, '/build');
+const dstHomePath    = path.join(__dirname, '/../resources');
+const dstPath    = path.join(dstHomePath, '/static');
 
+console.log("Running Webpack with NODE_ENV=" + NODE_ENV)
 
 module.exports = {
   entry: path.join(srcPath, 'app.js'),
   output: {
-    path:  __dirname + '/build',
+    path:  dstPath,
     filename: "app.js",
     library: "home"
   },
@@ -45,6 +49,11 @@ module.exports = {
   },
 
   plugins: [
+    new CleanWebpackPlugin(['static'], {
+      root: dstHomePath,
+      verbose: true,
+      dry: false
+    }),
     new webpack.NoErrorsPlugin(),
     new HtmlWebpackPlugin({
       inject  : true,
@@ -56,7 +65,8 @@ module.exports = {
       inject  : true,
       hash    : true,
       template: 'app-fc/signin.html'
-    })
+    }),
+    new CopyWebpackPlugin([{ from: 'app-fc/signin.js' }]) //TODO remove after loging page implementation
   ],
 
   devServer: {
@@ -74,6 +84,7 @@ module.exports = {
 };
 
 if (NODE_ENV == 'production') {  //TODO: not work yet. Need fixed 'NODE_ENV'
+
   module.exports.plugins.push(
     new webpack.optimize.UglifyJsPlugin({
       compress: {

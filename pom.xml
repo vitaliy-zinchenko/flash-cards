@@ -244,9 +244,49 @@
                     <password>${postgresql.password}</password>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>1.4.0</version>
+                <executions>
+                    <execution>
+                        <id>install dependencies</id>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <workingDirectory>${basedir}/src/main/ui</workingDirectory>
+                            <executable>npm</executable>
+                            <arguments>
+                                <argument>i</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>webpack</id>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                        <configuration>
+                            <workingDirectory>${basedir}/src/main/ui</workingDirectory>
+                            <executable>webpack</executable>
+                            <environmentVariables>
+                                <NODE_ENV>build</NODE_ENV>
+                            </environmentVariables>
+                            <arguments>
+                                <argument>--progress</argument>
+                            </arguments>
+                        </configuration>
+                    </execution>
+
+                </executions>
+            </plugin>
+
         </plugins>
     </build>
-
 
     <profiles>
         <profile>

@@ -63,3 +63,4 @@ flashcards.iml
 node_modules
 
 build
+/src/main/resources/static/
