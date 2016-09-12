@@ -74,8 +74,8 @@ module.exports = {
     port : 9000,
     contentBase: __dirname + "/app-fc",
     proxy: [{
-        path: /api/,
-        target: 'http://104.236.116.198:9000',
+        path: '/api',
+        target: 'http://flashcards-dev.xyz',
         secure: false,
         changeOrigin: true
       }]
