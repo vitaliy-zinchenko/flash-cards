@@ -1,5 +1,5 @@
 export default function ( $stateProvider, $urlRouterProvider, $locationProvider ) {
-  //'ngInject'; // TODO: use ng-annotate
+  /* @ngInject */  // TODO: use ng-annotate
 
   $locationProvider.html5Mode( {
     enabled: true,

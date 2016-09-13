@@ -1,4 +1,5 @@
 export default ($resource) => {
+  /* @ngInject */
   const service = $resource('/api/card-set', { page:'@page', size:'@size' });
 
   service.getAll = (page, size) => {

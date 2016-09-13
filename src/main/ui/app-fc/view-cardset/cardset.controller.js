@@ -1,4 +1,5 @@
 export default class cardsetController {
+  /* @ngInject */
   constructor(cardsService, setService, $state) {
     this.name = 'cardsetController';
 

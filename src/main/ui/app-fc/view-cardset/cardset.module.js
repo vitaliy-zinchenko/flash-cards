@@ -7,7 +7,7 @@ import setService from '../view-sets/model-sets.service.js';
 
 
 export default angular.module('viewCardSet', [])
-  .config($stateProvider => {
+  .config(/* @ngInject */ $stateProvider => {
     $stateProvider
       .state('cardset', viewComponent)
       .state('cardset-new', cardsetNewComponent);

@@ -1,17 +1,17 @@
 'use strict';
 
-const NODE_ENV = process.env.NODE_ENV || 'development'; //TODO: 'NODE_ENV' is not recognized as an internal or external command...
+const NODE_ENV = process.env.NODE_ENV || 'development';
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const path  = require('path');
 
-const srcPath    = path.join(__dirname, 'app-fc');
-const dstHomePath    = path.join(__dirname, '/../resources');
-const dstPath    = path.join(dstHomePath, '/static');
+const srcPath     = path.join(__dirname, 'app-fc');
+const dstHomePath = path.join(__dirname, '/../resources');
+const dstPath     = path.join(dstHomePath, '/static');
 
-console.log("Running Webpack with NODE_ENV=" + NODE_ENV)
+console.log("Running Webpack with NODE_ENV=" + NODE_ENV);
 
 module.exports = {
   entry: path.join(srcPath, 'app.js'),
@@ -83,7 +83,7 @@ module.exports = {
 
 };
 
-if (NODE_ENV == 'production') {  //TODO: not work yet. Need fixed 'NODE_ENV'
+if (NODE_ENV == 'production') {
 
   module.exports.plugins.push(
     new webpack.optimize.UglifyJsPlugin({
@@ -91,10 +91,9 @@ if (NODE_ENV == 'production') {  //TODO: not work yet. Need fixed 'NODE_ENV'
         // don't show unreachable variables etc
         warnings:     false,
         drop_console: true,
-        unsafe:       true
+        unused:       true,
+        dead_code:    true
       }
     })
   );
 }
-
-// TODO: minification for production
