@@ -1,4 +1,5 @@
 export default class setsController  {
+  /* @ngInject */
   constructor(setsService, $state) {
 // TODO: get "page" and "size" from URL (or where from?)
     var page = 0;

@@ -1,4 +1,5 @@
 export default class signinController {
+  /* @ngInject */
   constructor(cardsService, setService, $state) {
     console.log('signin.js');
 
