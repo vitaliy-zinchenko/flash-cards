@@ -1,11 +1,8 @@
-<h1>{{cardsetCtrl.name}}</h1>
-
 <div class="cards-container">
-  <form id="add-card">
-    <input type="text" placeholder="Enter Title" id="card-title" ng-model="cardsetCtrl.set.title">
-    <input type="text" placeholder="Enter Description" id="card-desc">
-    <input type="button" value="Create set" ng-click="cardsetCtrl.saveSet(cardsetCtrl.set)">
-  </form>
+
+  <h1>{{cardsetCtrl.name}}</h1>
+
+  <set-title></set-title>
 
   <div class="cards-container" ng-show="cardsetCtrl.currentSet">
     <div class="row header">
