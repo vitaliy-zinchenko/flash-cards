@@ -1,18 +1,20 @@
 export default class setTitleController {
   /* @ngInject */
-  constructor(setService, $state) {
+  constructor($state, setService) {
     var vm = this;
-    //vm.name = 'setTitleController';
-
-    cardsetCtrl.apply(vm, arguments);
-
-    vm.parentName = vm.name;
-
+    vm.name = 'setTitleController';
 
     var id = $state.params.id;
 
     //create new set
     vm.saveSet = (set) => {
+      console.log(set);
+      console.log('saveSet');
+      debugger;
+      console.log(vm.currentSet);
+      vm.currentSet = set;
+
+
       /*setService.createSet(set).$promise.then(data => {
         console.log('Create new set:');
         console.log(data);
@@ -21,7 +23,6 @@ export default class setTitleController {
         id = data.id; //TODO this is hotfix. without this one new cards for new cards set are sent to /api/card-set/new/cards/batch
       });*/
     };
-
 
     };
 }

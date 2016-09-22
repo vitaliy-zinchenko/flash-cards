@@ -5,6 +5,10 @@ export default angular.module('setTitle', [])
   .component('setTitle', {
     controller,
     template,
+    bindings: {
+      currentSet: '=currentSet'
+    },
+    //scope: true,
     controllerAs: 'csCtrl'
   })
   .name;

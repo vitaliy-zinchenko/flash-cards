@@ -23,9 +23,15 @@ module.exports = {
 
   watch: NODE_ENV == 'development',
 
-  devtool: NODE_ENV == 'development' ? "source-map" : null,
+  devtool: NODE_ENV == 'development' ? "inline-source-map" : null,
 
   module: {
+    preLoaders: [
+      {
+        test: /\.js$/,
+        loader: "source-map-loader"
+      }
+    ],
     loaders: [
       {
         test: /\.js$/,
