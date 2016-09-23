@@ -1,11 +1,18 @@
 export default class cardsetController {
   /* @ngInject */
-  constructor(cardsService, $state) {
+  constructor(cardsService, $state, $q) {
+    this._cardsService = cardsService;
+    this.$state = $state;
+
+    this.initialize();
+
     var vm = this;
 
     vm.name = 'cardsetController';
 
-    vm.currentSet = null;
+
+    console.log(vm.currentSet + ` - from set controller(parent)`);
+
     vm.newCards = [];
     vm.cards = []; //TODO hotfix without this angular.js:13920 TypeError: Cannot read property 'push' of undefined. During saving new card in new card set
 
@@ -14,14 +21,14 @@ export default class cardsetController {
     var id = $state.params.id;
 
 //create set
-    vm.saveSet = (set) => {
+/*    vm.saveSet = (set) => {
       setService.createSet(set).$promise.then(data => {
        console.log('Create new set:');
        console.log(data);
        vm.currentSet = data;
        id = data.id; //TODO this is hotfix. without this one new cards for new cards set are sent to /api/card-set/new/cards/batch
        });
-    };
+    };*/
 
 //get existing cards
     if( id && id != 'new') { //TODO is it possible to avoid chis check?
@@ -51,14 +58,14 @@ export default class cardsetController {
       );
     };
 
-    // temp function for convert obj to array
-    vm.tempPrepare = (obj) => { // TODO: remove this when update backend method
+    // temp function for convert obj to array // TODO: remove this when update backend method
+    vm.tempPrepare = (obj) => {
       return [obj];
     };
 
     // save card on server
     vm.saveCards = (cards) => {
-      return new Promise(function(resolve, reject) {
+      return new Promise(function(resolve, reject) { // TODO: use angular promises $q
         cardsService.addCards( id, cards ).$promise.then(data => {
           resolve(data[0]);
         });
@@ -66,4 +73,21 @@ export default class cardsetController {
     };
 
   }
+
+  myMethod() {
+
+  }
+
+  initialize() {
+    this.currentSet = 'vm.test';
+  }
+
+/*  saveCards(cards) {
+    return new Promise(function(resolve, reject) {
+      this._cardsService.addCards( id, cards ).$promise.then(data => {
+        resolve(data[0]);
+      });
+    });
+  }*/
+
 }
