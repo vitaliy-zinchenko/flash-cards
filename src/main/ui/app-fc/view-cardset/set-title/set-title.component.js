@@ -1,14 +1,11 @@
 import template from './set-title.view.html';
 import controller from './set-title.controller.js';
 
-export default angular.module('setTitle', [])
-  .component('setTitle', {
+export default {
     controller,
     template,
     bindings: {
-      currentSet: '=currentSet'
+      currentSet: '='
     },
-    //scope: true,
     controllerAs: 'csCtrl'
-  })
-  .name;
+  };
