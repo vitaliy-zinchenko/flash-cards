@@ -1,8 +1,8 @@
 export default class setTitleController {
   /* @ngInject */
-  constructor($state, setService, $q) {
-    this.$state = $state;
+  constructor(setService, $state) {
     this._setService = setService;
+    this.$state = $state;
 
     this.initialize();
     };

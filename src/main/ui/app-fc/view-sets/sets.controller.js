@@ -1,15 +1,21 @@
 export default class setsController  {
   /* @ngInject */
-  constructor(setsService, $state) {
+  constructor(setService, $state) {
 // TODO: get "page" and "size" from URL (or where from?)
-    var page = 0;
-    var size = 99999;
+    this._setService = setService;
+    this.$state = $state;
+    this.initialize();
+  }
 
-    this.sets = setsService.getAll(page, size);
+  goToSet(set) {
+    this.$state.go('cardset', {id: set.id});
+  }
 
-    this.goToSet = (set) => {
-      $state.go('cardset', {id: set.id});
-    }
+
+  initialize() {
+    this.page = 0;
+    this.size = 99999;
+    this.sets = this._setService.getAll(this.page, this.size);
   }
 }
 
