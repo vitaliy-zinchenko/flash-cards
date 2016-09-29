@@ -2,21 +2,11 @@ export default class setTitleController {
   /* @ngInject */
   constructor($state, setService, $q) {
     this.$state = $state;
-    this.$q = $q;
     this._setService = setService;
 
     this.initialize();
     };
 
-
-
-  /*----------------*/
-  initialize() {
-    this.name = 'setTitleController';
-    this.id = this.$state.params.id;
-  }
-
-  /*----------------*/
 
 //create new set
   saveSet(set) {
@@ -24,9 +14,14 @@ export default class setTitleController {
       console.log('Create new set:');
       console.log(data);
       this.currentSet = data;
-      this.id = data.id; //TODO this is hotfix. without this one new cards for new cards set are sent to /api/card-set/new/cards/batch
+      this.id = data.id; //TODO this is hotfix. !!!*ISN'T WORKING NOW*!!! without this one new cards for new cards set are sent to /api/card-set/new/cards/batch
     });
   };
 
+
+  initialize() {
+    this.name = 'setTitleController';
+    this.id = this.$state.params.id;
+  }
 
 }

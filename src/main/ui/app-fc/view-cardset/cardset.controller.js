@@ -1,9 +1,10 @@
 export default class cardsetController {
   /* @ngInject */
   constructor(cardsService, $state, $q) {
-    var vm = this;
-    vm._cardsService = cardsService;
+    this._cardsService = cardsService;
     this.$state = $state;
+    this.$q = $q;
+
     this.initialize();
   }
 
@@ -35,10 +36,9 @@ export default class cardsetController {
   };
 
   // save card on server
-  saveCards(cards) {
-    return new Promise(function(resolve, reject) {
-      debugger;
-      cardsService.addCards( this.id, cards ).$promise.then(data => {
+  saveCards(cards) { //TODO: implement errorhandler
+    return this.$q( (resolve, reject) => {
+      this._cardsService.addCards( this.id, cards ).$promise.then(data => {
         resolve(data[0]);
       });
     });
