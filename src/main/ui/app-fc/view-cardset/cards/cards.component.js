@@ -1,0 +1,11 @@
+import template from './cards.view.html';
+import controller from './cards.controller.js';
+
+export default {
+    controller,
+    template,
+    bindings: {
+        cards: '='
+    },
+    controllerAs: 'cardsCtrl'
+  };

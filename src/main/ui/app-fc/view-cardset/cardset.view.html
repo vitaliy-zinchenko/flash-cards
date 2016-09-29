@@ -11,21 +11,12 @@
       <div class="ctrls">Some buttons</div>
     </div>
 
-    <div class="row choose-lang">
-      <div class="term">
-        <span class="language">English</span>
-        <span class="language">Russian</span>
-        <span class="language">Choose language</span>
 
-      </div>
-      <div class="definition">
-        <span class="language">English</span>
-        <span class="language">Russian</span>
-        <span class="language">Choose language</span>
-      </div>
-    </div>
+    <language-choice></language-choice>
 
-    <div class="words-container">
+    <cards cards="cardsetCtrl.cards"></cards>
+
+    <!--<div class="words-container">
       <div class="row word exist-cards" ng-repeat="card in cardsetCtrl.cards">
         <div class="term">
           <textarea ng-model="card.word">{{card.word}}</textarea>
@@ -42,6 +33,6 @@
       </div>
 
       <button ng-click="cardsetCtrl.newCard()">New card</button>
-    </div>
+    </div>-->
   </div>
 </div>
