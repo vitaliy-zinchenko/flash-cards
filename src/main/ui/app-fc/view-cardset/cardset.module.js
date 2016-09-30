@@ -7,8 +7,8 @@ import setTitle from './set-title';
 import languageChoice from './language-choice';
 import cards from './cards';
 
-import cardsService from './model-cards.service.js';
-import setService from '../view-sets/model-sets.service.js';
+import cardsService from './../services/cards.service.js';
+import setService from '../services/sets.service.js';
 
 
 export default angular.module('viewCardSet', [])
