@@ -1,2 +1,2 @@
-import module from './sets.module.js';
+import module from './sets-page.module.js';
 export default module;

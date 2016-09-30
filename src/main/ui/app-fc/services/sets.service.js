@@ -3,7 +3,7 @@ export default ($resource) => {
   const service = $resource('/api/card-set', { page:'@page', size:'@size' });
 
   service.getAll = (page, size) => {
-    return service.query({ page: page , size: size });
+    return service.query({ page: page , size: size }).$promise;
   };
 
   service.createSet = (set) => {

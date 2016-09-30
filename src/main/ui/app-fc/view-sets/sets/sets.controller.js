@@ -1,6 +1,8 @@
 export default class setsController  {
   /* @ngInject */
   constructor(setService, $state) {
+    console.log('setsController');
+
 // TODO: get "page" and "size" from URL (or where from?)
     this._setService = setService;
     this.$state = $state;
@@ -15,7 +17,9 @@ export default class setsController  {
   initialize() {
     this.page = 0;
     this.size = 99999;
-    this.sets = this._setService.getAll(this.page, this.size);
+    this._setService.getAll(this.page, this.size)
+      .then(data => this.sets = data);
+
   }
 }
 
