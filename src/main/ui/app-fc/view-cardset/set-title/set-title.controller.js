@@ -8,20 +8,20 @@ export default class setTitleController {
     };
 
 
+  initialize() {
+    this.id = this.$state.params.id;
+    this.name = 'Set: ' + this.id;
+  }
+
+
 //create new set
   saveSet(set) {
-    this._setService.createSet(set).$promise.then(data => {
+    this._setService.createSet(set).then(data => {
       console.log('Create new set:');
       console.log(data);
       this.currentSet = data;
-      this.id = data.id; //TODO this is hotfix. !!!*ISN'T WORKING NOW*!!! without this one new cards for new cards set are sent to /api/card-set/new/cards/batch
+      this.$state.go('cardset', {id: data.id});
     });
   };
-
-
-  initialize() {
-    this.name = 'setTitleController';
-    this.id = this.$state.params.id;
-  }
 
 }

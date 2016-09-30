@@ -11,7 +11,7 @@ export default class cardsetController {
 
   initialize() {
     this.name = 'cardsetController';
-    this.currentSet = true;
+    this.currentSet = null;
   }
 
 }

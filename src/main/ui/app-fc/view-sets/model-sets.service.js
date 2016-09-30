@@ -7,7 +7,7 @@ export default ($resource) => {
   };
 
   service.createSet = (set) => {
-    return service.save(set);
+    return service.save(set).$promise;
   };
 
   return service;

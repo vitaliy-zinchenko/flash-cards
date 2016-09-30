@@ -1,7 +1,7 @@
 export default ($resource) => {
   /* @ngInject */
 //settings
-  const mainUrl = 'api/card-set/:id/cards';
+  const mainUrl = '/api/card-set/:id/cards';
   const saveButchUrl = '/api/card-set/:id/cards/batch';
   const params = {id: '@id', page:'@page', size:'@size'};
 

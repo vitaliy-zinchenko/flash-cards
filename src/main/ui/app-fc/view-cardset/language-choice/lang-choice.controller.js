@@ -3,8 +3,6 @@ export default class langChoiceController {
   constructor($state) {
     this.$state = $state;
     this.initialize();
-
-    console.log('langChoiceController');
     };
 
 
