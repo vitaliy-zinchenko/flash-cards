@@ -4,8 +4,5 @@ import controller from './cards.controller.js';
 export default {
     controller,
     template,
-    bindings: {
-        cards: '='
-    },
     controllerAs: 'cardsCtrl'
   };

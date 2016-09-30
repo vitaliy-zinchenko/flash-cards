@@ -17,7 +17,7 @@ export default ($resource) => {
 
 //methods
   service.getAll = (id, page, size) => {
-    return service.query({ id: id, page: page , size: size });
+    return service.query({ id: id, page: page , size: size }).$promise;
   };
 
   service.addCards = (id, cards) => {
