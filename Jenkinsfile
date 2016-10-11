@@ -1,4 +1,4 @@
 node {
-	stage "qqqqqqqq"
-    echo "wwwwwwwwwcc"
+	stage "Build maven"
+    sh "mvn clean package"
 }
