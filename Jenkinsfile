@@ -1,3 +1,4 @@
 node {
-	echo "qweqweqweqwe"
+	stage "qqqqqqqq"
+    echo "wwwwwwwww"
 }
