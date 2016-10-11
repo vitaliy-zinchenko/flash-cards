@@ -10,7 +10,8 @@ export default angular.module('viewSighin', [satellizer])
       .state('signin', viewComponent);
 
     $authProvider.google({
-      clientId: '563875364656-v4t1v5t4agj9p57m35q9t6f9rgrn0r02'
+      clientId: '563875364656-v4t1v5t4agj9p57m35q9t6f9rgrn0r02.apps.googleusercontent.com',
+      url: '/api/user/login/google'
     });
 
   })
