@@ -1,4 +1,4 @@
 node {
 	stage "qqqqqqqq"
-    echo "wwwwwwwww"
+    echo "wwwwwwwwwcc"
 }
