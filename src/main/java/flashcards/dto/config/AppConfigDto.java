@@ -1,6 +1,6 @@
 package flashcards.dto.config;
 
-public class AppConfigurationDto {
+public class AppConfigDto {
 
     private String googleClientId;
 
@@ -8,7 +8,7 @@ public class AppConfigurationDto {
         return googleClientId;
     }
 
-    public AppConfigurationDto setGoogleClientId(String googleClientId) {
+    public AppConfigDto setGoogleClientId(String googleClientId) {
         this.googleClientId = googleClientId;
         return this;
     }
