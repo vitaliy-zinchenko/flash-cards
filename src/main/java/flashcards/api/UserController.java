@@ -12,6 +12,7 @@ import flashcards.dto.UserDto;
 import flashcards.dto.login.BaseLoginDto;
 import flashcards.dto.login.BaseRegisterDto;
 import flashcards.dto.login.GoogleLoginDto;
+import flashcards.dto.login.LoginDto;
 import flashcards.mapper.UserMapper;
 import flashcards.service.UserService;
 
@@ -36,9 +37,8 @@ public class UserController {
         userService.login(loginDto);
     }
 
-    @ResponseStatus(code = HttpStatus.NO_CONTENT)
     @RequestMapping(value = "/login/google", method = RequestMethod.POST)
-    public void login(@RequestBody GoogleLoginDto loginDto) {
+    public void login(@RequestBody LoginDto loginDto) {
         userService.login(loginDto);
     }
 

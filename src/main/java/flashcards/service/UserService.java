@@ -19,6 +19,7 @@ import flashcards.domain.UserInfo;
 import flashcards.dto.login.BaseLoginDto;
 import flashcards.dto.login.BaseRegisterDto;
 import flashcards.dto.login.GoogleLoginDto;
+import flashcards.dto.login.LoginDto;
 import flashcards.exception.AuthenticationException;
 import flashcards.mapper.UserMapper;
 import flashcards.repository.UserRepository;
@@ -72,6 +73,11 @@ public class UserService {
         UserInfo user = getUser(loginDto);
         login(user);
         return user;
+    }
+
+    public UserInfo login(LoginDto loginDto) {
+
+        return null;
     }
 
     private UserInfo getUser(GoogleLoginDto loginDto) {
