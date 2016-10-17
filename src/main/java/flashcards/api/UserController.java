@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import flashcards.domain.UserInfo;
 import flashcards.dto.UserDto;
 import flashcards.dto.login.BaseLoginDto;
 import flashcards.dto.login.BaseRegisterDto;
@@ -38,8 +39,8 @@ public class UserController {
     }
 
     @RequestMapping(value = "/login/google", method = RequestMethod.POST)
-    public void login(@RequestBody LoginDto loginDto) {
-        userService.login(loginDto);
+    public UserDto login(@RequestBody LoginDto loginDto) {
+        return userMapper.toUserDto(userService.login(loginDto));
     }
 
     @ResponseStatus(code = HttpStatus.NO_CONTENT)

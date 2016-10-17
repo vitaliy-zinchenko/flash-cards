@@ -1,10 +1,13 @@
 package flashcards.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Index;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -13,6 +16,12 @@ public class UserInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
+
+    private String externalId;
+
+    @ManyToOne
+    @JoinColumn(name = "user_provider_id")
+    private UserProvider userProvider;
 
     private String email;
 
@@ -64,6 +73,24 @@ public class UserInfo {
 
     public UserInfo setPassword(String password) {
         this.password = password;
+        return this;
+    }
+
+    public String getExternalId() {
+        return externalId;
+    }
+
+    public UserInfo setExternalId(String externalId) {
+        this.externalId = externalId;
+        return this;
+    }
+
+    public UserProvider getUserProvider() {
+        return userProvider;
+    }
+
+    public UserInfo setUserProvider(UserProvider userProvider) {
+        this.userProvider = userProvider;
         return this;
     }
 }

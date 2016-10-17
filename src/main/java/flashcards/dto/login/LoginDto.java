@@ -6,6 +6,15 @@ public class LoginDto {
     String redirectUri;
     String code;
 
+    @Override
+    public String toString() {
+        return "LoginDto{" +
+                "clientId='" + clientId + '\'' +
+                ", redirectUri='" + redirectUri + '\'' +
+                ", code='" + code + '\'' +
+                '}';
+    }
+
     public String getClientId() {
         return clientId;
     }
