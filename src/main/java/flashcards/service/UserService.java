@@ -97,7 +97,9 @@ public class UserService {
         ResponseEntity<GoogleUserDto> response = restTemplate.exchange("https://www.googleapis.com/plus/v1/people/me",
                 HttpMethod.GET, request, GoogleUserDto.class);
 
-        return getUser(response.getBody());
+        UserInfo user = getUser(response.getBody());
+        login(user);
+        return user;
     }
 
     private String getAccessToken(LoginDto loginDto) {
