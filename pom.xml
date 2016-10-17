@@ -117,7 +117,7 @@
         <dependency>
             <groupId>org.liquibase</groupId>
             <artifactId>liquibase-core</artifactId>
-            <version>3.3.0</version>
+            <version>3.5.3</version>
         </dependency>
 
     </dependencies>
@@ -298,10 +298,9 @@
                                 <configuration>
                                     <workingDirectory>${basedir}/src/main/ui</workingDirectory>
                                     <executable>webpack</executable>
-                                    <environmentVariables>
-                                        <NODE_ENV>build</NODE_ENV>
-                                    </environmentVariables>
                                     <arguments>
+                                        <argument>--mode</argument>
+                                        <argument>build</argument>
                                         <argument>--progress</argument>
                                     </arguments>
                                 </configuration>

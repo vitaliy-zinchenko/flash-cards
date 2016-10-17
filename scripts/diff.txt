@@ -1,0 +1,19 @@
+liquibase.bat^
+  --driver=org.postgresql.Driver^
+  --url=jdbc:postgresql://localhost:5432/flash_cards_0001^
+  --username=postgres^
+  --password=password^
+  --referenceUrl=jdbc:postgresql://localhost:5432/flash_cards_0002^
+  --referenceUsername=postgres^
+  --referencePassword=password^
+  diffChangelog^
+    > 0002.xml
+
+liquibase.bat^
+    --driver=org.postgresql.Driver^
+    --url=offline:postgresql^
+    --username=postgres^
+    --password=password^
+    --changeLogFile=0002.xml^
+    updateSQL^
+    > 0002.sql

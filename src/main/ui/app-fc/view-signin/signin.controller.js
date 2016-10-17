@@ -1,6 +1,6 @@
 export default class signinController {
   /* @ngInject */
-  constructor($scope, $auth) {
+  constructor($scope, $auth, $state) {
     console.log('signin.js');
 
     this.authenticate = function(provider) {
@@ -9,7 +9,7 @@ export default class signinController {
       $auth.authenticate(provider).then(function(response) {
           // Signed in with Google.
           console.log(response);
-
+          $state.go('sets');
         })
         .catch(function(response) {
           // Something went wrong.
