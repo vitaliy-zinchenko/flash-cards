@@ -1,6 +1,14 @@
 'use strict';
 
-const NODE_ENV = process.env.NODE_ENV || 'development';
+// Parsing command line arguments
+var argv = require('minimist')(process.argv.slice(1));
+console.log("Command: " + JSON.stringify(argv));
+
+// Defaults variables
+const NODE_ENV = argv.mode || 'development';
+const DEV_PORT = argv.dev_port || 9000;
+const PROXY_TARGET = argv.proxy_target || 'http://flashcards-dev.xyz';
+
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -77,11 +85,11 @@ module.exports = {
 
   devServer: {
     host: 'localhost',
-    port : 9000,
+    port : DEV_PORT,
     contentBase: __dirname + "/app-fc",
     proxy: [{
         path: '/api',
-        target: 'http://flashcards-dev.xyz',
+        target: PROXY_TARGET,
         secure: false,
         changeOrigin: true
       }]
@@ -90,7 +98,6 @@ module.exports = {
 };
 
 if (NODE_ENV == 'production') {
-
   module.exports.plugins.push(
     new webpack.optimize.UglifyJsPlugin({
       compress: {
