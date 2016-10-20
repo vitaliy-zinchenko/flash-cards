@@ -4,6 +4,12 @@ app:
     - postgres_database
   ports:
     - "80:9000"
+app:
+  image: flashcards_local_ui
+  links:
+    - postgres_database
+  ports:
+    - "9000:9000"
 postgres_database:
   restart: always
   image: sameersbn/postgresql:9.5-2
