@@ -270,13 +270,20 @@
                         <configuration>
                             <imageName>${project.name}</imageName>
                             <baseImage>java:8</baseImage>
-                            <entryPoint>["java", "-jar", "-Dspring.profiles.active=qa", "/${project.build.finalName}.jar"]</entryPoint>
+                            <!--<entryPoint>["sh", "-c", "java", "-jar", "-Dspring.profiles.active=$FC_PROFILE", "/${project.build.finalName}.jar"]</entryPoint>-->
+                            <!--<entryPoint>["sh", "-c", "echo", "&#45;&#45;&ndash;&gt; $FC_PROFILE"]</entryPoint>-->
+                            <entryPoint>["/entrypoint.sh"]</entryPoint>
                             <!-- copy the service's jar file from target into the root directory of the image -->
                             <resources>
                                 <resource>
                                     <targetPath>/</targetPath>
                                     <directory>${project.build.directory}</directory>
                                     <include>${project.build.finalName}.jar</include>
+                                </resource>
+                                <resource>
+                                    <targetPath>/</targetPath>
+                                    <directory>${project.basedir}/docker</directory>
+                                    <include>entrypoint.sh</include>
                                 </resource>
                             </resources>
                         </configuration>

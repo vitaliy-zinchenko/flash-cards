@@ -4,12 +4,16 @@ app:
     - postgres_database
   ports:
     - "80:9000"
+  environment:
+    - FC_PROFILE=qa
 app:
-  image: flashcards_local_ui
+  image: flashcards
   links:
     - postgres_database
   ports:
     - "9000:9000"
+  environment:
+    - FC_PROFILE=local-ui
 postgres_database:
   restart: always
   image: sameersbn/postgresql:9.5-2
