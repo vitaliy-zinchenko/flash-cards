@@ -1,19 +1,11 @@
-app_qa:
-  image: flashcards
-  links:
-    - postgres_database
-  ports:
-    - "80:9000"
-  environment:
-    - FC_PROFILE=qa
 app_dev:
   image: flashcards
   links:
     - postgres_database
   ports:
-    - "9000:9000"
+    - "${FC_PORT}:9000"
   environment:
-    - FC_PROFILE=dev
+    - FC_PROFILE=${FC_PROFILE}
 postgres_database:
   restart: always
   image: sameersbn/postgresql:9.5-2
