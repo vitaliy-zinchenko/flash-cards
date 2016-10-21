@@ -254,6 +254,7 @@
         <profile>
             <id>build-docker-image</id>
             <build>
+                <finalName>flashcards</finalName>
                 <plugins>
                     <plugin>
                         <groupId>com.spotify</groupId>
@@ -278,7 +279,7 @@
                                 <resource>
                                     <targetPath>/</targetPath>
                                     <directory>${project.build.directory}</directory>
-                                    <include>${project.build.finalName}.jar</include>
+                                    <include>flashcards.jar</include>
                                 </resource>
                                 <resource>
                                     <targetPath>/</targetPath>

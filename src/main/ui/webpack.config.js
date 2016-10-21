@@ -7,7 +7,7 @@ console.log("Command: " + JSON.stringify(argv));
 // Defaults variables
 const NODE_ENV = argv.mode || 'development';
 const DEV_PORT = argv.dev_port || 9000;
-const PROXY_TARGET = argv.proxy_target || 'http://flashcards-dev.xyz';
+const PROXY_TARGET = argv.proxy_target || 'http://flashcards-dev.xyz:9000';
 
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
