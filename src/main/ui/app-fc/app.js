@@ -29,7 +29,7 @@ var fcApp = angular
   .config(routes)
   .controller('mainController', mainController);
 
-fetchAppConfig().then(bootstrapApplication)
+fetchAppConfig().then(bootstrapApplication);
 
 function mainController() { //test code
   console.log('main app');
@@ -50,7 +50,7 @@ function fetchAppConfig() {
 
 function bootstrapApplication() {
     angular.element(document).ready(function() {
-        console.log("Bootstrapping App...")
+        console.log("Bootstrapping App...");
         angular.bootstrap(document, ["fcApp"]);
         console.log("Bootstrapped App")
     });

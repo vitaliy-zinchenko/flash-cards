@@ -15,9 +15,14 @@ export default ($resource) => {
 
   const service = $resource(mainUrl, params, actions);
 
+ //var conf;  EXAMPLE
+
 //methods
   service.getAll = (id, page, size) => {
-    return service.query({ id: id, page: page , size: size }).$promise;
+    return service.query({ id: id, page: page , size: size }).$promise; //.then(function (res){ EXAMPLE
+      //conf = res.data;
+      //defer.resolve();
+    //});
   };
 
   service.addCards = (id, cards) => {
