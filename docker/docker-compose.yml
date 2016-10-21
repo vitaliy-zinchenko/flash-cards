@@ -1,4 +1,4 @@
-app:
+app_qa:
   image: flashcards
   links:
     - postgres_database
@@ -6,7 +6,7 @@ app:
     - "80:9000"
   environment:
     - FC_PROFILE=qa
-app:
+app_dev:
   image: flashcards
   links:
     - postgres_database
