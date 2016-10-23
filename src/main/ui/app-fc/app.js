@@ -6,10 +6,14 @@ import styles from './styles/all.css';
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import ngResource from 'angular-resource';
+import ngStorage from 'ng-storage'
 
 import viewSets from './view-sets';
 import viewCardSet from './view-cardset';
 import viewSignin from './view-signin';
+
+import translateTraining from './trainings/translate';
+import matchingTraining from './trainings/matching';
 
 import routes from './routes';
 import footer from './components/footer';
@@ -20,9 +24,12 @@ var fcApp = angular
   .module( 'fcApp', [
     uiRouter,
     ngResource,
+    ngStorage,
     viewSets,
     viewCardSet,
     viewSignin,
+    translateTraining,
+    matchingTraining,
     footer,
     header
   ] )

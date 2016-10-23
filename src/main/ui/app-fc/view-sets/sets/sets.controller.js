@@ -1,6 +1,8 @@
+
+
 export default class setsController  {
   /* @ngInject */
-  constructor(setService, $state) {
+  constructor(setService, $state, $sessionStorage) {
     console.log('setsController');
 
 // TODO: get "page" and "size" from URL (or where from?)
@@ -13,6 +15,10 @@ export default class setsController  {
     this.$state.go('cardset', {id: set.id});
   }
 
+  goToTranslate() {
+  $sessionStorage.test = "ttt"
+    this.$state.go('training-translate');
+  }
 
   initialize() {
     this.page = 0;
@@ -20,6 +26,10 @@ export default class setsController  {
     this._setService.getAll(this.page, this.size)
       .then(data => this.sets = data);
 
+  }
+
+  _getMarkedIds() {
+    return [40]
   }
 }
 

@@ -8,6 +8,10 @@ export default class setsPageController  {
     this.initialize();
   }
 
+//  goToTranslate() {
+//    this.$state.go('training-translate');
+//  }
+
   initialize() {
 
   }
