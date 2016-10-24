@@ -8,6 +8,7 @@ export default class setsController  {
 // TODO: get "page" and "size" from URL (or where from?)
     this._setService = setService;
     this.$state = $state;
+    this.$sessionStorage = $sessionStorage;
     this.initialize();
   }
 
@@ -16,7 +17,7 @@ export default class setsController  {
   }
 
   goToTranslate() {
-  $sessionStorage.test = "ttt"
+    this.$sessionStorage.test = "ttt"
     this.$state.go('training-translate');
   }
 
