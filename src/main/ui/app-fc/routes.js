@@ -1,4 +1,4 @@
-export default function ( $stateProvider, $urlRouterProvider, $locationProvider ) {
+export default function ( $stateProvider, $urlRouterProvider, $locationProvider, localStorageServiceProvider ) {
   /* @ngInject */  // TODO: use ng-annotate
 
   $locationProvider.html5Mode( {
@@ -7,5 +7,7 @@ export default function ( $stateProvider, $urlRouterProvider, $locationProvider 
   } );
 
   $urlRouterProvider.otherwise( '/main' );
+
+  localStorageServiceProvider.setPrefix('fc');
 
 }
