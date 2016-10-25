@@ -1,14 +1,12 @@
-
-
 export default class setsController  {
   /* @ngInject */
-  constructor(setService, $state, $sessionStorage) {
+  constructor(setService, $state, localStorageService) {
     console.log('setsController');
 
 // TODO: get "page" and "size" from URL (or where from?)
     this._setService = setService;
     this.$state = $state;
-    this.$sessionStorage = $sessionStorage;
+    this.localStorageService = localStorageService;
     this.initialize();
   }
 
@@ -17,7 +15,7 @@ export default class setsController  {
   }
 
   goToTranslate() {
-    this.$sessionStorage.test = "ttt"
+    this.localStorageService.set('test', 'test');
     this.$state.go('training-translate');
   }
 

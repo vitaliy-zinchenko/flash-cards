@@ -6,7 +6,6 @@ import sets    from './sets';
 import setsService from './../services/sets.service.js';
 
 
-
 export default angular.module('viewSets', [])
   .config(/* @ngInject */ $stateProvider => {
     $stateProvider

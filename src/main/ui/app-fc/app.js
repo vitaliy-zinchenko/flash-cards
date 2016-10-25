@@ -6,7 +6,7 @@ import styles from './styles/all.css';
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import ngResource from 'angular-resource';
-import ngStorage from 'ng-storage'
+import localStorage from 'angular-local-storage';
 
 import viewSets from './view-sets';
 import viewCardSet from './view-cardset';
@@ -24,7 +24,7 @@ var fcApp = angular
   .module( 'fcApp', [
     uiRouter,
     ngResource,
-    ngStorage,
+    localStorage,
     viewSets,
     viewCardSet,
     viewSignin,
@@ -36,7 +36,7 @@ var fcApp = angular
   .config(routes)
   .controller('mainController', mainController);
 
-fetchAppConfig().then(bootstrapApplication)
+fetchAppConfig().then(bootstrapApplication);
 
 function mainController() { //test code
   console.log('main app');
