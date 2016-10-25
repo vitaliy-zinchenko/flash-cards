@@ -18,8 +18,6 @@ export default class signinController {
 
     this.signOut = function(provider) {
       console.log('signOut');
-
-
     };
 
   }

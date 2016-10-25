@@ -7,15 +7,15 @@ export default () => {
     var $http = initInjector.get("$http");
 
     return $http.get("/api/config/app").then(function(response) {
-      console.log('---configService:');
-      console.log(response.data);
-      service.config = response.data;
+      // service.config = response.data; TODO: maybe save to service or another store
+      var config = JSON.stringify(response.data);
+      localStorage.setItem('appConfig', config);
+
     }, function(errorResponse) {
       //TODO handle
       console.log("Error during loading configuration in bootstrap")
     });
   };
-
 
   return service;
 }
