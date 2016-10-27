@@ -18,7 +18,7 @@ export default angular.module('viewSighin', [satellizer])
   .component('viewComponent', viewComponent)
   .name;
 
-
+//TODO review. I think you have to use config service instead of this function
 function getId() {
   var config = localStorage.getItem('appConfig');
   var id = config ? JSON.parse(config).googleClientId : null;
