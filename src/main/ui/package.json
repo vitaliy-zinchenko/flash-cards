@@ -41,6 +41,7 @@
     "angular-local-storage": "^0.5.0",
     "angular-resource": "^1.5.8",
     "angular-ui-router": "^0.3.1",
-    "satellizer": "^0.15.5"
+    "satellizer": "^0.15.5",
+    "angular-lodash": "^0.1.1"
   }
 }
