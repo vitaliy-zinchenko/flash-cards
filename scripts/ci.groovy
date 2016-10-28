@@ -1,5 +1,5 @@
 stage "Build maven & Docker image"
-sh "mvn clean package -P build-docker-image,qa"
+sh "mvn clean package -P build-docker-image,qa,build-ui"
 
 stage "Saving Docker image to tar"
 sh "docker save flashcards > flashcards.tar"
