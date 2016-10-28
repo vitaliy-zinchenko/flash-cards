@@ -27,7 +27,16 @@ export default class setsController  {
     this.size = 99999;
     this._setService.getAll(this.page, this.size)
       .then(data => this.sets = data);
+  }
 
+
+  goToSet(set) {
+    this.$state.go('cardset', {id: set.id});
+  }
+
+  goToTranslate() {
+    this.localStorageService.set = ("ttt", "test");
+    this.$state.go('training-translate');
   }
 
   _getMarkedIds() {
