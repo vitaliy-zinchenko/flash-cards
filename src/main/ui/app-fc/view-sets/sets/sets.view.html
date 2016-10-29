@@ -10,7 +10,7 @@
     <div class="desc">id: {{set.id}}</div>
     <div class="amount">set.amount</div>
     <!--<input type="checkbox" ng-click="sets.Ctrl.markSet(set)">-->
-    <input type="checkbox" ng-model="set.selected" ng-change="setsCtrl.select(set)">
+    <input type="checkbox" ng-model="set.selected" ng-change="setsCtrl.selectChange(set)">
     <button ng-click="setsCtrl.goToSet(set)">View</button>
   </div>
 </div>

@@ -11,9 +11,13 @@ export default class setsController  {
     this.initialize();
   }
 
-  select(set) {
-    console.log('m')
-    this.selectCardSet.selectCardSet(set.id);
+  selectChange(set) {
+    if(set.selected) {
+      this.selectCardSet.selectCardSet(set.id);
+    } else {
+      this.selectCardSet.unSelectCardSet(set.id);
+    }
+
   }
 
   goToSet(set) {
@@ -48,7 +52,7 @@ export default class setsController  {
   }
 
   _markSelectedSets(sets) {
-    var selected = this.selectCardSet.getSelectCardSet();
+    var selected = this.selectCardSet.getSelectedCardSet();
     _.each(sets, (set) => {
       if(_.includes(selected, set.id)) {
         set.selected = true

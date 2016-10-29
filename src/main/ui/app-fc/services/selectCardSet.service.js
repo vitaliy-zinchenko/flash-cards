@@ -2,7 +2,7 @@ export default (localStorageService) => {
   /* @ngInject */
   const service = {};
 
-  const selectedCardSetIdsKey = "selectedCardSetIds";
+  const SELECTED_CARD_SET_IDS_KEY = "selectedCardSetIds";
 
   service.selectCard = (cardId) => {
     localStorageService.set("selectedCardId", cardId)
@@ -13,17 +13,24 @@ export default (localStorageService) => {
   };
 
   service.selectCardSet = (cardSetId) => {
-    var selectedCardSetIds = localStorageService.get(selectedCardSetIdsKey);
+    var selectedCardSetIds = localStorageService.get(SELECTED_CARD_SET_IDS_KEY);
     if(!selectedCardSetIds) {
       selectedCardSetIds = [];
-      localStorageService.set(selectedCardSetIdsKey, selectedCardSetIds);
     }
     selectedCardSetIds.push(cardSetId);
-    localStorageService.set(selectedCardSetIdsKey, selectedCardSetIds);
+    localStorageService.set(SELECTED_CARD_SET_IDS_KEY, selectedCardSetIds);
   };
 
-  service.getSelectCardSet = () => {
-    return localStorageService.get(selectedCardSetIdsKey);
+  service.unSelectCardSet = (cardSetId) => {
+    var selectedCardSetIds = localStorageService.get(SELECTED_CARD_SET_IDS_KEY);
+    if(!_.isEmpty(selectedCardSetIds)) {
+      _.pull(selectedCardSetIds, cardSetId);
+      localStorageService.set(SELECTED_CARD_SET_IDS_KEY, selectedCardSetIds);
+    }
+  };
+
+  service.getSelectedCardSet = () => {
+    return localStorageService.get(SELECTED_CARD_SET_IDS_KEY);
   }
 
   return service;
