@@ -7,7 +7,7 @@ import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import ngResource from 'angular-resource';
 import ngLocalStorage from 'angular-local-storage';
-import ngLodash from 'angular-lodash';
+//import ngLodash from 'angular-lodash';
 
 
 import viewSets from './view-sets';
@@ -28,7 +28,7 @@ var fcApp = angular
     uiRouter,
     ngResource,
     ngLocalStorage,
-    ngLodash,
+//    ngLodash,
     viewSets,
     viewCardSet,
     viewSignin,

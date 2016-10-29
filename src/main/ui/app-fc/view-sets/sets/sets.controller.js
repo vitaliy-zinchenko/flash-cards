@@ -1,6 +1,6 @@
 export default class setsController  {
   /* @ngInject */
-  constructor(setService, $state, localStorageService, selectCardSet, _) {
+  constructor(setService, $state, localStorageService, selectCardSet) {
     console.log('setsController');
 
 // TODO: get "page" and "size" from URL (or where from?)
@@ -30,9 +30,10 @@ export default class setsController  {
   initialize() {
     this.page = 0;
     this.size = 99999;
+    var self = this;
     this._setService.getAll(this.page, this.size)
       .then(sets => {
-        _markSelectedSets(sets);
+        self._markSelectedSets(sets);
         this.sets = sets;
       });
   }
@@ -48,7 +49,7 @@ export default class setsController  {
 
   _markSelectedSets(sets) {
     var selected = this.selectCardSet.getSelectCardSet();
-    _.each(data, (set) => {
+    _.each(sets, (set) => {
       if(_.includes(selected, set.id)) {
         set.selected = true
       }
