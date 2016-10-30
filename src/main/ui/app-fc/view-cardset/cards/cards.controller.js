@@ -1,9 +1,10 @@
 export default class cardsController {
   /* @ngInject */
-  constructor(cardsService, $state, $q) {
+  constructor(cardsService, selectCardSet, $state, $q) {
     this.name = 'cardsController';
 
     this._cardsService = cardsService;
+    this._selectCardSet = selectCardSet;
     this.$state = $state;
     this.$q = $q;
 
@@ -19,11 +20,10 @@ export default class cardsController {
 
     //get existing cards
     if( this.id && this.id != 'new') { //TODO is it possible to avoid chis check?
-//      this.currentSet = 'set'; //TODO: get particular set by id
-
       this._cardsService.getAll(this.id, this.page, this.size)
-        .then(data => {
-          this.cards = data;
+        .then(cards => {
+          this._markSelectedCards(cards);
+          this.cards = cards;
         });
     }
   }
@@ -63,5 +63,22 @@ export default class cardsController {
       });
     });
   };
+
+  selectChange(card) {
+    if(card.selected) {
+      this._selectCardSet.selectCard(this.id, card.id);
+    } else {
+      this._selectCardSet.unSelectCard(this.id, card.id);
+    }
+  }
+
+  _markSelectedCards(cards) {
+    var selected = this._selectCardSet.getSelectCards(this.id);
+    _.each(cards, (card) => {
+      if(_.includes(selected, card.id)) {
+        card.selected = true
+      }
+    });
+  }
 
 }

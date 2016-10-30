@@ -9,6 +9,7 @@ import cards from './cards';
 
 import cardsService from './../services/cards.service.js';
 import setService from '../services/sets.service.js';
+import selectCardSet from './../services/selectCardSet.service.js'
 
 
 export default angular.module('viewCardSet', [])
@@ -23,4 +24,5 @@ export default angular.module('viewCardSet', [])
 
   .factory('cardsService', cardsService)
   .factory('setService', setService)
+  .factory('selectCardSet', selectCardSet)
   .name;
