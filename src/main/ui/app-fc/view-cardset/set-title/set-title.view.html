@@ -1,6 +1,6 @@
 <form id="add-card">
   <h2>{{csCtrl.name}}</h2>
-
+  -{{csCtrl.currentSet.title}}-
   <input type="text" placeholder="Enter Title" id="card-title" ng-model="csCtrl.set.title">
   <input type="text" placeholder="Enter Description" id="card-desc">
   <input type="button" value="Create set" ng-click="csCtrl.saveSet(csCtrl.set)">

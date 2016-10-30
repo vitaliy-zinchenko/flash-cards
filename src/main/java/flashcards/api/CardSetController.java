@@ -56,6 +56,14 @@ public class CardSetController {
         return map(cardSets, cardSetMapper::toDto);
     }
 
+    //TODO protect with security. Protect fetching sets from other users.
+    @RequestMapping("/{id}")
+    public CardSetDto getCardSet(
+            @PathVariable("id") Long cardSetId) {
+        CardSet cardSet = cardSetRepository.findOne(cardSetId);
+        return cardSetMapper.toDto(cardSet);
+    }
+
     //TODO protect with security. Protect fetching cards from other users.
     @RequestMapping("/{id}/cards")
     public Collection<CardDto> getCardSetCards(
