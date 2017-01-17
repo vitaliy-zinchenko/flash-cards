@@ -1,0 +1,16 @@
+<div class="sets-container">
+  <!--TODO discuss this buttons-->
+  <div>
+    <button ng-click="setsCtrl.goToTranslate()">Translate</button>
+    <button ui-sref="training-matching">Matching</button>
+  </div>
+  <!--TODO TOASK why does component have loop?-->
+  <div class="set" ng-repeat="set in setsCtrl.sets">
+    <h2 class="title">{{set.title}}</h2>
+    <div class="desc">id: {{set.id}}</div>
+    <div class="amount">set.amount</div>
+    <!--<input type="checkbox" ng-click="sets.Ctrl.markSet(set)">-->
+    <input type="checkbox" ng-model="set.selected" ng-change="setsCtrl.selectChange(set)">
+    <button ng-click="setsCtrl.goToSet(set)">View</button>
+  </div>
+</div>

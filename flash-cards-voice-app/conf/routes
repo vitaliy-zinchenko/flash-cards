@@ -1,0 +1,6 @@
+GET     /voice                           controllers.VoiceController.voice(word: String, lang: String)
+
+GET    /dictionary                      controllers.DictionaryController.get()
+POST   /dictionary                      controllers.DictionaryController.save()
+GET    /test                            controllers.DictionaryController.test()
+
