@@ -47,8 +47,11 @@ export default class setsController  {
   }
 
   goToTranslate() {
-    this.localStorageService.set = ("ttt", "test");
     this.$state.go('training-translate');
+  }
+
+  goToCards() {
+    this.$state.go('cards-training');
   }
 
   _markSelectedSets(sets) {

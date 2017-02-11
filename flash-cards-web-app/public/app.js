@@ -87,19 +87,23 @@ var home =
 	
 	var _matching2 = _interopRequireDefault(_matching);
 	
-	var _routes = __webpack_require__(62);
+	var _cardsTraining = __webpack_require__(62);
+	
+	var _cardsTraining2 = _interopRequireDefault(_cardsTraining);
+	
+	var _routes = __webpack_require__(67);
 	
 	var _routes2 = _interopRequireDefault(_routes);
 	
-	var _footer = __webpack_require__(63);
+	var _footer = __webpack_require__(68);
 	
 	var _footer2 = _interopRequireDefault(_footer);
 	
-	var _header = __webpack_require__(66);
+	var _header = __webpack_require__(71);
 	
 	var _header2 = _interopRequireDefault(_header);
 	
-	var _getConfig = __webpack_require__(69);
+	var _getConfig = __webpack_require__(74);
 	
 	var _getConfig2 = _interopRequireDefault(_getConfig);
 	
@@ -113,7 +117,7 @@ var home =
 	
 	var fcApp = _angular2.default.module('fcApp', [_angularUiRouter2.default, _angularResource2.default, _angularLocalStorage2.default,
 	//    ngLodash,
-	_viewSets2.default, _viewCardset2.default, _viewSignin2.default, _translate2.default, _matching2.default, _footer2.default, _header2.default]).config(_routes2.default).controller('mainController', mainController);
+	_viewSets2.default, _viewCardset2.default, _viewSignin2.default, _translate2.default, _matching2.default, _cardsTraining2.default, _footer2.default, _header2.default]).config(_routes2.default).controller('mainController', mainController);
 	
 	// bootstrap Angular after get configuration
 	(0, _getConfig2.default)().fetchAppConfig().then(bootstrapApplication);
@@ -39682,7 +39686,7 @@ var home =
 /* 19 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"sets-container\">\n  <!--TODO discuss this buttons-->\n  <div>\n    <button ng-click=\"setsCtrl.goToTranslate()\">Translate</button>\n    <button ui-sref=\"training-matching\">Matching</button>\n  </div>\n  <!--TODO TOASK why does component have loop?-->\n  <div class=\"set\" ng-repeat=\"set in setsCtrl.sets\">\n    <h2 class=\"title\">{{set.title}}</h2>\n    <div class=\"desc\">id: {{set.id}}</div>\n    <div class=\"amount\">set.amount</div>\n    <!--<input type=\"checkbox\" ng-click=\"sets.Ctrl.markSet(set)\">-->\n    <input type=\"checkbox\" ng-model=\"set.selected\" ng-change=\"setsCtrl.selectChange(set)\">\n    <button ng-click=\"setsCtrl.goToSet(set)\">View</button>\n  </div>\n</div>";
+	module.exports = "<div class=\"sets-container\">\n  <!--TODO discuss this buttons-->\n  <div>\n    <button ng-click=\"setsCtrl.goToCards()\">Cards</button>\n    <button ng-click=\"setsCtrl.goToTranslate()\">Translate</button>\n    <button ui-sref=\"training-matching\">Matching</button>\n  </div>\n  <!--TODO TOASK why does component have loop?-->\n  <div class=\"set\" ng-repeat=\"set in setsCtrl.sets\">\n    <h2 class=\"title\">{{set.title}}</h2>\n    <div class=\"desc\">id: {{set.id}}</div>\n    <div class=\"amount\">set.amount</div>\n    <!--<input type=\"checkbox\" ng-click=\"sets.Ctrl.markSet(set)\">-->\n    <input type=\"checkbox\" ng-model=\"set.selected\" ng-change=\"setsCtrl.selectChange(set)\">\n    <button ng-click=\"setsCtrl.goToSet(set)\">View</button>\n  </div>\n</div>";
 
 /***/ },
 /* 20 */
@@ -39756,8 +39760,12 @@ var home =
 	  }, {
 	    key: 'goToTranslate',
 	    value: function goToTranslate() {
-	      this.localStorageService.set = ("ttt", "test");
 	      this.$state.go('training-translate');
+	    }
+	  }, {
+	    key: 'goToCards',
+	    value: function goToCards() {
+	      this.$state.go('cards-training');
 	    }
 	  }, {
 	    key: '_markSelectedSets',
@@ -39837,7 +39845,7 @@ var home =
 	  };
 	
 	  service.getSelectedCards = function () {
-	    return localStorageService.get("selectedCardId");
+	    return localStorageService.get(SELECTED_CARD_IDS_KEY);
 	  };
 	
 	  service.selectCardSet = function (cardSetId) {
@@ -40322,7 +40330,7 @@ var home =
 /* 39 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"words-container\">\n  <div class=\"row word exist-cards\" ng-repeat=\"card in cardsCtrl.cards\">\n    <div class=\"term\">\n      <textarea ng-model=\"card.word\">{{card.word}}</textarea>\n    </div>\n    <div class=\"definition\">\n      <textarea ng-model=\"card.translation\">{{card.translation}}</textarea>\n    </div>\n    <div class=\"ctrls\">\n      <span class=\"btn\" ng-click=\"cardsCtrl.createCard(card)\">Save</span>\n      <input type=\"checkbox\" ng-model=\"card.selected\" ng-change=\"cardsCtrl.selectChange(card)\">\n      <span class=\"del\" ng-click=\"cardsCtrl.deleteCard()\">+</span>\n    </div>\n  </div>\n\n  <button ng-click=\"cardsCtrl.newCard()\">New card</button>\n</div>";
+	module.exports = "<div class=\"words-container\">\n  <div class=\"row word exist-cards\" ng-repeat=\"card in cardsCtrl.cards\">\n    <div class=\"term\">\n      <textarea ng-model=\"card.word\">{{card.word}}</textarea>\n    </div>\n    <div class=\"definition\">\n      <textarea ng-model=\"card.translation\">{{card.translation}}</textarea>\n    </div>\n    <div class=\"ctrls\">\n      <span class=\"btn\" ng-click=\"cardsCtrl.saveCard(card)\">Save</span>\n      <input type=\"checkbox\" ng-model=\"card.selected\" ng-change=\"cardsCtrl.selectChange(card)\">\n      <span class=\"del\" ng-click=\"cardsCtrl.deleteCard()\">+</span>\n    </div>\n  </div>\n\n  <button ng-click=\"cardsCtrl.newCard()\">New card</button>\n</div>";
 
 /***/ },
 /* 40 */
@@ -40373,24 +40381,31 @@ var home =
 	      }
 	    }
 	
-	    //cards
+	    // ****************************
+	    //         UI handlers
+	    // ****************************
 	
 	  }, {
 	    key: 'newCard',
 	    value: function newCard() {
-	      var card = {
-	        word: "",
-	        translation: ""
-	      };
-	      this.cards.push(card);
+	      //    var card = {
+	      //      word: "",
+	      //      translation: ""
+	      //    };
+	      this.cards.push({});
 	    }
 	  }, {
-	    key: 'createCard',
-	    value: function createCard(card) {
-	      var sendData = this.tempPrepare(card); // TODO: remove this when update backend method
-	      this.saveCards(sendData).then(function (response) {
-	        return card = response;
-	      });
+	    key: 'saveCard',
+	    value: function saveCard(card) {
+	      if (card.id) {
+	        this._cardsService.update(this.id, card).then(function (response) {
+	          console.log("updated");
+	        });
+	      } else {
+	        this._cardsService.create(this.id, card).then(function (response) {
+	          card.id = response.id;
+	        });
+	      }
 	    }
 	  }, {
 	    key: 'deleteCard',
@@ -40398,31 +40413,18 @@ var home =
 	      console.log('delete card');
 	    }
 	  }, {
-	    key: 'tempPrepare',
-	
-	
-	    // temp function for convert obj to array
-	    value: function tempPrepare(obj) {
-	      // TODO: remove this when update backend method
-	      return [obj];
-	    }
-	  }, {
-	    key: 'saveCards',
-	
-	
-	    // save card on server
-	    value: function saveCards(cards) {
-	      var _this2 = this;
-	
-	      //TODO: implement errorhandler
-	      return this.$q(function (resolve, reject) {
-	        _this2._cardsService.addCards(_this2.id, cards).$promise.then(function (data) {
-	          resolve(data[0]);
-	        });
-	      });
-	    }
-	  }, {
 	    key: 'selectChange',
+	
+	
+	    //  // save card on server
+	    //  saveCards(cards) { //TODO: implement errorhandler
+	    //    return this.$q( (resolve, reject) => {
+	    //      this._cardsService.addCards( this.id, cards ).$promise.then(data => {
+	    //        resolve(data[0]);
+	    //      });
+	    //    });
+	    //  };
+	
 	    value: function selectChange(card) {
 	      if (card.selected) {
 	        this._selectCardSet.selectCard(this.id, card.id);
@@ -40430,6 +40432,11 @@ var home =
 	        this._selectCardSet.unSelectCard(this.id, card.id);
 	      }
 	    }
+	
+	    // ****************************
+	    //         Methods
+	    // ****************************
+	
 	  }, {
 	    key: '_markSelectedCards',
 	    value: function _markSelectedCards(cards) {
@@ -40459,33 +40466,38 @@ var home =
 	
 	exports.default = function ($resource) {
 	  /* @ngInject */
-	  //settings
-	  var mainUrl = '/api/card-set/:id/cards';
-	  var saveButchUrl = '/api/card-set/:id/cards/batch';
-	  var params = { id: '@id', page: '@page', size: '@size' };
 	
-	  var actions = {
-	    'saveButch': {
-	      url: saveButchUrl,
-	      method: 'POST',
+	  var service = $resource('/api/card-set/:setId/cards', { setId: '@setId', cardId: '@cardId', page: '@page', size: '@size' }, {
+	    //                                'saveButch': {
+	    //                                  url: '/api/card-set/:setId/cards/batch',
+	    //                                  method: 'POST',
+	    //                                  isArray: true
+	    //                                },
+	    'byIds': {
+	      url: '/api/card-set/:setId/cards/:cardIds',
+	      method: 'GET',
 	      isArray: true
+	    },
+	    'change': {
+	      url: '/api/card-set/:setId/cards',
+	      method: 'PUT'
 	    }
+	  });
+	
+	  service.getAll = function (setId, page, size) {
+	    return service.query({ setId: setId, page: page, size: size }).$promise;
 	  };
 	
-	  var service = $resource(mainUrl, params, actions);
-	
-	  //var conf;  EXAMPLE
-	
-	  //methods
-	  service.getAll = function (id, page, size) {
-	    return service.query({ id: id, page: page, size: size }).$promise; //.then(function (res){ EXAMPLE
-	    //conf = res.data;
-	    //defer.resolve();
-	    //});
+	  service.create = function (setId, card) {
+	    return service.save({ setId: setId }, card).$promise;
 	  };
 	
-	  service.addCards = function (id, cards) {
-	    return service.saveButch({ id: id }, cards);
+	  service.update = function (setId, card) {
+	    return service.change({ setId: setId }, card).$promise;
+	  };
+	
+	  service.test = function (setId, cardIds) {
+	    return service.byIds({ setId: setId, cardIds: cardIds });
 	  };
 	
 	  return service;
@@ -43638,11 +43650,15 @@ var home =
 	
 	var _translateComponent2 = _interopRequireDefault(_translateComponent);
 	
+	var _selectCardSetService = __webpack_require__(22);
+	
+	var _selectCardSetService2 = _interopRequireDefault(_selectCardSetService);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	exports.default = _angular2.default.module('translate', []).config( /* @ngInject */function ($stateProvider) {
 	  $stateProvider.state('training-translate', _translateComponent2.default);
-	}).name;
+	}).factory('selectCardSet', _selectCardSetService2.default).name;
 
 /***/ },
 /* 54 */
@@ -43680,7 +43696,7 @@ var home =
 /* 55 */
 /***/ function(module, exports) {
 
-	module.exports = "translate {{translateCtrl.testValue}}";
+	module.exports = "translate\n\n<div>\n    <input ng-model=\"translateCtrl.currentCard.translation\">\n    <input ng-model=\"translateCtrl.answer\">\n    <span ng-if=\"show\">{{translateCtrl.currentCard.translation}}</span>\n    <button ng-click=\"translateCtrl.check()\">Check</button>\n    <button ng-click=\"translateCtrl.next()\" ng-disabled=\"translateCtrl.currentCardIndex == translateCtrl.cards.length - 1\">Next</button>\n    <button ng-click=\"show = true\">Don't know</button>\n</div>\n\n<div ng-if=\"translateCtrl.finished\">Well done!</div>\n\n\n";
 
 /***/ },
 /* 56 */
@@ -43698,11 +43714,14 @@ var home =
 	
 	var translateController = function () {
 	  /* @ngInject */
-	  function translateController($state, $q) {
+	  function translateController(cardsService, selectCardSet, $state, $q) {
 	    _classCallCheck(this, translateController);
 	
 	    this.$state = $state;
 	    this.$q = $q;
+	
+	    this._cardsService = cardsService;
+	    this._selectCardSet = selectCardSet;
 	
 	    this.initialize();
 	  }
@@ -43710,9 +43729,40 @@ var home =
 	  _createClass(translateController, [{
 	    key: 'initialize',
 	    value: function initialize() {
-	      this.testValue = 'ttt';
+	      var _this = this;
+	
 	      this.id = this.$state.params.id;
 	      console.log(this.id);
+	
+	      var selected = this._selectCardSet.getSelectedCards();
+	      var setId = Object.keys(selected)[0];
+	
+	      this.cards = this._cardsService.test(setId, selected[setId]);
+	
+	      this.currentCardIndex = 0;
+	
+	      this.cards.$promise.then(function (cards) {
+	        _this.currentCard = cards[_this.currentCardIndex];
+	      });
+	    }
+	  }, {
+	    key: 'check',
+	    value: function check() {
+	      if (this.currentCard.word == this.answer) {
+	        if (this.currentCardIndex == this.cards.length - 1) {
+	          this.finished = true;
+	        } else {
+	          this.next();
+	          this.answer = '';
+	        }
+	      } else {
+	        this.answer = '';
+	      }
+	    }
+	  }, {
+	    key: 'next',
+	    value: function next() {
+	      this.currentCard = this.cards[++this.currentCardIndex];
 	    }
 	  }]);
 	
@@ -43757,11 +43807,15 @@ var home =
 	
 	var _matchingComponent2 = _interopRequireDefault(_matchingComponent);
 	
+	var _selectCardSetService = __webpack_require__(22);
+	
+	var _selectCardSetService2 = _interopRequireDefault(_selectCardSetService);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	exports.default = _angular2.default.module('matching', []).config( /* @ngInject */function ($stateProvider) {
 	  $stateProvider.state('training-matching', _matchingComponent2.default);
-	}).name;
+	}).factory('selectCardSet', _selectCardSetService2.default).name;
 
 /***/ },
 /* 59 */
@@ -43794,13 +43848,13 @@ var home =
 /* 60 */
 /***/ function(module, exports) {
 
-	module.exports = "matching {{matchingCtrl.testValue}}";
+	module.exports = "matching {{matchingCtrl.testValue}}\n\n<div ng-repeat=\"card in matchingCtrl.cards | orderBy:'wordPosition'\" ng-if=\"!card.guessed\">\n    <button ng-click=\"matchingCtrl.selectWord(card)\">{{card.word}}</button>\n    <span ng-if=\"card.selectedWord\">*</span>\n</div>\n\n<br/>\n<br/>\n\n<div ng-repeat=\"card in matchingCtrl.cards | orderBy:'translationPosition'\" ng-if=\"!card.guessed\">\n    <button ng-click=\"matchingCtrl.selectTranslation(card)\">{{card.translation}}</button>\n    <span ng-if=\"card.selectedTranslation\">*</span>\n</div>";
 
 /***/ },
 /* 61 */
 /***/ function(module, exports) {
 
-	'use strict';
+	"use strict";
 	
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
@@ -43812,19 +43866,79 @@ var home =
 	
 	var matchingController = function () {
 	  /* @ngInject */
-	  function matchingController($state, $q) {
+	  function matchingController(cardsService, selectCardSet, $state, $q) {
 	    _classCallCheck(this, matchingController);
 	
 	    this.$state = $state;
 	    this.$q = $q;
 	
+	    this._cardsService = cardsService;
+	    this._selectCardSet = selectCardSet;
+	
 	    this.initialize();
 	  }
 	
 	  _createClass(matchingController, [{
-	    key: 'initialize',
+	    key: "initialize",
 	    value: function initialize() {
-	      this.testValue = 'ttt';
+	      var _this = this;
+	
+	      var selected = this._selectCardSet.getSelectedCards();
+	      var setId = Object.keys(selected)[0];
+	
+	      this._cardsService.test(setId, selected[setId]).$promise.then(function (cards) {
+	        cards.forEach(function (card) {
+	          card.wordPosition = Math.random();
+	          card.translationPosition = Math.random();
+	        });
+	        _this.cards = cards;
+	      });
+	    }
+	  }, {
+	    key: "selectWord",
+	    value: function selectWord(card) {
+	      this._clearWords();
+	      card.selectedWord = true;
+	      this._check();
+	    }
+	  }, {
+	    key: "selectTranslation",
+	    value: function selectTranslation(card) {
+	      this._clearTranslations();
+	      card.selectedTranslation = true;
+	      this._check();
+	    }
+	  }, {
+	    key: "_clearWords",
+	    value: function _clearWords() {
+	      this.cards.forEach(function (card) {
+	        return card.selectedWord = false;
+	      });
+	    }
+	  }, {
+	    key: "_clearTranslations",
+	    value: function _clearTranslations() {
+	      this.cards.forEach(function (card) {
+	        return card.selectedTranslation = false;
+	      });
+	    }
+	  }, {
+	    key: "_check",
+	    value: function _check() {
+	      var selectedWord = this.cards.find(function (card) {
+	        return card.selectedWord;
+	      });
+	      var selectedTranslation = this.cards.find(function (card) {
+	        return card.selectedTranslation;
+	      });
+	      if (selectedWord == selectedTranslation) {
+	        selectedWord.guessed = true;
+	        this._clearWords();
+	        this._clearTranslations();
+	      } else if (selectedWord && selectedTranslation) {
+	        this._clearWords();
+	        this._clearTranslations();
+	      }
 	    }
 	  }]);
 	
@@ -43835,6 +43949,165 @@ var home =
 
 /***/ },
 /* 62 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _cardsTrainingModule = __webpack_require__(63);
+	
+	var _cardsTrainingModule2 = _interopRequireDefault(_cardsTrainingModule);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = _cardsTrainingModule2.default;
+
+/***/ },
+/* 63 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _angular = __webpack_require__(5);
+	
+	var _angular2 = _interopRequireDefault(_angular);
+	
+	var _cardsTrainingComponent = __webpack_require__(64);
+	
+	var _cardsTrainingComponent2 = _interopRequireDefault(_cardsTrainingComponent);
+	
+	var _selectCardSetService = __webpack_require__(22);
+	
+	var _selectCardSetService2 = _interopRequireDefault(_selectCardSetService);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	exports.default = _angular2.default.module('cards-training', []).config( /* @ngInject */function ($stateProvider) {
+	  $stateProvider.state('cards-training', _cardsTrainingComponent2.default);
+	}).factory('selectCardSet', _selectCardSetService2.default).name;
+
+/***/ },
+/* 64 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _cardsTrainingView = __webpack_require__(65);
+	
+	var _cardsTrainingView2 = _interopRequireDefault(_cardsTrainingView);
+	
+	var _cardsTrainingController = __webpack_require__(66);
+	
+	var _cardsTrainingController2 = _interopRequireDefault(_cardsTrainingController);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	exports.default = {
+	  url: '/training/cards',
+	  controller: _cardsTrainingController2.default,
+	  template: _cardsTrainingView2.default,
+	  controllerAs: 'cardsTrainingCtrl'
+	};
+
+/***/ },
+/* 65 */
+/***/ function(module, exports) {
+
+	module.exports = "<div ng-if=\"!cardsTrainingCtrl.turned\">\n    Word:\n    <br/>\n    {{cardsTrainingCtrl.currentCard.word}}\n</div>\n<div ng-if=\"cardsTrainingCtrl.turned\">\n    Translation:\n    <br/>\n    {{cardsTrainingCtrl.currentCard.translation}}\n</div>\n\n<button ng-click=\"cardsTrainingCtrl.previous()\" ng-disabled=\"cardsTrainingCtrl.currentCardIndex == 0\">Previous</button>\n<button ng-click=\"cardsTrainingCtrl.next()\" ng-disabled=\"cardsTrainingCtrl.currentCardIndex == cardsTrainingCtrl.cards.length - 1\">Next</button>\n<button ng-click=\"cardsTrainingCtrl.turn()\">Turn</button>\n<!--<button ng-click=\"cardsTrainingCtrl.right()\">Right</button>-->\n<!--<button ng-click=\"cardsTrainingCtrl.wrong()\">Wrong</button>-->\n";
+
+/***/ },
+/* 66 */
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	var cardsTrainingController = function () {
+	  /* @ngInject */
+	  function cardsTrainingController(cardsService, selectCardSet, $state, $q) {
+	    _classCallCheck(this, cardsTrainingController);
+	
+	    this.$state = $state;
+	    this.$q = $q;
+	
+	    this._cardsService = cardsService;
+	    this._selectCardSet = selectCardSet;
+	
+	    this.initialize();
+	  }
+	
+	  _createClass(cardsTrainingController, [{
+	    key: "initialize",
+	    value: function initialize() {
+	      var _this = this;
+	
+	      var selected = this._selectCardSet.getSelectedCards();
+	      var setId = Object.keys(selected)[0];
+	
+	      this.cards = this._cardsService.test(setId, selected[setId]);
+	
+	      this.currentCardIndex = 0;
+	
+	      this.cards.$promise.then(function (cards) {
+	        _this.currentCard = cards[_this.currentCardIndex];
+	      });
+	
+	      this.turned = false;
+	    }
+	  }, {
+	    key: "next",
+	    value: function next() {
+	      this.turned = false;
+	      this.currentCard = this.cards[++this.currentCardIndex];
+	    }
+	  }, {
+	    key: "previous",
+	    value: function previous() {
+	      this.turned = false;
+	      this.currentCard = this.cards[--this.currentCardIndex];
+	    }
+	  }, {
+	    key: "turn",
+	    value: function turn() {
+	      this.turned = !this.turned;
+	    }
+	  }, {
+	    key: "right",
+	    value: function right() {
+	      console.log("right");
+	    }
+	  }, {
+	    key: "wrong",
+	    value: function wrong() {
+	      console.log("wrong");
+	    }
+	  }]);
+	
+	  return cardsTrainingController;
+	}();
+	
+	exports.default = cardsTrainingController;
+
+/***/ },
+/* 67 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -43857,7 +44130,7 @@ var home =
 	};
 
 /***/ },
-/* 63 */
+/* 68 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -43866,7 +44139,7 @@ var home =
 	  value: true
 	});
 	
-	var _footerComponent = __webpack_require__(64);
+	var _footerComponent = __webpack_require__(69);
 	
 	var _footerComponent2 = _interopRequireDefault(_footerComponent);
 
@@ -43875,7 +44148,7 @@ var home =
 	exports.default = _footerComponent2.default;
 
 /***/ },
-/* 64 */
+/* 69 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -43888,7 +44161,7 @@ var home =
 	
 	var _angular2 = _interopRequireDefault(_angular);
 	
-	var _footerTmpl = __webpack_require__(65);
+	var _footerTmpl = __webpack_require__(70);
 	
 	var _footerTmpl2 = _interopRequireDefault(_footerTmpl);
 	
@@ -43899,13 +44172,13 @@ var home =
 	}).name;
 
 /***/ },
-/* 65 */
+/* 70 */
 /***/ function(module, exports) {
 
 	module.exports = "<div>footer!</div>";
 
 /***/ },
-/* 66 */
+/* 71 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -43914,7 +44187,7 @@ var home =
 	  value: true
 	});
 	
-	var _headerComponent = __webpack_require__(67);
+	var _headerComponent = __webpack_require__(72);
 	
 	var _headerComponent2 = _interopRequireDefault(_headerComponent);
 
@@ -43923,7 +44196,7 @@ var home =
 	exports.default = _headerComponent2.default;
 
 /***/ },
-/* 67 */
+/* 72 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -43936,7 +44209,7 @@ var home =
 	
 	var _angular2 = _interopRequireDefault(_angular);
 	
-	var _headerTmpl = __webpack_require__(68);
+	var _headerTmpl = __webpack_require__(73);
 	
 	var _headerTmpl2 = _interopRequireDefault(_headerTmpl);
 	
@@ -43947,13 +44220,13 @@ var home =
 	}).name;
 
 /***/ },
-/* 68 */
+/* 73 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"header\">\n  <div class=\"logo\">FLASH-CARDS</div>\n  <div class=\"login\">\n    <div class=\"user\">User Name</div>\n    <button ui-sref=\"signin\">Login</button>\n  </div>\n</div>";
 
 /***/ },
-/* 69 */
+/* 74 */
 /***/ function(module, exports) {
 
 	"use strict";

@@ -1,13 +1,13 @@
 import angular from 'angular';
 
-import viewComponent    from './translate.component.js';
+import viewComponent    from './cards-training.component.js';
 
 import selectCardSet from './../../services/selectCardSet.service.js'
 
-export default angular.module('translate', [])
+export default angular.module('cards-training', [])
   .config(/* @ngInject */ $stateProvider => {
     $stateProvider
-      .state('training-translate', viewComponent);
+      .state('cards-training', viewComponent);
   })
   .factory('selectCardSet', selectCardSet)
   .name;

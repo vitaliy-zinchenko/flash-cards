@@ -16,6 +16,7 @@ import viewSignin from './view-signin';
 
 import translateTraining from './trainings/translate';
 import matchingTraining from './trainings/matching';
+import cardsTraining from './trainings/cards-training';
 
 import routes from './routes';
 import footer from './components/footer';
@@ -34,6 +35,7 @@ var fcApp = angular
     viewSignin,
     translateTraining,
     matchingTraining,
+    cardsTraining,
     footer,
     header
   ] )

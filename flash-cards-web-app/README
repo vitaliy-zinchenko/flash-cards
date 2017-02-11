@@ -1,49 +1,28 @@
-This is your new Play application
-=================================
+sbt clean universal:packageZipTarball
 
-This file will be packaged with your application when using `activator dist`.
+scp -i "~/.ssh/zinjvi-test.pem" flash-cards-web-app-1.0-SNAPSHOT.tgz   ubuntu@ec2-35-166-20-92.us-west-2.compute.amazonaws.com:
 
-There are several demonstration files available in this template.
+ssh -i "~/.ssh/zinjvi-test.pem" ubuntu@ec2-35-166-20-92.us-west-2.compute.amazonaws.com
 
-Controllers
-===========
 
-- HomeController.scala:
 
-  Shows how to handle simple HTTP requests.
+####
+install java
 
-- AsyncController.scala:
+sudo add-apt-repository ppa:webupd8team/java -y
+sudo apt-get update
+sudo apt-get install oracle-java8-installer
 
-  Shows how to do asynchronous programming when handling a request.
+####
+install Postgres
 
-- CountController.scala:
+sudo apt-get install postgresql postgresql-contrib
+sudo -u postgres psql
+create database fc;
+ALTER USER "postgres" WITH PASSWORD 'password';
 
-  Shows how to inject a component into a controller and use the component when
-  handling requests.
 
-Components
-==========
+####
+Start
 
-- Module.scala:
-
-  Shows how to use Guice to bind all the components needed by your application.
-
-- Counter.scala:
-
-  An example of a component that contains state, in this case a simple counter.
-
-- ApplicationTimer.scala:
-
-  An example of a component that starts when the application starts and stops
-  when the application stops.
-
-Filters
-=======
-
-- Filters.scala:
-
-  Creates the list of HTTP filters used by your application.
-
-- ExampleFilter.scala
-
-  A simple filter that adds a header to every response.
+nohup ./flash-cards-web-app > out.log &

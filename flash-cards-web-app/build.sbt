@@ -16,3 +16,9 @@ libraryDependencies ++= Seq(
   "com.typesafe.play" %% "play-slick-evolutions" % "1.1.0"
 )
 
+//pipelineStages := Seq(webpack)
+
+//webpackConfig in webpack := Some("path_to_config_file")
+
+//https://github.com/stejskal/sbt-webpack
+

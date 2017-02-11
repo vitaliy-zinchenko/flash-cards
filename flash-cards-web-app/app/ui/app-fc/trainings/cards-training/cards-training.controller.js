@@ -1,4 +1,4 @@
-export default class translateController {
+export default class cardsTrainingController {
   /* @ngInject */
   constructor(cardsService, selectCardSet, $state, $q) {
     this.$state = $state;
@@ -12,9 +12,6 @@ export default class translateController {
 
 
   initialize() {
-    this.id = this.$state.params.id;
-    console.log(this.id);
-
     var selected = this._selectCardSet.getSelectedCards()
     var setId = Object.keys(selected)[0]
 
@@ -25,23 +22,30 @@ export default class translateController {
     this.cards.$promise.then(cards => {
         this.currentCard = cards[this.currentCardIndex]
     })
-  }
 
-  check() {
-    if(this.currentCard.word == this.answer) {
-        if(this.currentCardIndex == this.cards.length - 1) {
-            this.finished = true;
-        } else {
-            this.next()
-            this.answer = ''
-        }
-    } else {
-        this.answer = ''
-    }
+    this.turned = false
   }
 
   next() {
+    this.turned = false
     this.currentCard = this.cards[++this.currentCardIndex]
-  }
+  };
+
+  previous() {
+    this.turned = false
+    this.currentCard = this.cards[--this.currentCardIndex]
+  };
+
+  turn() {
+    this.turned = !this.turned
+  };
+
+  right() {
+    console.log("right")
+  };
+
+  wrong() {
+    console.log("wrong")
+  };
 
 }

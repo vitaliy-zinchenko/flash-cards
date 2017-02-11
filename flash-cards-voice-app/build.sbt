@@ -10,8 +10,9 @@ libraryDependencies ++= Seq(
   jdbc,
   cache,
   ws,
-  "org.scalatestplus.play" %% "scalatestplus-play" % "1.5.1" % Test,
-  "com.amazonaws" % "aws-java-sdk" % "1.11.73",
-  "org.mongodb.scala" %% "mongo-scala-driver" % "1.2.1"
+  "com.amazonaws" % "aws-java-sdk-s3" % "1.11.73",
+  "com.amazonaws" % "aws-java-sdk-polly" % "1.11.73",
+  "com.googlecode.soundlibs" % "jlayer" % "1.0.1.4",
+  "org.scalatestplus.play" %% "scalatestplus-play" % "1.5.1" % Test
 )
 

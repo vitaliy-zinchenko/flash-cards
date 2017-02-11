@@ -7,7 +7,7 @@
       <textarea ng-model="card.translation">{{card.translation}}</textarea>
     </div>
     <div class="ctrls">
-      <span class="btn" ng-click="cardsCtrl.createCard(card)">Save</span>
+      <span class="btn" ng-click="cardsCtrl.saveCard(card)">Save</span>
       <input type="checkbox" ng-model="card.selected" ng-change="cardsCtrl.selectChange(card)">
       <span class="del" ng-click="cardsCtrl.deleteCard()">+</span>
     </div>

@@ -29,40 +29,43 @@ export default class cardsController {
   }
 
 
-  //cards
+
+  // ****************************
+  //         UI handlers
+  // ****************************
+
   newCard() {
-    var card = {
-      word: "",
-      translation: ""
-    };
-    this.cards.push(card);
+//    var card = {
+//      word: "",
+//      translation: ""
+//    };
+    this.cards.push({});
   };
 
-  createCard(card) {
-    var sendData = this.tempPrepare(card); // TODO: remove this when update backend method
-    this.saveCards(sendData).then(
-      response => card = response
-    );
+  saveCard(card) {
+    if(card.id) {
+      this._cardsService.update(this.id, card).then(response => {
+        console.log("updated")
+      })
+    } else {
+      this._cardsService.create(this.id, card).then(response => {
+        card.id = response.id
+      })
+    }
   };
 
   deleteCard() {
     console.log('delete card');
   };
 
-
-  // temp function for convert obj to array
-  tempPrepare(obj) { // TODO: remove this when update backend method
-    return [obj];
-  };
-
-  // save card on server
-  saveCards(cards) { //TODO: implement errorhandler
-    return this.$q( (resolve, reject) => {
-      this._cardsService.addCards( this.id, cards ).$promise.then(data => {
-        resolve(data[0]);
-      });
-    });
-  };
+//  // save card on server
+//  saveCards(cards) { //TODO: implement errorhandler
+//    return this.$q( (resolve, reject) => {
+//      this._cardsService.addCards( this.id, cards ).$promise.then(data => {
+//        resolve(data[0]);
+//      });
+//    });
+//  };
 
   selectChange(card) {
     if(card.selected) {
@@ -71,6 +74,13 @@ export default class cardsController {
       this._selectCardSet.unSelectCard(this.id, card.id);
     }
   }
+
+
+
+
+  // ****************************
+  //         Methods
+  // ****************************
 
   _markSelectedCards(cards) {
     var selected = this._selectCardSet.getSelectCards(this.id);

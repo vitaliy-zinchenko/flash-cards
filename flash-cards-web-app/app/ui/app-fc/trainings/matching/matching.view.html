@@ -1,1 +1,14 @@
 matching {{matchingCtrl.testValue}}
+
+<div ng-repeat="card in matchingCtrl.cards | orderBy:'wordPosition'" ng-if="!card.guessed">
+    <button ng-click="matchingCtrl.selectWord(card)">{{card.word}}</button>
+    <span ng-if="card.selectedWord">*</span>
+</div>
+
+<br/>
+<br/>
+
+<div ng-repeat="card in matchingCtrl.cards | orderBy:'translationPosition'" ng-if="!card.guessed">
+    <button ng-click="matchingCtrl.selectTranslation(card)">{{card.translation}}</button>
+    <span ng-if="card.selectedTranslation">*</span>
+</div>

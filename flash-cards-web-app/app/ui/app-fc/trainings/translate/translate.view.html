@@ -1,1 +1,14 @@
-translate {{translateCtrl.testValue}}
+translate
+
+<div>
+    <input ng-model="translateCtrl.currentCard.translation">
+    <input ng-model="translateCtrl.answer">
+    <span ng-if="show">{{translateCtrl.currentCard.translation}}</span>
+    <button ng-click="translateCtrl.check()">Check</button>
+    <button ng-click="translateCtrl.next()" ng-disabled="translateCtrl.currentCardIndex == translateCtrl.cards.length - 1">Next</button>
+    <button ng-click="show = true">Don't know</button>
+</div>
+
+<div ng-if="translateCtrl.finished">Well done!</div>
+
+

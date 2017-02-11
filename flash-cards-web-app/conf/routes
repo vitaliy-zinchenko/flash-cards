@@ -5,7 +5,9 @@ GET     /api/card-set                               controllers.CardSetControlle
 POST    /api/card-set                               controllers.CardSetController.create()
 GET     /api/card-set/:cardSetId                    controllers.CardSetController.get(cardSetId: Long)
 GET     /api/card-set/:cardSetId/cards              controllers.CardSetController.listCards(cardSetId: Long, page: Int, size: Int)
-POST    /api/card-set/:cardSetId/cards/batch        controllers.CardSetController.createCard(cardSetId: Long)
+GET     /api/card-set/:cardSetId/cards/:cardIds     controllers.CardSetController.listCardsByIds(cardSetId: Long, cardIds: String)
+POST    /api/card-set/:cardSetId/cards              controllers.CardSetController.createCard(cardSetId: Long)
+PUT     /api/card-set/:cardSetId/cards              controllers.CardSetController.updateCard(cardSetId: Long)
 
 
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

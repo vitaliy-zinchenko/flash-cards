@@ -1,0 +1,16 @@
+<div ng-if="!cardsTrainingCtrl.turned">
+    Word:
+    <br/>
+    {{cardsTrainingCtrl.currentCard.word}}
+</div>
+<div ng-if="cardsTrainingCtrl.turned">
+    Translation:
+    <br/>
+    {{cardsTrainingCtrl.currentCard.translation}}
+</div>
+
+<button ng-click="cardsTrainingCtrl.previous()" ng-disabled="cardsTrainingCtrl.currentCardIndex == 0">Previous</button>
+<button ng-click="cardsTrainingCtrl.next()" ng-disabled="cardsTrainingCtrl.currentCardIndex == cardsTrainingCtrl.cards.length - 1">Next</button>
+<button ng-click="cardsTrainingCtrl.turn()">Turn</button>
+<!--<button ng-click="cardsTrainingCtrl.right()">Right</button>-->
+<!--<button ng-click="cardsTrainingCtrl.wrong()">Wrong</button>-->

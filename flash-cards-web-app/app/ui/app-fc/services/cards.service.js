@@ -1,32 +1,39 @@
 export default ($resource) => {
   /* @ngInject */
-//settings
-  const mainUrl = '/api/card-set/:id/cards';
-  const saveButchUrl = '/api/card-set/:id/cards/batch';
-  const params = {id: '@id', page:'@page', size:'@size'};
 
-  const actions = {
-    'saveButch': {
-      url: saveButchUrl,
-      method: 'POST',
-      isArray: true
-    }
+  const service = $resource('/api/card-set/:setId/cards',
+                            {setId: '@setId', cardId: '@cardId', page:'@page', size:'@size'},
+                            {
+//                                'saveButch': {
+//                                  url: '/api/card-set/:setId/cards/batch',
+//                                  method: 'POST',
+//                                  isArray: true
+//                                },
+                                'byIds': {
+                                  url: '/api/card-set/:setId/cards/:cardIds',
+                                  method: 'GET',
+                                  isArray: true
+                                },
+                                'change': {
+                                  url: '/api/card-set/:setId/cards',
+                                  method: 'PUT'
+                                }
+                            });
+
+  service.getAll = (setId, page, size) => {
+    return service.query({ setId: setId, page: page , size: size }).$promise;
   };
 
-  const service = $resource(mainUrl, params, actions);
-
- //var conf;  EXAMPLE
-
-//methods
-  service.getAll = (id, page, size) => {
-    return service.query({ id: id, page: page , size: size }).$promise; //.then(function (res){ EXAMPLE
-      //conf = res.data;
-      //defer.resolve();
-    //});
+  service.create = (setId, card) => {
+    return service.save({setId: setId}, card).$promise;
   };
 
-  service.addCards = (id, cards) => {
-    return service.saveButch({id: id}, cards);
+  service.update = (setId, card) => {
+    return service.change({setId: setId}, card).$promise;
+  };
+
+  service.test = (setId, cardIds) => {
+    return service.byIds({setId: setId, cardIds: cardIds});
   };
 
   return service;

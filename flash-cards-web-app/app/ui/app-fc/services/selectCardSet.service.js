@@ -10,7 +10,7 @@ export default (localStorageService) => {
   };
 
   service.getSelectedCards = () => {
-    return localStorageService.get("selectedCardId")
+    return localStorageService.get(SELECTED_CARD_IDS_KEY)
   };
 
   service.selectCardSet = (cardSetId) => {

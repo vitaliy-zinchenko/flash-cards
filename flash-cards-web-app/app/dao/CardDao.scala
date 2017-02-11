@@ -10,6 +10,8 @@ import scala.concurrent.Future
 trait CardDao {
 
   def list(cardSetId: Long, page: Int, size: Int) : Future[Seq[Card]]
+  def list(cardSetId: Long, cardIds: List[Long]) : Future[Seq[Card]]
   def save(card: Card) : Future[Card]
+  def update(card: Card) : Future[Int]
 
 }
