@@ -1,19 +1,43 @@
-<h1>{{cardsetCtrl.name}}</h1>
-
 <div class="cards-container">
 
-  <set-title current-set="cardsetCtrl.currentSet"></set-title>
-
-  <div class="cards-container" ng-show="cardsetCtrl.currentSet">
-    <div class="row header">
-      <div class="term">Terms</div>
-      <div class="definition">Definition</div>
-      <div class="ctrls">Some buttons</div>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <form class="form-inline">
+        <div class="form-group">
+          <label for="title">Title  </label>
+          <input type="text" class="form-control" id="title" ng-model="cardsetCtrl.currentSet.title">
+        </div>
+        <button class="btn btn-default" ng-click="cardsetCtrl.saveSet(cardsetCtrl.currentSet)">Create</button>
+      </form>
+      <div class="set-ctrl-btn">
+        <button class="btn btn-default" ng-click="cardsetCtrl.goToCards()">Cards</button>
+        <button class="btn btn-default" ng-click="cardsetCtrl.goToTranslate()">Translate</button>
+        <button class="btn btn-default" ng-click="cardsetCtrl.goToMatching()">Matching</button>
+        <button class="btn btn-default" ng-click="cardsetCtrl.newCard()">New card</button>
+      </div>
     </div>
-
-    <language-choice></language-choice>
-
-    <cards current-set="cardsetCtrl.currentSet"></cards>
-
   </div>
+
+  <table class="table">
+    <thead>
+    <tr>
+      <th></th>
+      <th>Terms</th>
+      <th>Definition</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="card in cardsetCtrl.cards">
+      <td><input type="checkbox" ng-model="card.selected" ng-change="cardsetCtrl.selectChange(card)"></td>
+      <td><input type="text" class="form-control" ng-model="card.word"></td>
+      <td><input type="text" class="form-control" ng-model="card.translation"></td>
+      <td>
+        <button class="btn btn-default" ng-click="cardsetCtrl.saveCard(card)">Save</button>
+        <button class="btn btn-default" ng-click="cardsetCtrl.deleteCard(card)">Delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
 </div>

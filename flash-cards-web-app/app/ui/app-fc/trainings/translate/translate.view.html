@@ -1,14 +1,25 @@
-translate
-
-<div>
-    <input ng-model="translateCtrl.currentCard.translation">
-    <input ng-model="translateCtrl.answer">
-    <span ng-if="show">{{translateCtrl.currentCard.translation}}</span>
-    <button ng-click="translateCtrl.check()">Check</button>
-    <button ng-click="translateCtrl.next()" ng-disabled="translateCtrl.currentCardIndex == translateCtrl.cards.length - 1">Next</button>
-    <button ng-click="show = true">Don't know</button>
+<div class="panel panel-default">
+    <div class="panel-body">
+        <form>
+            <div class="form-group">
+                <label for="definition">Definition</label>
+                <input ng-model="translateCtrl.currentCard.translation" type="text" class="form-control" id="definition">
+            </div>
+            <div class="form-group">
+                <label for="answer">Answer</label>
+                <input ng-model="translateCtrl.answer" type="text" class="form-control" id="answer">
+            </div>
+        </form>
+        <div ng-if="translateCtrl.show" class="panel panel-default">
+            <div class="panel-body">
+                <span>{{translateCtrl.currentCard.translation}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="panel-footer">
+        <button ng-click="translateCtrl.check()" class="btn btn-default">Check</button>
+        <button ng-click="translateCtrl.next()" ng-disabled="translateCtrl.currentCardIndex == translateCtrl.cards.length - 1" class="btn btn-default">Next</button>
+        <button ng-click="translateCtrl.show = true" class="btn btn-default">Don't know</button>
+    </div>
 </div>
-
-<div ng-if="translateCtrl.finished">Well done!</div>
-
-
+<div ng-if="translateCtrl.finished" class="alert alert-success" role="alert">Well done!</div>

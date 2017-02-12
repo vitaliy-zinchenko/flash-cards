@@ -42,6 +42,7 @@ export default class translateController {
 
   next() {
     this.currentCard = this.cards[++this.currentCardIndex]
+    this.show = false
   }
 
 }

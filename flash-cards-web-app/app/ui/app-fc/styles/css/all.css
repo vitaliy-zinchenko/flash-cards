@@ -1,0 +1,19 @@
+body { padding-top: 70px; }
+
+.sets-ctrl-btn {
+    float: right;
+}
+
+.set-ctrl-btn {
+    float: right;
+}
+
+.header-container {
+	width: 80%;
+}
+
+.main {
+	width: 80%;
+	margin: 0 auto;
+}
+

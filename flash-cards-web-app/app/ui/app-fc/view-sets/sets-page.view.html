@@ -1,14 +1,26 @@
-<div class="main">
-  <div class="ctrl-btn">
-    <button value="new-set" ui-sref="cardset-new">New set</button>
+  <div class="sets-ctrl-btn">
+    <button class="btn btn-default" value="new-set" ui-sref="cardset-new">New set</button>
   </div>
 
-  <div class="set headers">
-    <div>Title</div>
-    <div>Description</div>
-    <div>Amount</div>
-  </div>
-
-  <sets></sets>
-
-</div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Amount</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="set in setsCtrl.sets">
+        <td><input type="checkbox" ng-model="set.selected" ng-change="setsCtrl.selectChange(set)"></td>
+        <td>{{set.title}}</td>
+        <td>{{set.id}}</td>
+        <td>{{set.amount}}</td>
+        <td>
+          <button class="btn btn-default" ng-click="setsCtrl.goToSet(set)">View</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
