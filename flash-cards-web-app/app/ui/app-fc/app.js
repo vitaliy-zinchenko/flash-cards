@@ -41,7 +41,7 @@ var fcApp = angular
     header
   ] )
   .config(routes)
-  .controller('mainController', mainController);
+  //.controller('mainController', mainController);
 
 // bootstrap Angular after get configuration
 getConfig().fetchAppConfig().then(bootstrapApplication);

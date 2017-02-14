@@ -121,7 +121,8 @@ var home =
 	
 	var fcApp = _angular2.default.module('fcApp', [_angularUiRouter2.default, _angularResource2.default, _angularLocalStorage2.default,
 	//    ngLodash,
-	_viewSets2.default, _viewCardset2.default, _viewSignin2.default, _translate2.default, _matching2.default, _cardsTraining2.default, _footer2.default, _header2.default]).config(_routes2.default).controller('mainController', mainController);
+	_viewSets2.default, _viewCardset2.default, _viewSignin2.default, _translate2.default, _matching2.default, _cardsTraining2.default, _footer2.default, _header2.default]).config(_routes2.default);
+	//.controller('mainController', mainController);
 	
 	// bootstrap Angular after get configuration
 	(0, _getConfig2.default)().fetchAppConfig().then(bootstrapApplication);
@@ -39812,7 +39813,7 @@ var home =
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	exports.default = {
-	  url: '/main',
+	  url: '/sets',
 	  controller: _setsPageController2.default,
 	  template: _setsPageView2.default,
 	  controllerAs: 'setsCtrl'
@@ -43969,7 +43970,7 @@ var home =
 	    requireBase: false
 	  });
 	
-	  $urlRouterProvider.otherwise('/main');
+	  $urlRouterProvider.otherwise('/sets');
 	
 	  localStorageServiceProvider.setPrefix('fc');
 	};
@@ -44068,7 +44069,7 @@ var home =
 /* 64 */
 /***/ function(module, exports) {
 
-	module.exports = "<nav class=\"navbar navbar-default navbar-fixed-top\">\n  <div class=\"header-container container\">\n    <div class=\"navbar-header\">\n      <a class=\"navbar-brand\" href=\"#\">FC</a>\n    </div>\n  </div>\n</nav>\n\n\n<!--<div class=\"header\">-->\n  <!--<div class=\"logo\">FLASH-CARDS</div>-->\n  <!--<div class=\"login\">-->\n    <!--<div class=\"user\">User Name</div>-->\n    <!--<button ui-sref=\"signin\">Login</button>-->\n  <!--</div>-->\n<!--</div>-->\n\n";
+	module.exports = "<nav class=\"navbar navbar-default navbar-fixed-top\">\n  <div class=\"header-container container\">\n    <div class=\"navbar-header\">\n      <a class=\"navbar-brand\" href=\"/\">FC</a>\n    </div>\n    <p class=\"navbar-text navbar-right\">\n      <!--Signed in as -->\n      <a ui-sref=\"signin\" class=\"navbar-link\">Login</a>\n    </p>\n  </div>\n</nav>\n";
 
 /***/ },
 /* 65 */

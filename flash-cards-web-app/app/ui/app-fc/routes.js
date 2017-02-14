@@ -6,7 +6,7 @@ export default function ( $stateProvider, $urlRouterProvider, $locationProvider,
     requireBase: false
   } );
 
-  $urlRouterProvider.otherwise( '/main' );
+  $urlRouterProvider.otherwise( '/sets' );
 
   localStorageServiceProvider.setPrefix('fc');
 
