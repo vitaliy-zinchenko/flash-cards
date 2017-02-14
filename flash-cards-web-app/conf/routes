@@ -1,7 +1,3 @@
-GET     /user               controllers.UserController.test
-# GET     /ttt              controllers.UserController.index
-
-
 GET     /api/card-set                               controllers.CardSetController.listCardSets(page: Int, size: Int)
 POST    /api/card-set                               controllers.CardSetController.create()
 GET     /api/card-set/:cardSetId                    controllers.CardSetController.get(cardSetId: Long)
@@ -13,5 +9,5 @@ PUT     /api/card-set/:cardSetId/cards              controllers.CardSetControlle
 
 GET     /api/config/app                controllers.ConfigController.appConfig()
 
-GET     /                    controllers.Assets.at(path="/public", file="index.html")
-GET     /*file               controllers.Assets.at(path="/public", file)
+GET     /                    controllers.Assets.at(path="/public/ui", file="index.html")
+GET     /*file               controllers.Assets.at(path="/public/ui", file)

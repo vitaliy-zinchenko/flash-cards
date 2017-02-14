@@ -2,4 +2,4 @@
 
 cd ../
 
-sbt run
+sbt clean run

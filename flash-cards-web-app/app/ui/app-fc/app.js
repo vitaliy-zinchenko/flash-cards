@@ -19,7 +19,7 @@ import translateTraining from './trainings/translate';
 import matchingTraining from './trainings/matching';
 import cardsTraining from './trainings/cards-training';
 
-import routes from './routes';
+import config from './config';
 import footer from './components/footer';
 import header from './components/header';
 
@@ -40,7 +40,7 @@ var fcApp = angular
     footer,
     header
   ] )
-  .config(routes)
+  .config(config)
   //.controller('mainController', mainController);
 
 // bootstrap Angular after get configuration
