@@ -1,25 +1,44 @@
 export default class signinController {
   /* @ngInject */
   constructor($scope, $auth, $state) {
-    console.log('signin.js');
+    this.auth = $auth
+    this.state = $state
+  }
 
-    this.authenticate = function(provider) {
-      console.log('authenticate start');
+  signIn() {
+    console.log(this.user)
+    this.auth.login(this.user)
+        .then(() => {
+          console.log("logged in + ")
+          this.state.go('sets');
+        })
+        .catch(() => {
+          console.log("logged in - ")
+        })
+  }
 
-      $auth.authenticate(provider).then(function(response) {
-          // Signed in with Google.
-          console.log(response);
-          $state.go('sets');
+  signUp() {
+    console.log(this.user)
+    this.auth.signup(this.user)
+        .then((response) => {
+          this.auth.setToken(response)
+          this.state.go('sets');
+        })
+        .catch((data) => {
+          console.log("logged in - :" + data)
+        })
+  }
+
+  authenticate(providerName) {
+      var s = this
+      this.auth.authenticate(providerName)
+        .then(function() {
+          console.log("+ : isAuthenticated = " + s.auth.isAuthenticated())
+          s.state.go('sets');
         })
         .catch(function(response) {
-          // Something went wrong.
+          console.log("-")
         });
-    };
-
-    this.signOut = function(provider) {
-      console.log('signOut');
-    };
-
   }
 
 

@@ -2,12 +2,12 @@ import angular from 'angular';
 
 import satellizer from 'satellizer';
 
-import viewComponent    from './signin.component.js';
+import viewComponent    from './component.js';
 
-export default angular.module('viewSighin', [satellizer])
+export default angular.module('viewSighup', [satellizer]) // TODO refactor, it looks not like others
   .config(/* @ngInject */($stateProvider, $authProvider) => {
     $stateProvider
-      .state('signin', viewComponent);
+      .state('signup', viewComponent);
   })
   .component('viewComponent', viewComponent)
   .name;

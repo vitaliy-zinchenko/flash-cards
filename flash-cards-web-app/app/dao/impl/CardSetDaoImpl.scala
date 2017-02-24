@@ -22,10 +22,12 @@ class CardSetDaoImpl @Inject()(dbConfigProvider: DatabaseConfigProvider) extends
   import dbConfig._
   import driver.api._
 
-  class CardSetTable(tag:Tag)
+  class CardSetTable(tag: Tag)
     extends Table[CardSet](tag, "card_set") {
     def id = column[Option[Long]]("id", O.PrimaryKey, O.AutoInc)
+
     def title = column[String]("title")
+
     def userId = column[Long]("user_id")
 
     override def * =
@@ -34,16 +36,22 @@ class CardSetDaoImpl @Inject()(dbConfigProvider: DatabaseConfigProvider) extends
 
   implicit val cardSets = TableQuery[CardSetTable]
 
-  override def listAll(page: Int, size: Int): Future[Seq[CardSet]] = {
-    db.run(cardSets.drop(page * size).take(size).result)
+  override def listAll(userId: Long, page: Int, size: Int): Future[Seq[CardSet]] = {
+    db.run(
+      cardSets
+        .filter(_.userId === userId)
+        .drop(page * size)
+        .take(size)
+        .result
+    )
   }
 
-  override def find(cardSetId: Long) : Future[Option[CardSet]] = {
+  override def find(cardSetId: Long): Future[Option[CardSet]] = {
     db.run(cardSets.filter(_.id === cardSetId).result.headOption)
 
   }
 
-  override def save(cardSet: CardSet) : Future[CardSet] = {
+  override def save(cardSet: CardSet): Future[CardSet] = {
     db.run((cardSets returning cardSets) += cardSet)
   }
 

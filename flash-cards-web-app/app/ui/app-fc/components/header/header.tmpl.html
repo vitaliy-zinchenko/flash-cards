@@ -4,8 +4,8 @@
       <a class="navbar-brand" href="/">FC</a>
     </div>
     <p class="navbar-text navbar-right">
-      <!--Signed in as -->
-      <a ui-sref="signin" class="navbar-link">Login</a>
+      <a ui-sref="signin" ng-if="!headerCtrl.isAuthenticated()" class="navbar-link">Login</a>
+      <a ng-click="headerCtrl.logOut()" ng-if="headerCtrl.isAuthenticated()" class="navbar-link">Log out</a>
     </p>
   </div>
 </nav>

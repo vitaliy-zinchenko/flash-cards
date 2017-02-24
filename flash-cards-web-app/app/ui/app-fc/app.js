@@ -8,12 +8,14 @@ import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import ngResource from 'angular-resource';
 import ngLocalStorage from 'angular-local-storage';
+import angularCookies from 'angular-cookies';
 //import ngLodash from 'angular-lodash';
 
 
 import viewSets from './view-sets';
 import viewCardSet from './view-cardset';
 import viewSignin from './view-signin';
+import viewSignup from './view-signup';
 
 import translateTraining from './trainings/translate';
 import matchingTraining from './trainings/matching';
@@ -24,16 +26,19 @@ import footer from './components/footer';
 import header from './components/header';
 
 import getConfig from './services/get-config.service';
+import configService from './services/config.service';
 
 var fcApp = angular
   .module( 'fcApp', [
     uiRouter,
     ngResource,
     ngLocalStorage,
+    angularCookies,
 //    ngLodash,
     viewSets,
     viewCardSet,
     viewSignin,
+    viewSignup,
     translateTraining,
     matchingTraining,
     cardsTraining,
@@ -44,8 +49,7 @@ var fcApp = angular
   //.controller('mainController', mainController);
 
 // bootstrap Angular after get configuration
-getConfig().fetchAppConfig().then(bootstrapApplication);
-
+fetchAppConfig().then(bootstrapApplication);
 
 function mainController() { //test code
   console.log('main app');
@@ -55,6 +59,20 @@ function bootstrapApplication() {
     angular.element(document).ready(function() {
         angular.bootstrap(document, ["fcApp"]);
         console.log("Bootstrapped App")
+    });
+}
+
+function fetchAppConfig() {
+    var initInjector = angular.injector(["ng"]);
+    var $http = initInjector.get("$http");
+
+    return $http.get("/api/config/app").then(function(response) {
+      // service.config = response.data; TODO: maybe save to service or another store
+      var config = JSON.stringify(response.data);
+      localStorage.setItem('appConfig', config);
+
+    }, function(errorResponse) {
+      console.log("Error during loading configuration in bootstrap")
     });
 }
 

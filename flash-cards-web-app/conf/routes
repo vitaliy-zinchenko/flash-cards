@@ -9,5 +9,9 @@ PUT     /api/card-set/:cardSetId/cards              controllers.CardSetControlle
 
 GET     /api/config/app                controllers.ConfigController.appConfig()
 
+POST     /auth/signIn               controllers.AuthController.signIn()
+POST     /auth/signUp               controllers.AuthController.signUp()
+POST     /auth/:provider            controllers.AuthController.authenticate(provider)
+
 GET     /                    controllers.Assets.at(path="/public/ui", file="index.html")
 GET     /*file               controllers.Assets.at(path="/public/ui", file)

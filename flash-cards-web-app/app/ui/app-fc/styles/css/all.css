@@ -17,3 +17,7 @@ body { padding-top: 70px; }
 	margin: 0 auto;
 }
 
+.login-form {
+    margin: auto;
+    width: 400px;
+}

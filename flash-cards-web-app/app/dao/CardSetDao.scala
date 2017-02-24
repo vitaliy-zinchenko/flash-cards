@@ -9,7 +9,7 @@ import scala.concurrent.Future
 @ImplementedBy(classOf[CardSetDaoImpl])
 trait CardSetDao {
 
-  def listAll(page: Int, size: Int) : Future[Seq[CardSet]]
+  def listAll(userId: Long, page: Int, size: Int) : Future[Seq[CardSet]]
   def find(cardSetId: Long) : Future[Option[CardSet]]
   def save(cardSet: CardSet) : Future[CardSet]
 

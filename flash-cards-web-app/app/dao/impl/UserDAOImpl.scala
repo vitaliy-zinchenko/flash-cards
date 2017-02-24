@@ -4,7 +4,7 @@ import javax.inject.Inject
 
 import com.google.inject.Singleton
 import dao.UserDAO
-import model.User
+import model.{Card, User}
 import play.api.db.slick.DatabaseConfigProvider
 import play.api.libs.concurrent.Execution.Implicits._
 import slick.driver.JdbcProfile
@@ -21,23 +21,33 @@ class UserDAOImpl @Inject()(dbConfigProvider: DatabaseConfigProvider) extends Us
   import dbConfig._
   import driver.api._
 
-  class UserTable(tag:Tag)
+  class UserTable(tag: Tag)
     extends Table[User](tag, "users") {
-    def id = column[Long]("id", O.PrimaryKey,O.AutoInc)
-    def firstName = column[String]("first_name")
-    def lastName = column[String]("last_name")
-    def email = column[String]("email")
+
+    def id = column[Option[Long]]("id", O.PrimaryKey, O.AutoInc)
+
+    def firstName = column[Option[String]]("first_name")
+
+    def lastName = column[Option[String]]("last_name")
+
+    def email = column[Option[String]]("email")
+
+    def providerId = column[String]("provider_id")
+
+    def providerKey = column[String]("provider_key")
 
     override def * =
-      (id, firstName,lastName,email) <> (User.tupled, User.unapply)
+      (id, firstName, lastName, email, providerId, providerKey) <> (User.tupled, User.unapply)
   }
 
   implicit val users = TableQuery[UserTable]
 
-  def add(user: User): Future[String] = {
-    db.run(users += user).map(res => "User successfully added").recover {
-      case ex : Exception => ex.getCause.getMessage
-    }
+  def add(user: User): Future[User] = {
+    db.run((users returning users) += user)
+  }
+
+  override def update(user: User): Future[Int] = {
+    db.run(users.filter(_.id === user.id).update(user))
   }
 
   def delete(id: Long): Future[Int] = {
@@ -50,5 +60,18 @@ class UserDAOImpl @Inject()(dbConfigProvider: DatabaseConfigProvider) extends Us
 
   def listAll: Future[Seq[User]] = {
     db.run(users.result)
+  }
+
+  override def find(email: String): Future[Option[User]] = {
+    db.run(users.filter(_.email === email).result.headOption)
+  }
+
+  override def find(providerId: String, providerKey: String): Future[Option[User]] = {
+    db.run(
+      users
+        .filter(_.providerId === providerId)
+        .filter(_.providerKey === providerKey)
+        .result.headOption
+    )
   }
 }
