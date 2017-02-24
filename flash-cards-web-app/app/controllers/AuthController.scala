@@ -1,42 +1,41 @@
 package controllers
 
+
 import javax.inject._
 
+import _root_.services.UserService
 import auth.DefaultEnv
-import com.mohiva.play.silhouette.api.actions.SecuredActionBuilder
+import com.mohiva.play.silhouette.api.Authenticator.Implicits._
+import com.mohiva.play.silhouette.api._
 import com.mohiva.play.silhouette.api.exceptions.ProviderException
 import com.mohiva.play.silhouette.api.repositories.AuthInfoRepository
 import com.mohiva.play.silhouette.api.util.{Clock, Credentials, PasswordHasher}
-import com.mohiva.play.silhouette.api._
 import com.mohiva.play.silhouette.impl.exceptions.IdentityNotFoundException
 import com.mohiva.play.silhouette.impl.providers.{CommonSocialProfileBuilder, CredentialsProvider, SocialProvider, SocialProviderRegistry}
 import model.User
-import play.api.cache.CacheApi
+import net.ceedubs.ficus.Ficus._
 import play.api.Configuration
+import play.api.cache.CacheApi
 import play.api.i18n.{I18nSupport, Messages, MessagesApi}
 import play.api.libs.json.Json
 import play.api.mvc.{Request, _}
-import play.mvc.Http.Response
-import play.api.mvc._
-import _root_.services.UserService
 
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
-import scala.concurrent.duration.FiniteDuration
-import scala.concurrent.duration._
+import scala.concurrent.duration.{FiniteDuration, _}
 
 @Singleton
 class AuthController @Inject()(
-  userService: UserService,
-  silhouette: Silhouette[DefaultEnv],
-  credentialsProvider: CredentialsProvider,
-  configuration: Configuration,
-  clock: Clock,
-  passwordHasher: PasswordHasher,
-  authInfoRepository: AuthInfoRepository,
-  socialProviderRegistry: SocialProviderRegistry,
-  cache: CacheApi,
-  val messagesApi: MessagesApi)
+                                userService: UserService,
+                                silhouette: Silhouette[DefaultEnv],
+                                credentialsProvider: CredentialsProvider,
+                                configuration: Configuration,
+                                clock: Clock,
+                                passwordHasher: PasswordHasher,
+                                authInfoRepository: AuthInfoRepository,
+                                socialProviderRegistry: SocialProviderRegistry,
+                                cache: CacheApi,
+                                val messagesApi: MessagesApi)
   extends Controller with Logger with I18nSupport {
 
   implicit val reqRe = Json.reads[LoginRequest]
@@ -71,12 +70,12 @@ class AuthController @Inject()(
     credentialsProvider.authenticate(Credentials(data.email, data.password)).flatMap { loginInfo =>
       userService.retrieve(loginInfo).flatMap {
         case Some(user) => silhouette.env.authenticatorService.create(loginInfo).map {
-          //          case authenticator if data.rememberMe =>
-          //            val c = configuration.underlying
-          //            authenticator.copy(
-          //              expirationDateTime = clock.now + c.as[FiniteDuration]("silhouette.authenticator.rememberMe.authenticatorExpiry"),
-          //              idleTimeout = c.getAs[FiniteDuration]("silhouette.authenticator.rememberMe.authenticatorIdleTimeout")
-          //            )
+          case authenticator if data.rememberMe =>
+            val c = configuration.underlying
+            authenticator.copy(
+              expirationDateTime = clock.now + c.as[FiniteDuration]("silhouette.authenticator.rememberMe.authenticatorExpiry"),
+              idleTimeout = c.getAs[FiniteDuration]("silhouette.authenticator.rememberMe.authenticatorIdleTimeout")
+            )
           case authenticator => authenticator
         }.flatMap { authenticator =>
           silhouette.env.eventBus.publish(LoginEvent(user, request))
@@ -125,7 +124,7 @@ class AuthController @Inject()(
     * request. Not nice, but it works as a temporary workaround until the bug is fixed.
     *
     * @param request The current request.
-    * @param f The action to execute.
+    * @param f       The action to execute.
     * @return A result.
     * @see https://github.com/sahat/satellizer/issues/287
     */
@@ -143,8 +142,9 @@ class AuthController @Inject()(
   }
 }
 
-case class LoginRequest(email: String, password: String/*, rememberMe: Boolean*/)
-case class SignUpRequest(firstName: String, lastName: String, email: String, password: String /*, rememberMe: Boolean*/)
+case class LoginRequest(email: String, password: String, rememberMe: Boolean)
+
+case class SignUpRequest(firstName: String, lastName: String, email: String, password: String)
 
 
 
