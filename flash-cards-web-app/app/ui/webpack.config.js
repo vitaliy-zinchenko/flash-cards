@@ -77,14 +77,7 @@ module.exports = {
       inject  : true,
       hash    : true,
       template: 'app-fc/index.html'
-    }),
-    new HtmlWebpackPlugin({
-      filename: 'signin.html',
-      inject  : true,
-      hash    : true,
-      template: 'app-fc/signin.html'
-    }),
-    new CopyWebpackPlugin([{ from: 'app-fc/signin.js' }]) //TODO remove after loging page implementation
+    })
   ],
 
   devServer: {

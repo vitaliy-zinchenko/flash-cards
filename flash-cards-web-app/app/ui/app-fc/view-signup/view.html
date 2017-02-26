@@ -16,9 +16,7 @@
         <input ng-model="signupCtrl.user.password" type="password" class="form-control" id="inputPassword3"
                placeholder="Password">
     </div>
-    <div class="checkbox">
-        <label>
-            <input ng-model="signupCtrl.user.rememberMe" type="checkbox"> Remember me
-        </label>
+    <div class="form-group">
+        <button ng-click="signupCtrl.signUp()" type="submit" class="btn btn-default">Sign up</button>
     </div>
 </form>

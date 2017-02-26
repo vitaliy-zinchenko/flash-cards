@@ -25,9 +25,6 @@ import config from './config';
 import footer from './components/footer';
 import header from './components/header';
 
-import getConfig from './services/get-config.service';
-import configService from './services/config.service';
-
 var fcApp = angular
   .module( 'fcApp', [
     uiRouter,
