@@ -30,10 +30,9 @@
     <tbody>
     <tr ng-repeat="card in cardsetCtrl.cards">
       <td><input type="checkbox" ng-model="card.selected" ng-change="cardsetCtrl.selectChange(card)"></td>
-      <td><input type="text" class="form-control" ng-model="card.word"></td>
-      <td><input type="text" class="form-control" ng-model="card.translation"></td>
+      <td><input type="text" class="form-control" ng-model="card.word" ng-blur="cardsetCtrl.saveCard(card)"></td>
+      <td><input type="text" class="form-control" ng-model="card.translation" ng-blur="cardsetCtrl.saveCard(card)"></td>
       <td>
-        <button class="btn btn-default" ng-click="cardsetCtrl.saveCard(card)">Save</button>
         <button class="btn btn-default" ng-click="cardsetCtrl.deleteCard(card)">Delete</button>
       </td>
     </tr>

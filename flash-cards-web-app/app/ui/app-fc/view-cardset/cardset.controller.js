@@ -56,6 +56,9 @@ export default class cardsetController {
   };
 
   saveCard(card) {
+    if(!card.word || !card.translation) {
+      return
+    }
     if(card.id) {
       this._cardsService.update(this.id, card).then(response => {
         console.log("updated")

@@ -15,4 +15,4 @@ POST     /auth/:provider            controllers.AuthController.authenticate(prov
 
 GET     /                                     controllers.Assets.at(path="/public/ui", file="index.html")
 GET     /$file<.*(css|js)+.*>                 controllers.Assets.at(path="/public/ui", file)
-GET     /*f                                controllers.AssetsController.reRoteToRoot(path="/public/ui", file="index.html", f)
+GET     /*f                                   controllers.AssetsController.reRoteToRoot(path="/public/ui", file="index.html", f)
