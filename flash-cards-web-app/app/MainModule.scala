@@ -19,6 +19,7 @@ import com.mohiva.play.silhouette.impl.util.{DefaultFingerprintGenerator, PlayCa
 import com.mohiva.play.silhouette.password.BCryptPasswordHasher
 import com.mohiva.play.silhouette.persistence.daos.{DelegableAuthInfoDAO, InMemoryAuthInfoDAO}
 import com.mohiva.play.silhouette.persistence.repositories.DelegableAuthInfoRepository
+import config.AppConfig
 import dao.UserDAO
 import dao.impl.UserDAOImpl
 import net.codingwell.scalaguice.ScalaModule
@@ -52,6 +53,11 @@ class MainModule extends AbstractModule with ScalaModule {
     bind[DelegableAuthInfoDAO[OAuth1Info]].toInstance(new InMemoryAuthInfoDAO[OAuth1Info])
     bind[DelegableAuthInfoDAO[OAuth2Info]].toInstance(new InMemoryAuthInfoDAO[OAuth2Info])
     bind[DelegableAuthInfoDAO[OpenIDInfo]].toInstance(new InMemoryAuthInfoDAO[OpenIDInfo])
+  }
+
+  @Provides
+  def appConfig(configuration: Configuration): AppConfig = {
+    configuration.underlying.as[AppConfig]("fc.config")
   }
 
   /**
@@ -92,7 +98,6 @@ class MainModule extends AbstractModule with ScalaModule {
     * @param googleProvider The Google provider implementation.
     * @param vkProvider The VK provider implementation.
     * @param twitterProvider The Twitter provider implementation.
-    * @param xingProvider The Xing provider implementation.
     * @return The Silhouette environment.
     */
   @Provides
@@ -100,15 +105,13 @@ class MainModule extends AbstractModule with ScalaModule {
                                      facebookProvider: FacebookProvider,
                                      googleProvider: GoogleProvider,
                                      vkProvider: VKProvider,
-                                     twitterProvider: TwitterProvider,
-                                     xingProvider: XingProvider): SocialProviderRegistry = {
+                                     twitterProvider: TwitterProvider): SocialProviderRegistry = {
 
     SocialProviderRegistry(Seq(
       googleProvider,
       facebookProvider,
       twitterProvider,
-      vkProvider,
-      xingProvider
+      vkProvider
     ))
   }
 
@@ -316,24 +319,6 @@ class MainModule extends AbstractModule with ScalaModule {
 
     val settings = configuration.underlying.as[OAuth1Settings]("silhouette.twitter")
     new TwitterProvider(httpLayer, new PlayOAuth1Service(settings), tokenSecretProvider, settings)
-  }
-
-  /**
-    * Provides the Xing provider.
-    *
-    * @param httpLayer The HTTP layer implementation.
-    * @param tokenSecretProvider The token secret provider implementation.
-    * @param configuration The Play configuration.
-    * @return The Xing provider.
-    */
-  @Provides
-  def provideXingProvider(
-                           httpLayer: HTTPLayer,
-                           tokenSecretProvider: OAuth1TokenSecretProvider,
-                           configuration: Configuration): XingProvider = {
-
-    val settings = configuration.underlying.as[OAuth1Settings]("silhouette.xing")
-    new XingProvider(httpLayer, new PlayOAuth1Service(settings), tokenSecretProvider, settings)
   }
 
 }

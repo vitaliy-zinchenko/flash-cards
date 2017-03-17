@@ -17,7 +17,6 @@ const path  = require('path');
 
 const srcPath     = path.join(__dirname, 'app-fc');
 const dstHomePath = path.join(__dirname, '/../../public');
-//const dstPath     = dstHomePath;
 const dstPath     = path.join(dstHomePath, 'ui');
 
 console.log("Running Webpack with NODE_ENV=" + NODE_ENV);
@@ -26,7 +25,7 @@ module.exports = {
   entry: path.join(srcPath, 'app.js'),
   output: {
     path:  dstPath,
-    filename: "app.js",
+    filename: "/app.js",
     library: "home"
   },
 

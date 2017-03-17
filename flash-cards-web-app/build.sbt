@@ -31,3 +31,5 @@ libraryDependencies ++= Seq(
 //resolvers += Resolver.jcenterRepo
 //resolvers += "Atlassian Releases" at "https://maven.atlassian.com/public/"
 
+dockerRepository := Some("zinjvi")
+dockerEntrypoint := Seq("bin/entrypoint.sh")
