@@ -49,6 +49,12 @@ export default class setsPageController  {
       this.$state.go('cards-training');
     }
 
+    remove(cardSet) {
+      this._setService.remove(cardSet.id).then(response => {
+        this.sets.splice(this.sets.indexOf(cardSet), 1);
+      })
+    };
+
     _markSelectedSets(sets) {
       var selected = this.selectCardSet.getSelectedCardSet();
       _.each(sets, (set) => {

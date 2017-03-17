@@ -45,6 +45,10 @@ class CardSetController @Inject()
     }
   }
 
+  def removeCardSetById(cardSetId: Long) = silhouette.SecuredAction.async {
+    cardSetDao.remove(cardSetId).map(_ => Ok)
+  }
+
   def listCards(cardSetId: Long, page: Int, size: Int) = silhouette.SecuredAction.async {
     cardDao.list(cardSetId, page, size).map { cards =>
       Ok(Json.toJson(cards).toString()) //TODO fix toString()
@@ -73,9 +77,11 @@ class CardSetController @Inject()
     val requestBody = request.body.as[CardRequest]
     println(requestBody)
     val card = Card(requestBody.id, requestBody.word, requestBody.translation, cardSetId)
-    cardDao.update(card).map { _ =>
-      Ok
-    }
+    cardDao.update(card).map(_ => Ok)
+  }
+
+  def removeCardById(cardSetId: Long, cardId: Long) = silhouette.SecuredAction.async {
+    cardDao.remove(cardId).map(_ => Ok)
   }
 
 }

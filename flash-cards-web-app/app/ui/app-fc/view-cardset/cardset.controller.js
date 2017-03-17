@@ -70,8 +70,14 @@ export default class cardsetController {
     }
   };
 
-  deleteCard() {
-    console.log('delete card');
+  deleteCard(card) {
+    if(card.id) {
+        this._cardsService.remove(this.id, card.id).then(response => {
+          this.cards.splice(this.cards.indexOf(card), 1);
+        })
+    } else {
+        this.cards.splice(this.cards.indexOf(card), 1);
+    }
   };
 
   selectChange(card) {

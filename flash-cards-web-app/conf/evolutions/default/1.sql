@@ -23,28 +23,6 @@ CREATE TABLE card (
     translation character varying(255),
     card_set_id bigint,
     CONSTRAINT card_pk PRIMARY KEY (id),
-    FOREIGN KEY (card_set_id) REFERENCES card_set(id)
+    FOREIGN KEY (card_set_id) REFERENCES card_set(id) ON DELETE CASCADE
 );
 
-insert into users (id, first_name, last_name, email) values (1, 'test', 'test', 'zinjvi@gmail.com');
-
---insert into card_set (id, title, user_id) values (1, 'test', 1);
---insert into card_set (id, title, user_id) values (2, 'test2', 1);
---insert into card_set (id, title, user_id) values (3, 'test3', 1);
---insert into card_set (id, title, user_id) values (4, 'test4', 1);
---insert into card_set (id, title, user_id) values (5, 'test5', 1);
-
---insert into card (id, word, translation, card_set_id) values (1, 'w1', 't1', '1');
---insert into card (id, word, translation, card_set_id) values (2, 'w2', 't2', '1');
---insert into card (id, word, translation, card_set_id) values (3, 'w3', 't3', '1');
---insert into card (id, word, translation, card_set_id) values (4, 'w4', 't4', '1');
---insert into card (id, word, translation, card_set_id) values (5, 'w5', 't5', '1');
---insert into card (id, word, translation, card_set_id) values (10, 'w10', 't10', 2);
---
---
---
---insert into card (word, translation, card_set_id) values ('w10', 't10', 2);
---
---drop table users;
---drop table card_set;
---drop table card;

@@ -1,8 +1,10 @@
 GET     /api/card-set                               controllers.CardSetController.listCardSets(page: Int, size: Int)
 POST    /api/card-set                               controllers.CardSetController.create()
 GET     /api/card-set/:cardSetId                    controllers.CardSetController.get(cardSetId: Long)
+DELETE  /api/card-set/:cardSetId                    controllers.CardSetController.removeCardSetById(cardSetId: Long)
 GET     /api/card-set/:cardSetId/cards              controllers.CardSetController.listCards(cardSetId: Long, page: Int, size: Int)
 GET     /api/card-set/:cardSetId/cards/:cardIds     controllers.CardSetController.listCardsByIds(cardSetId: Long, cardIds: String)
+DELETE  /api/card-set/:cardSetId/cards/:cardId      controllers.CardSetController.removeCardById(cardSetId: Long, cardId: Int)
 POST    /api/card-set/:cardSetId/cards              controllers.CardSetController.createCard(cardSetId: Long)
 PUT     /api/card-set/:cardSetId/cards              controllers.CardSetController.updateCard(cardSetId: Long)
 

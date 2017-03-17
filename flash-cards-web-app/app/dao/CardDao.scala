@@ -13,5 +13,6 @@ trait CardDao {
   def list(cardSetId: Long, cardIds: List[Long]) : Future[Seq[Card]]
   def save(card: Card) : Future[Card]
   def update(card: Card) : Future[Int]
+  def remove(cardId: Long) : Future[Int]
 
 }

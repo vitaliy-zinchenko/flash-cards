@@ -49,6 +49,10 @@ class CardDaoImpl @Inject()(dbConfigProvider: DatabaseConfigProvider) extends Ca
     db.run(cards.filter(_.id === card.id).update(card))
   }
 
+  override def remove(cardId: Long) : Future[Int] = {
+    db.run(cards.filter(_.id === cardId).delete)
+  }
+
   override def list(cardSetId: Long, cardIds: List[Long]): Future[Seq[Card]] = {
     val query = for {
       c <- cards
