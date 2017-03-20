@@ -1,8 +1,10 @@
 export default class matchingController {
   /* @ngInject */
-  constructor(cardsService, selectCardSet, $state, $q) {
+  constructor(cardsService, selectCardSet, $state, $q, $window) {
+    this.$state = $state;
     this.$state = $state;
     this.$q = $q;
+    this.$window = $window;
 
     this._cardsService = cardsService;
     this._selectCardSet = selectCardSet;
@@ -12,10 +14,8 @@ export default class matchingController {
 
 
   initialize() {
-    var selected = this._selectCardSet.getSelectedCards()
-    var setId = Object.keys(selected)[0]
-
-    this._cardsService.test(setId, selected[setId]).$promise
+    this.setId = this.$state.params.setId;
+    this._cardsService.getAll(this.setId, 0, 9999) //TODO - remove 0 and 9999
         .then(cards => {
             cards.forEach(card => {
                 card.wordPosition = Math.random()
@@ -37,6 +37,10 @@ export default class matchingController {
     this._check()
   }
 
+  goBack() {
+    this.$window.history.back();
+  }
+
   _clearWords() {
     this.cards.forEach(card => card.selectedWord = false)
   }
@@ -52,10 +56,17 @@ export default class matchingController {
       selectedWord.guessed = true
       this._clearWords()
       this._clearTranslations()
+      if(this._isFinished()) {
+        this.finished = true
+      }
     } else if(selectedWord && selectedTranslation) {
       this._clearWords()
       this._clearTranslations()
     }
+  }
+
+  _isFinished() {
+    return this.cards.filter(card => !card.guessed).length == 0;
   }
 
 }

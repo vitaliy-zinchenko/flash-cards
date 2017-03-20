@@ -40,7 +40,7 @@ export default ($resource) => {
     return service.delete({setId: setId, cardId: cardId}).$promise;
   };
 
-  service.test = (setId, cardIds) => {
+  service.byCardIds = (setId, cardIds) => {
     return service.byIds({setId: setId, cardIds: cardIds});
   };
 

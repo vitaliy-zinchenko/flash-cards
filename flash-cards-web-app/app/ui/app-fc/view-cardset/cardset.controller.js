@@ -97,7 +97,7 @@ export default class cardsetController {
   }
 
   goToMatching() {
-    this.$state.go('training-matching');
+    this.$state.go('training-matching', {setId: this.id});
   }
 
   // ****************************

@@ -1,7 +1,6 @@
-<div class="panel panel-default">
-    <div class="panel-body">
-        <button
-                ng-repeat="card in matchingCtrl.cards | orderBy:'wordPosition'"
+<div ng-if="!matchingCtrl.finished" class="row">
+    <div class="col-xs-6">
+        <button ng-repeat="card in matchingCtrl.cards | orderBy:'wordPosition'"
                 ng-if="!card.guessed"
                 ng-click="matchingCtrl.selectWord(card)"
                 class="btn btn-default">
@@ -9,12 +8,8 @@
             <span ng-if="card.selectedWord">*</span>
         </button>
     </div>
-</div>
-
-<div class="panel panel-default">
-    <div class="panel-body">
-        <button
-                ng-repeat="card in matchingCtrl.cards | orderBy:'translationPosition'"
+    <div class="col-xs-6">
+        <button ng-repeat="card in matchingCtrl.cards | orderBy:'translationPosition'"
                 ng-if="!card.guessed"
                 ng-click="matchingCtrl.selectTranslation(card)"
                 class="btn btn-default">
@@ -22,4 +17,9 @@
             <span ng-if="card.selectedTranslation">*</span>
         </button>
     </div>
+</div>
+
+<div ng-if="matchingCtrl.finished">
+    Congratulations!
+    <button ng-click="matchingCtrl.goBack()" class="btn btn-default">Back</button>
 </div>
