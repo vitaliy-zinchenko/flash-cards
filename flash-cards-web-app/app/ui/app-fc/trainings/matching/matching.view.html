@@ -1,6 +1,6 @@
 <div ng-if="!matchingCtrl.finished" class="row">
     <div class="col-xs-6">
-        <button ng-repeat="card in matchingCtrl.cards | orderBy:'wordPosition'"
+        <button ng-repeat="card in matchingCtrl.inProgressCards | orderBy:'wordPosition'"
                 ng-if="!card.guessed"
                 ng-click="matchingCtrl.selectWord(card)"
                 class="btn btn-default">
@@ -9,7 +9,7 @@
         </button>
     </div>
     <div class="col-xs-6">
-        <button ng-repeat="card in matchingCtrl.cards | orderBy:'translationPosition'"
+        <button ng-repeat="card in matchingCtrl.inProgressCards | orderBy:'translationPosition'"
                 ng-if="!card.guessed"
                 ng-click="matchingCtrl.selectTranslation(card)"
                 class="btn btn-default">

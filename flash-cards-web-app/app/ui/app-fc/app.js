@@ -74,3 +74,14 @@ function fetchAppConfig() {
 }
 
 
+Array.prototype.randomize = function() {
+    var m = this.length, i, t;
+
+    while(m) {
+        i = Math.floor(Math.random() * m--)
+        t = this[m]
+        this[m] = this[i]
+        this[i] = t
+    }
+
+}
