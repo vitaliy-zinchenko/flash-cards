@@ -19,7 +19,7 @@ class CardSetController @Inject()
   implicit val cardSetReads = Json.reads[CardSet]
   implicit val cardWriters = Json.writes[Card]
 
-  case class CardSetRequest(title: String)
+  case class CardSetRequest(id: Option[Long], title: String)
   implicit val cardSetRequestReads = Json.reads[CardSetRequest]
 
   case class CardRequest(id: Option[Long], word: String, translation: String)
@@ -41,6 +41,14 @@ class CardSetController @Inject()
     val requestBody = request.body.as[CardSetRequest]
     val cardSet = CardSet(id = None, requestBody.title, request.identity.id.get)
     cardSetDao.save(cardSet).map { cardSet =>
+      Ok(Json.toJson(cardSet))
+    }
+  }
+
+  def update(cardSetId: Long) = silhouette.SecuredAction.async(parse.json) { request =>
+    val requestBody = request.body.as[CardSetRequest]
+    val cardSet = CardSet(requestBody.id, requestBody.title, request.identity.id.get)
+    cardSetDao.update(cardSet).map { cardSet =>
       Ok(Json.toJson(cardSet))
     }
   }

@@ -55,6 +55,10 @@ class CardSetDaoImpl @Inject()(dbConfigProvider: DatabaseConfigProvider) extends
     db.run((cardSets returning cardSets) += cardSet)
   }
 
+  override def update(cardSet: CardSet): Future[Int] = {
+    db.run(cardSets.filter(_.id === cardSet.id).update(cardSet))
+  }
+
   override def remove(cardSetId: Long) : Future[Int] = {
     db.run(cardSets.filter(_.id === cardSetId).delete)
   }

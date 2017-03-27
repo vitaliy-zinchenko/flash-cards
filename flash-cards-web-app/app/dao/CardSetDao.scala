@@ -12,6 +12,7 @@ trait CardSetDao {
   def listAll(userId: Long, page: Int, size: Int) : Future[Seq[CardSet]]
   def find(cardSetId: Long) : Future[Option[CardSet]]
   def save(cardSet: CardSet) : Future[CardSet]
+  def update(cardSet: CardSet) : Future[Int]
   def remove(cardSetId: Long) : Future[Int]
 
 }

@@ -43,9 +43,13 @@ export default class matchingController {
   _check() {
     var selectedWord = this.inProgressCards.find(card => card.selectedWord)
     var selectedTranslation = this.inProgressCards.find(card => card.selectedTranslation)
+    if(!selectedWord || !selectedTranslation) {
+        // wasn't selected both word and translation
+        return;
+    }
     if(selectedWord == selectedTranslation) {
       selectedWord.guessed = true
-      selectedWord.rightCount++
+      selectedWord.rightCount ? selectedWord.rightCount++ : selectedWord.rightCount = 1;
       this._clearWords()
       this._clearTranslations()
       if(this._isFinishedRound()) {
@@ -54,9 +58,9 @@ export default class matchingController {
           this.finished = true
         }
       }
-    } else if(selectedWord && selectedTranslation) {
-      selectedWord.wrongCount++
-      selectedWord.rightCount--
+    } else {
+      selectedWord.wrongCount ? selectedWord.wrongCount++ : selectedWord.wrongCount = 1;
+      selectedWord.reTry = true;
       this._clearWords()
       this._clearTranslations()
     }
@@ -70,21 +74,21 @@ export default class matchingController {
     this.inProgressCards.forEach(card => card.selectedTranslation = false)
   }
 
-
   _isFinishedRound() {
     return this.inProgressCards.filter(card => !card.guessed).length == 0;
   }
 
   _getInProgressCards(allCards) {
     var isFirstRound = (card) => !card.rightCount && !card.wrongCount;
-    var isReTryRound = (card) => card.wrongCount - card.rightCount > 0;
+    var isReTryRound = (card) => card.reTry == true;
     var inProgress = [];
     for(var i = 0; inProgress.length < MATCHING_SIZE && allCards[i]; i++) {
         var card = allCards[i];
         if(isFirstRound(card) || isReTryRound(card)) {
-            card.guessed = false;
-            card.rightCount = 0;
-            card.wrongCount = 0;
+            card.guessed = card.reTry = false;
+            card.wordPosition = Math.random();
+            card.translationPosition = Math.random();
+            //card.rightCount = card.wrongCount = 0;
             inProgress.push(card);
         }
     }

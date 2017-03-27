@@ -1,13 +1,5 @@
 body { padding-top: 70px; }
 
-.sets-ctrl-btn {
-    float: right;
-}
-
-.set-ctrl-btn {
-    float: right;
-}
-
 .header-container {
 	width: 80%;
 }
@@ -20,4 +12,8 @@ body { padding-top: 70px; }
 .login-form {
     margin: auto;
     width: 400px;
+}
+
+.matching-item {
+    cursor: pointer
 }

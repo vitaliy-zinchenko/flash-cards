@@ -1,8 +1,8 @@
 console.log('app');
 
 'use strict';
-import styles from './styles/css/all.css';
 import bootstrap from './styles/css/bootstrap.min.css';
+import styles from './styles/css/all.css';
 
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';

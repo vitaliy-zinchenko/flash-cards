@@ -11,6 +11,10 @@ export default ($resource) => {
                                 'delete': {
                                   url: '/api/card-set/:id',
                                   method: 'DELETE'
+                                },
+                                '_update': {
+                                  url: '/api/card-set/:id',
+                                  method: 'PUT'
                                 }
                             });
 
@@ -20,6 +24,10 @@ export default ($resource) => {
 
   service.createSet = (set) => {
     return service.save(set).$promise;
+  };
+
+  service.update = (set) => {
+    return service._update(set).$promise;
   };
 
   service.get = (id) => {

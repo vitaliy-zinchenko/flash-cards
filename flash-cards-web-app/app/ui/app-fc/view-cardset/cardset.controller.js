@@ -13,24 +13,20 @@ export default class cardsetController {
 
   initialize() {
     this.cards = [];
-
-
-
-
-    this.name = 'cardsetController';
     this.currentSet = null;
     this.id = this.$state.params.id;
     if( this.id && this.id != 'new') {
-      this._setService.get(this.id)
-        .then(set => {
-          this.currentSet = set;
-        });
+
     }
 
     this.id = this.$state.params.id;
 
     //get existing cards
-    if( this.id && this.id != 'new') { //TODO is it possible to avoid chis check?
+    if( this.id ) { //TODO is it possible to avoid chis check?
+      this._setService.get(this.id)
+        .then(set => {
+          this.currentSet = set;
+        });
       this._cardsService.getAll(this.id, 0, 99999)
         .then(cards => {
           this._markSelectedCards(cards);
@@ -45,11 +41,17 @@ export default class cardsetController {
   // ****************************
 
   saveSet(set) {
+    if(this.id) {
+      this._setService.update(set).then(data => {
+        console.log("updated")
+      });
+    } else {
       this._setService.createSet(set).then(data => {
         this.currentSet = data;
         this.id = data.id;
       });
-    };
+    }
+  };
 
   newCard() {
     this.cards.push({});

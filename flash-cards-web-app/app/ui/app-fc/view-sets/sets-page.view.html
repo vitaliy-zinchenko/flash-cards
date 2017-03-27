@@ -5,19 +5,19 @@
   <table class="table">
     <thead>
       <tr>
-        <th></th>
+        <!--<th></th>-->
         <th>Title</th>
-        <th>Description</th>
-        <th>Amount</th>
+        <!--<th>Description</th>-->
+        <!--<th>Amount</th>-->
         <th></th>
       </tr>
     </thead>
     <tbody>
       <tr ng-repeat="set in setsCtrl.sets">
-        <td><input type="checkbox" ng-model="set.selected" ng-change="setsCtrl.selectChange(set)"></td>
+        <!--<td><input type="checkbox" ng-model="set.selected" ng-change="setsCtrl.selectChange(set)"></td>-->
         <td>{{set.title}}</td>
-        <td>{{set.id}}</td>
-        <td>{{set.amount}}</td>
+        <!--<td>{{set.id}}</td>-->
+        <!--<td>{{set.amount}}</td>-->
         <td>
           <button class="btn btn-default" ng-click="setsCtrl.goToSet(set)">View</button>
           <button class="btn btn-default" ng-click="setsCtrl.remove(set)">Remove</button>
