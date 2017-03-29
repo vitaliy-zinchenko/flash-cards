@@ -4,7 +4,7 @@ import javax.inject.Inject
 
 import com.google.inject.Singleton
 import dao.CardDao
-import model.{Card, CardSet}
+import model.Card
 import play.api.db.slick.DatabaseConfigProvider
 import slick.driver.JdbcProfile
 

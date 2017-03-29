@@ -17,7 +17,7 @@
     <div class="set-ctrl-btn">
       <!--<button class="btn btn-default" ng-click="cardsetCtrl.goToCards()">Cards</button>-->
       <!--<button class="btn btn-default" ng-click="cardsetCtrl.goToTranslate()">Translate</button>-->
-      <button class="btn btn-default" ng-click="cardsetCtrl.goToMatching()">Matching</button>
+      <button class="btn btn-default" ng-click="cardsetCtrl.goToMatching()">Learn</button>
     </div>
   </section>
 
@@ -33,10 +33,10 @@
     <tbody>
     <tr ng-repeat="card in cardsetCtrl.cards">
       <!--<td><input type="checkbox" ng-model="card.selected" ng-change="cardsetCtrl.selectChange(card)"></td>-->
-      <td><input type="text" class="form-control" ng-model="card.word" ng-blur="cardsetCtrl.saveCard(card)"></td>
-      <td><input type="text" class="form-control" ng-model="card.translation" ng-blur="cardsetCtrl.saveCard(card)"></td>
+      <td><input type="text" class="form-control" ng-model="card.word" ng-blur="cardsetCtrl.saveCard(card); cardsetCtrl.addLineIfNeeded(card, $index)"></td>
+      <td><input type="text" class="form-control" ng-model="card.translation" ng-blur="cardsetCtrl.saveCard(card); cardsetCtrl.addLineIfNeeded(card, $index)"></td>
       <td>
-        <button class="btn btn-default" ng-click="cardsetCtrl.deleteCard(card)">Delete</button>
+        <button ng-if="cardsetCtrl.isFilledWordAndTranslation(card)" ng-click="cardsetCtrl.deleteCard(card)" class="btn btn-default">Delete</button>
       </td>
     </tr>
     </tbody>

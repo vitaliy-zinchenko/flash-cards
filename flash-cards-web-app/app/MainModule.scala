@@ -22,6 +22,8 @@ import com.mohiva.play.silhouette.persistence.repositories.DelegableAuthInfoRepo
 import config.AppConfig
 import dao.UserDAO
 import dao.impl.UserDAOImpl
+import dao.impl.auth.NotImplementedAuthInfoDao
+import dao.impl.auth.slick.PasswordAuthInfoDao
 import net.codingwell.scalaguice.ScalaModule
 import play.api.Configuration
 import services.{UserService, UserServiceImpl}
@@ -29,6 +31,7 @@ import play.api.libs.concurrent.Execution.Implicits._
 import net.ceedubs.ficus.Ficus._
 import net.ceedubs.ficus.readers.ArbitraryTypeReader._
 import net.ceedubs.ficus.readers.EnumerationReader._
+import play.api.db.slick.DatabaseConfigProvider
 import play.api.libs.ws.WSClient
 
 import scala.concurrent.ExecutionContext.Implicits.global
@@ -38,7 +41,6 @@ class MainModule extends AbstractModule with ScalaModule {
 
   def configure() {
     bind[UserService].to[UserServiceImpl]
-    bind[UserDAO].to[UserDAOImpl]
     bind[Silhouette[DefaultEnv]].to[SilhouetteProvider[DefaultEnv]]
     bind[CacheLayer].to[PlayCacheLayer]
     bind[OAuth2StateProvider].to[DummyStateProvider]
@@ -49,10 +51,15 @@ class MainModule extends AbstractModule with ScalaModule {
     bind[Clock].toInstance(Clock())
 
     // Replace this with the bindings to your concrete DAOs
-    bind[DelegableAuthInfoDAO[PasswordInfo]].toInstance(new InMemoryAuthInfoDAO[PasswordInfo])
-    bind[DelegableAuthInfoDAO[OAuth1Info]].toInstance(new InMemoryAuthInfoDAO[OAuth1Info])
+    //bind[DelegableAuthInfoDAO[PasswordInfo]].toInstance(new InMemoryAuthInfoDAO[PasswordInfo])
+    bind[DelegableAuthInfoDAO[OAuth1Info]].toInstance(new NotImplementedAuthInfoDao[OAuth1Info])
     bind[DelegableAuthInfoDAO[OAuth2Info]].toInstance(new InMemoryAuthInfoDAO[OAuth2Info])
-    bind[DelegableAuthInfoDAO[OpenIDInfo]].toInstance(new InMemoryAuthInfoDAO[OpenIDInfo])
+    bind[DelegableAuthInfoDAO[OpenIDInfo]].toInstance(new NotImplementedAuthInfoDao[OpenIDInfo])
+  }
+
+  @Provides
+  def passwordAuthInfoDao(dbConfigProvider: DatabaseConfigProvider): DelegableAuthInfoDAO[PasswordInfo] = {
+    new PasswordAuthInfoDao(dbConfigProvider)
   }
 
   @Provides

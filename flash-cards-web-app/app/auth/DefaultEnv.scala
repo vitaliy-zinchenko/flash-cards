@@ -9,5 +9,5 @@ import model.User
   */
 class DefaultEnv extends Env {
   type I = User
-  type A = JWTAuthenticator //investigate more about JWT
+  type A = JWTAuthenticator //TODO investigate more about JWT
 }

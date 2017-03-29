@@ -15,11 +15,6 @@ export default class cardsetController {
     this.cards = [];
     this.currentSet = null;
     this.id = this.$state.params.id;
-    if( this.id && this.id != 'new') {
-
-    }
-
-    this.id = this.$state.params.id;
 
     //get existing cards
     if( this.id ) { //TODO is it possible to avoid chis check?
@@ -31,7 +26,10 @@ export default class cardsetController {
         .then(cards => {
           this._markSelectedCards(cards);
           this.cards = cards;
+          this.newCards(2)
         });
+    } else {
+        this.newCards(2)
     }
 
   }
@@ -53,12 +51,18 @@ export default class cardsetController {
     }
   };
 
+  newCards(count) {
+    for(var i = 0; i < count; i++) {
+        this.cards.push({});
+    }
+  };
+
   newCard() {
     this.cards.push({});
   };
 
   saveCard(card) {
-    if(!card.word || !card.translation) {
+    if(!this.isFilledWordAndTranslation(card)) {
       return
     }
     if(card.id) {
@@ -71,6 +75,22 @@ export default class cardsetController {
       })
     }
   };
+
+  addLineIfNeeded(card, index) {
+    if(!this.isFilledWordAndTranslation(card)) {
+        return
+    }
+    //   0  1  2  3  4  5
+    // [ O, O, O, O, O, O]     length = 6
+    //               |<->|     <- last empty lines
+    if(this.cards.length <= index + 2) {
+        this.newCard()
+    }
+  }
+
+  isFilledWordAndTranslation(card) {
+    return card.word && card.translation;
+  }
 
   deleteCard(card) {
     if(card.id) {
