@@ -24,7 +24,7 @@
   <table class="table">
     <thead>
     <tr>
-      <!--<th></th>-->
+      <th>Progress</th>
       <th>Terms</th>
       <th>Definition</th>
       <th></th>
@@ -33,6 +33,7 @@
     <tbody>
     <tr ng-repeat="card in cardsetCtrl.cards">
       <!--<td><input type="checkbox" ng-model="card.selected" ng-change="cardsetCtrl.selectChange(card)"></td>-->
+      <td><span ng-if="cardsetCtrl.isFilledWordAndTranslation(card)">{{(card.level||0) * 20}}%</span></td>
       <td><input type="text" class="form-control" ng-model="card.word" ng-blur="cardsetCtrl.saveCard(card); cardsetCtrl.addLineIfNeeded(card, $index)"></td>
       <td><input type="text" class="form-control" ng-model="card.translation" ng-blur="cardsetCtrl.saveCard(card); cardsetCtrl.addLineIfNeeded(card, $index)"></td>
       <td>
@@ -41,6 +42,7 @@
     </tr>
     </tbody>
   </table>
-  <button class="btn btn-default" ng-click="cardsetCtrl.newCard()">New card</button>
+
+  <!--<button class="btn btn-default" ng-click="cardsetCtrl.newCard()">New card</button>-->
 
 </div>

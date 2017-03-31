@@ -1,5 +1,7 @@
 package dao.impl
 
+import java.sql.Date
+import java.util.Calendar
 import javax.inject.Inject
 
 import com.google.inject.Singleton
@@ -26,12 +28,19 @@ class CardDaoImpl @Inject()(dbConfigProvider: DatabaseConfigProvider) extends Ca
     def word = column[String]("word")
     def translation = column[String]("translation")
     def cardSetId = column[Long]("card_set_id")
+    def level = column[Int]("level")
+    def guessDate = column[Date]("guess_date")
+    def trainDate = column[Date]("train_date")
 
     override def * =
-      (id, word, translation, cardSetId) <> (Card.tupled, Card.unapply)
+      (id, word, translation, cardSetId, level, guessDate, trainDate) <> (Card.tupled, Card.unapply)
   }
 
   implicit val cards = TableQuery[CardTable]
+
+  override def get(cardId: Long): Future[Option[Card]] = {
+    db.run(cards.filter(_.id === cardId).result.headOption)
+  }
 
   override def list(cardSetId: Long, page: Int, size: Int): Future[Seq[Card]] = {
     db.run(cards
@@ -60,5 +69,12 @@ class CardDaoImpl @Inject()(dbConfigProvider: DatabaseConfigProvider) extends Ca
     } yield c
 
     db.run(query.result)
+  }
+
+  override def listToLearn(cardSetId: Long): Future[Seq[Card]] = {
+    val q = cards.filter(_.cardSetId === cardSetId)
+      .filter(_.level < 5)
+      .filter(_.trainDate <= new Date(Calendar.getInstance().getTimeInMillis))
+    db.run(q.result)
   }
 }

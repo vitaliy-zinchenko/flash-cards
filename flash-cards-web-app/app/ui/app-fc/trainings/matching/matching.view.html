@@ -35,3 +35,10 @@
     </ul>
     <button ng-click="matchingCtrl.goBack()" class="btn btn-default">Back</button>
 </div>
+
+<div ng-if="matchingCtrl.allCards.length == 0">
+    There is no cards to learn for now. Return back later.
+    <br/>
+    <button ng-click="matchingCtrl.learnAnyway()" class="btn btn-default">Learn anyway!</button>
+    <button ng-click="matchingCtrl.goBack()" class="btn btn-default">Back</button>
+</div>

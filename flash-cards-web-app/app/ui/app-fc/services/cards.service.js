@@ -21,6 +21,15 @@ export default ($resource) => {
                                 'delete': {
                                   url: '/api/card-set/:setId/cards/:cardId',
                                   method: 'DELETE'
+                                },
+                                '_progress': {
+                                  url: '/api/card-set/cards/progress',
+                                  method: 'POST'
+                                },
+                                '_listToLearn': {
+                                  url: '/api/card-set/:setId/cards/learn',
+                                  method: 'GET',
+                                  isArray: true
                                 }
                             });
 
@@ -42,6 +51,14 @@ export default ($resource) => {
 
   service.byCardIds = (setId, cardIds) => {
     return service.byIds({setId: setId, cardIds: cardIds});
+  };
+
+  service.sendProgress = (cardsProgresses) => {
+    return service._progress(cardsProgresses);
+  };
+
+  service.listToLearn = (setId) => {
+    return service._listToLearn({setId, setId});
   };
 
   return service;

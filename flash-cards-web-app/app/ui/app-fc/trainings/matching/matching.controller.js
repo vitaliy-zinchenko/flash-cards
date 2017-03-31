@@ -16,7 +16,16 @@ export default class matchingController {
 
   initialize() {
     this.setId = this.$state.params.setId;
-    this._cardsService.getAll(this.setId, 0, 9999) //TODO - remove 0 and 9999
+    this._cardsService.listToLearn(this.setId).$promise
+        .then(cards => {
+            cards.randomize();
+            this.allCards = cards;
+            this.inProgressCards = this._getInProgressCards(this.allCards);
+        })
+  }
+
+  learnAnyway() {
+    this._cardsService.getAll(this.setId, 0, 9999) //TODO remove 0 and 9999
         .then(cards => {
             cards.randomize();
             this.allCards = cards;
@@ -55,7 +64,8 @@ export default class matchingController {
       if(this._isFinishedRound()) {
         this.inProgressCards = this._getInProgressCards(this.allCards);
         if(this.inProgressCards.length == 0) {
-          this.finished = true
+          this.finished = true;
+          this._sendProgress();
         }
       }
     } else {
@@ -64,6 +74,17 @@ export default class matchingController {
       this._clearWords()
       this._clearTranslations()
     }
+  }
+
+  _sendProgress() {
+    var cardProgresses = this.allCards.map(card => {
+      return {
+        cardId: card.id,
+        right: card.rightCount,
+        wrong: card.wrongCount
+      }
+    });
+    this._cardsService.sendProgress(cardProgresses);
   }
 
   _clearWords() {
