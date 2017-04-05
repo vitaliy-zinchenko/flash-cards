@@ -34,12 +34,17 @@ import net.ceedubs.ficus.readers.EnumerationReader._
 import play.api.db.slick.DatabaseConfigProvider
 import play.api.libs.ws.WSClient
 
+import scala.collection.JavaConversions.mapAsScalaMap
 import scala.concurrent.ExecutionContext.Implicits.global
 
 
 class MainModule extends AbstractModule with ScalaModule {
 
   def configure() {
+    println("configuration!!!")
+
+    System.getenv().toMap.foreach{ case (k: String, v: String) => println(">>> " + k + " : " + v)}
+
     bind[UserService].to[UserServiceImpl]
     bind[Silhouette[DefaultEnv]].to[SilhouetteProvider[DefaultEnv]]
     bind[CacheLayer].to[PlayCacheLayer]

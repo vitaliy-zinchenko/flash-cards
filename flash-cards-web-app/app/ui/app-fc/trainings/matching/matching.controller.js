@@ -1,4 +1,4 @@
-const MATCHING_SIZE = 3;
+const MATCHING_SIZE = 7;
 
 export default class matchingController {
   /* @ngInject */

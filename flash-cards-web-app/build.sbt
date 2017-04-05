@@ -2,7 +2,7 @@ name := """flash-cards-web-app"""
 
 version := "1.0-SNAPSHOT"
 
-lazy val root = (project in file(".")).enablePlugins(PlayScala)
+lazy val root = (project in file(".")).enablePlugins(PlayScala,ElasticBeanstalkPlugin)
 
 scalaVersion := "2.11.8"
 
@@ -15,7 +15,8 @@ libraryDependencies ++= Seq(
   "com.mohiva" % "play-silhouette-crypto-jca_2.11" % "4.0.0",
   "org.scalatestplus.play" %% "scalatestplus-play" % "1.5.1" % Test,
   "mysql" % "mysql-connector-java" % "5.1.34",
-  "org.postgresql" % "postgresql" % "9.3-1100-jdbc4",
+//  "org.postgresql" % "postgresql" % "9.3-1100-jdbc4",
+  "org.postgresql" % "postgresql" % "42.0.0",
   "com.typesafe.play" %% "play-slick" % "1.1.0",
   "com.typesafe.play" %% "play-slick-evolutions" % "1.1.0",
   "net.codingwell" %% "scala-guice" % "4.0.1",
@@ -31,5 +32,12 @@ libraryDependencies ++= Seq(
 //resolvers += Resolver.jcenterRepo
 //resolvers += "Atlassian Releases" at "https://maven.atlassian.com/public/"
 
-dockerRepository := Some("zinjvi")
-dockerEntrypoint := Seq("bin/entrypoint.sh")
+//dockerRepository := Some("zinjvi")
+//dockerEntrypoint := Seq("bin/entrypoint.sh")
+
+dockerExposedPorts := Seq(9000)
+dockerBaseImage := "java:latest"
+
+javaOptions in Universal ++= Seq(
+  "-Dpidfile.path=/dev/null"
+)

@@ -77,15 +77,16 @@ export default class cardsetController {
   };
 
   addLineIfNeeded(card, index) {
-    if(!this.isFilledWordAndTranslation(card)) {
-        return
-    }
     //   0  1  2  3  4  5
     // [ O, O, O, O, O, O]     length = 6
     //               |<->|     <- last empty lines
-    if(this.cards.length <= index + 2) {
+    if(this.isFilledWordOrTranslation(card) && this.cards.length <= index + 2) {
         this.newCard()
     }
+  }
+
+  isFilledWordOrTranslation(card) {
+    return card.word || card.translation;
   }
 
   isFilledWordAndTranslation(card) {
