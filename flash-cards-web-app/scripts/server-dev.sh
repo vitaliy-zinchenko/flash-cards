@@ -16,12 +16,12 @@ export FC_GOOGLE_CLIENT_SECRET="ILeR4NVzLy2xSwcqDIYy1Iku"
 
 echo "$RDS_HOSTNAME $RDS_PORT $RDS_DB_NAME $RDS_USERNAME $RDS_PASSWORD"
 
-#echo "FC_DB_URL=$FC_DB_URL"
 echo "FC_GOOGLE_CLIENT_ID=$FC_GOOGLE_CLIENT_ID"
 echo "FC_GOOGLE_REDIRECT_URL=$FC_GOOGLE_REDIRECT_URL"
 echo "FC_GOOGLE_CLIENT_SECRET=$FC_GOOGLE_CLIENT_SECRET"
 
 sbt clean -jvm-debug 9990 run
+#sbt clean -jvm-debug 9990 start
 
 # docker run
 # -e FC_DB_URL="jdbc:postgresql://horton.elephantsql.com:5432/bueoqxzn?user=bueoqxzn&password=TwENJrc1Acp1RW-hYKWHp3-dDoCciYdL"

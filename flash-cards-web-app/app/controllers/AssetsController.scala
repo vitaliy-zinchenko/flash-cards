@@ -11,6 +11,7 @@ import play.api.mvc._
 class AssetsController @Inject()() extends Controller {
 
   def reRoteToRoot(path: String, file: String, f: String) = Action.async { request =>
+    println(s"rerouting to root: path=$path, file=$path, f=$f")
     Assets.at(path, file).apply(request)
   }
 

@@ -13,6 +13,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const AppCacheWebpackPlugin = require('appcache-webpack-plugin');
 const path  = require('path');
 
 const srcPath     = path.join(__dirname, 'app-fc');
@@ -54,6 +55,7 @@ module.exports = {
         test: /\.css$/,
         loader: "style-loader!css-loader"
       },
+      { test: /\.appcache$/, loader: "file" },
       { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: "file" },
       { test: /\.(woff|woff2)$/, loader:"url?prefix=font/&limit=5000" },
       { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/octet-stream" },
@@ -76,6 +78,14 @@ module.exports = {
       inject  : true,
       hash    : true,
       template: 'app-fc/index.html'
+    }),
+    new AppCacheWebpackPlugin({
+//      cache: ['someOtherAsset.jpg'],
+      network: ["*"],
+//      fallback: ['failwhale.jpg'],
+//      settings: ['prefer-online'],
+//      exclude: ['file.txt', /.*\.js$/],
+      output: 'manifest.appcache'
     })
   ],
 

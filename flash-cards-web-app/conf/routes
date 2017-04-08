@@ -18,6 +18,8 @@ POST     /auth/signIn               controllers.AuthController.signIn()
 POST     /auth/signUp               controllers.AuthController.signUp()
 POST     /auth/:provider            controllers.AuthController.authenticate(provider)
 
+GET     /meta/$file<.*>                       controllers.Assets.at(path="/public/meta", file)
+
 GET     /                                     controllers.Assets.at(path="/public/ui", file="index.html")
-GET     /$file<.*(css|js)+.*>                 controllers.Assets.at(path="/public/ui", file)
+GET     /$file<.*(css|js|appcache)+.*>        controllers.Assets.at(path="/public/ui", file)
 GET     /*f                                   controllers.AssetsController.reRoteToRoot(path="/public/ui", file="index.html", f)
