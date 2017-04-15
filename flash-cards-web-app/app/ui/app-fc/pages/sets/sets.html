@@ -1,0 +1,21 @@
+  <div class="sets-ctrl-btn">
+    <button class="btn btn-default" value="new-set" ui-sref="new-card-set">New set</button>
+  </div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="set in sets">
+        <td>{{set.title}}</td>
+        <td>
+          <button class="btn btn-default" ng-click="goToSet(set)">View</button>
+          <button class="btn btn-default" ng-click="remove(set)">Remove</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>

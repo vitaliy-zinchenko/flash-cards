@@ -1,0 +1,44 @@
+<div ng-if="!finished" class="row">
+    <div class="col-xs-6">
+        <div ng-repeat="card in inProgressCards | orderBy:'wordPosition'"
+             ng-if="!card.guessed"
+             ng-click="selectWord(card)"
+             ng-class="{'panel-primary': card.selectedWord}"
+             class="panel panel-default matching-item">
+            <div class="panel-body">
+                {{card.word}}
+                <!--<button ng-click="console.log('cc'); $event.stopPropagation();">Voice</button>-->
+            </div>
+        </div>
+    </div>
+    <div class="col-xs-6">
+        <div ng-repeat="card in inProgressCards | orderBy:'translationPosition'"
+             ng-if="!card.guessed"
+             ng-click="selectTranslation(card)"
+             ng-class="{'panel-primary': card.selectedTranslation}"
+             class="panel panel-default matching-item">
+            <div class="panel-body">
+                {{card.translation}}
+                <!--<button ng-click="console.log('cc'); $event.stopPropagation();">Voice</button>-->
+            </div>
+        </div>
+    </div>
+</div>
+
+<div ng-if="finished">
+    Congratulations!
+    <br/>
+    <ul>
+        <li ng-repeat="card in allCards">
+            {{card.word}} +{{card.rightCount}} / -{{card.wrongCount || '0'}}
+        </li>
+    </ul>
+    <button ng-click="goBack()" class="btn btn-default">Back</button>
+</div>
+
+<div ng-if="allCards.length == 0">
+    There is no cards to learn for now. Return back later.
+    <br/>
+    <button ng-click="learnAnyway()" class="btn btn-default">Learn anyway!</button>
+    <button ng-click="goBack()" class="btn btn-default">Back</button>
+</div>

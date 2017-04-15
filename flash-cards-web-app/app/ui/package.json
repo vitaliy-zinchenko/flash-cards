@@ -1,25 +1,40 @@
 {
-  "name": "angular-webpack",
+  "name": "flashcards",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "bundle": "webpack"
+    "dev": "webpack --mode build",
+    "prod": "webpack --mode production",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kenhowardpdx/angular-webpack.git"
+    "url": "git+https://github.com/vitaliy-zinchenko/flash-cards.git"
   },
-  "keywords": [],
-  "author": "Ken Howard <ken@simplicatedweb.com> (http://kenhowardpdx.com)",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/kenhowardpdx/angular-webpack/issues"
-  },
-  "homepage": "https://github.com/kenhowardpdx/angular-webpack#readme",
   "devDependencies": {
-    "angular": "^1.5.0",
-    "webpack": "^1.12.14"
+    "clean-webpack-plugin": "^0.1.10",
+    "copy-webpack-plugin": "^3.0.1",
+    "cross-env": "^2.0.0",
+    "css-loader": "^0.23.1",
+    "file-loader": "^0.8.4",
+    "url-loader": "^0.5.6",
+    "html-loader": "^0.4.3",
+    "html-webpack-plugin": "^2.22.0",
+    "ng-annotate": "^1.2.1",
+    "source-map-loader": "^0.1.5",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1",
+    "minimist": "^1.2.0",
+    "appcache-webpack-plugin": "^1.3.0"
+  },
+  "dependencies": {
+    "angular": "^1.5.8",
+    "angular-local-storage": "^0.5.0",
+    "angular-resource": "^1.5.8",
+    "angular-ui-router": "^0.3.1",
+    "angular-cookies": "^1.6.2",
+    "satellizer": "^0.15.5",
+    "angularindexeddb": "^1.1.3",
+    "angular-offline": "^0.1.0"
   }
 }

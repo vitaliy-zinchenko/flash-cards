@@ -1,0 +1,15 @@
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 ng-if="!cardsTrainingCtrl.turned" class="panel-title">Word:</h3>
+        <h3 ng-if="cardsTrainingCtrl.turned" class="panel-title">Translation:</h3>
+    </div>
+    <div class="panel-body">
+        <span ng-if="!cardsTrainingCtrl.turned">{{cardsTrainingCtrl.currentCard.word}}</span>
+        <span ng-if="cardsTrainingCtrl.turned">{{cardsTrainingCtrl.currentCard.translation}}</span>
+    </div>
+    <div class="panel-footer">
+        <button ng-click="cardsTrainingCtrl.previous()" ng-disabled="cardsTrainingCtrl.currentCardIndex == 0" class="btn btn-default">< Previous</button>
+        <button ng-click="cardsTrainingCtrl.turn()" class="btn btn-default">Turn</button>
+        <button ng-click="cardsTrainingCtrl.next()" ng-disabled="cardsTrainingCtrl.currentCardIndex == cardsTrainingCtrl.cards.length - 1" class="btn btn-default">Next ></button>
+    </div>
+</div>

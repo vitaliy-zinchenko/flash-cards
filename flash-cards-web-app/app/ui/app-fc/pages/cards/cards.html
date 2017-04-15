@@ -1,0 +1,49 @@
+<div class="cards-container">
+
+  <section>
+    <form class="form-inline">
+      <div class="form-group">
+        <!--<label for="title">Title  </label>-->
+        <input type="text" class="form-control" id="title" ng-model="currentSet.title">
+      </div>
+      <button class="btn btn-default" ng-click="saveSet(currentSet)">
+        <span ng-if="id">Update</span>
+        <span ng-if="!id">Create</span>
+      </button>
+    </form>
+  </section>
+
+  <div ng-if="id">
+    <section>
+      <div class="set-ctrl-btn">
+        <!--<button class="btn btn-default" ng-click="goToCards()">Cards</button>-->
+        <!--<button class="btn btn-default" ng-click="goToTranslate()">Translate</button>-->
+        <button class="btn btn-default" ng-click="goToMatching()">Learn</button>
+      </div>
+    </section>
+
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Progress</th>
+        <th>English</th>
+        <th>Russian</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr ng-repeat="card in cards">
+        <!--<td><input type="checkbox" ng-model="card.selected" ng-change="selectChange(card)"></td>-->
+        <td><span ng-if="isFilledWordAndTranslation(card)">{{(card.level||0) * 20}}%</span></td>
+        <td><input type="text" class="form-control" ng-model="card.word" ng-blur="saveCard(card); addLineIfNeeded(card, $index)"></td>
+        <td><input type="text" class="form-control" ng-model="card.translation" ng-blur="saveCard(card); addLineIfNeeded(card, $index)"></td>
+        <td>
+          <button ng-if="isFilledWordAndTranslation(card)" ng-click="deleteCard(card)" class="btn btn-default">Delete</button>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+</div>

@@ -1,0 +1,15 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="header-container container">
+        <div class="navbar-header">
+            <p class="navbar-brand" href="/">
+                <a href="/">FC</a>  - - - -
+                <a ui-sref="signin" ng-if="!isAuthenticated()" class="navbar-link">Login</a>
+                <a ng-click="logOut()" ng-if="isAuthenticated()" class="navbar-link">Log out</a>
+            </p>
+        </div>
+        <!--<p class="navbar-text navbar-right">-->
+            <!--<a ui-sref="signin" ng-if="!headerCtrl.isAuthenticated()" class="navbar-link">Login</a>-->
+            <!--<a ng-click="headerCtrl.logOut()" ng-if="headerCtrl.isAuthenticated()" class="navbar-link">Log out</a>-->
+        <!--</p>-->
+    </div>
+</nav>

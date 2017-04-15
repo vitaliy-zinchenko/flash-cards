@@ -2,4 +2,12 @@
 
 var angular = require('angular');
 
-angular.module('dashboard').directive('yepNope', require('./yep-nope.directive'));
+angular
+    .module('fc.dir', [])
+    .directive("header", function() {
+        return {
+            restrict: 'E',
+            controller: require('./header/header.js'),
+            template: require('./header/header.html')
+        };
+    })
