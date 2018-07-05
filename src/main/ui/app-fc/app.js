@@ -21,6 +21,8 @@ import routes from './routes';
 import footer from './components/footer';
 import header from './components/header';
 
+
+//TODO review name
 import getConfig from './services/get-config.service';
 
 var fcApp = angular
